@@ -1,0 +1,28 @@
+<div class="row">
+
+
+    <div class="col-sm-4">
+        <app-selecionar-periodos
+        (Acionarprocessar)="processar()"
+        (AcionarHistorico)="buscarProcessosArquivosGerados()" 
+        ></app-selecionar-periodos>
+    </div>
+
+    <div class="col-sm-4">
+        <app-gerar-arq-magnetico  (AcionarHistorico)="buscarProcessosArquivosGerados()"
+
+  
+
+        
+        #instanceGerarArqMagneticos ></app-gerar-arq-magnetico> 
+    </div>
+
+
+    <div class="col-sm-4">
+                                     
+    <app-historico-geracao-arquivos  [data]="cadGeraArquivosModel" #instanceGeraArquivos >  </app-historico-geracao-arquivos>
+    </div>
+    
+
+
+</div>

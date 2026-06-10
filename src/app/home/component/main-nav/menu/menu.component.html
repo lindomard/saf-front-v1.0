@@ -1,0 +1,23 @@
+<a mat-list-item
+  [style.padding-left.px]="16 + depth * 12"
+  (click)="onItemSelected(item)"
+  [class.active]="item.route && router.isActive(item.route, true)"
+  [class.has-children]="item.children?.length"
+  class="menu-list-item"
+  [matTooltip]="item.displayName"
+  matTooltipPosition="right"
+  [matTooltipDisabled]="depth > 0">
+
+  <mat-icon class="route-icon">{{ item.iconName }}</mat-icon>
+  <span class="item-label">{{ item.displayName | titlecase }}</span>
+
+  <mat-icon *ngIf="item.children?.length" class="expand-icon"
+    [@indicatorRotate]="expanded ? 'expanded' : 'collapsed'">
+    expand_more
+  </mat-icon>
+
+</a>
+
+<div class="children-wrapper" *ngIf="expanded">
+  <app-menu *ngFor="let child of item.children" [item]="child" [depth]="depth + 1"></app-menu>
+</div>

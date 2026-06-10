@@ -1,0 +1,210 @@
+<div class="row">
+
+
+    <div class="col-xl-12">
+        <form [formGroup]="formCadrc170">
+
+            <mat-card>
+                <div class="row">
+                    <div class="col-md-11">
+
+                        <h1 mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle
+                            style="background-color: rgb(23, 100, 23); text-align:center;">dadosCorrecao
+
+                        </h1>
+                    </div>
+
+                    <div class="col-md-1">
+
+                        <div class="col text-right">
+                            <button class="btn btn-primary mr-2; form-control"
+                                (click)="cancelarESairC170()">Fechar</button>
+                        </div>
+
+
+
+
+                    </div>
+
+                </div>
+
+
+
+
+            </mat-card>
+
+            <mat-card>
+
+                <div class="fundo">
+
+                    <div class="row">
+
+
+
+                        <div class="col-md-1">
+                            <h1>Valores Originais</h1>
+
+
+                        </div>
+
+
+
+                        <div class="col-md-2">
+                            <label>Cód Item</label>
+                            <input formControlName="rc170CodItemOriginal" class="form-control" type="text">
+                        </div>
+
+                        <div class="col-md-5">
+                            <label>Descrição</label>
+                            <input id="r0200DescrItemOriginal" formControlName="r0200DescrItemOriginal"
+                                class="form-control" type="text">
+
+                        </div>
+
+
+                        <div class="col-md-1">
+                            <label>Und</label>
+                            <input id="r0200UnidInvOriginal" formControlName="r0200UnidInvOriginal" class="form-control"
+                                type="text">
+
+                        </div>
+
+                        <div class="col-md-1">
+                            <label>Quantidade</label>
+                            <input formControlName="rc170QtdOriginal" [mask]="getMaskForm(3)" thousandSeparator="."
+                                decimalMarker="," [dropSpecialCharacters]="true" [showMaskTyped]="false"
+                                placeholder="0,00" [leadZero]="true" [style]="getAlinhar('D')" class="form-control">
+                        </div>
+
+                        <div class="col-md-1">
+                            <label>Cod Ncm</label>
+                            <input id="r0200CodNcmOriginal" formControlName="r0200CodNcmOriginal" class="form-control"
+                                type="text">
+
+                        </div>
+
+
+
+                        <div class="col-md-1">
+                            <label>Cest</label>
+                            <input id="r0200CestOriginal" formControlName="r0200CestOriginal" class="form-control"
+                                type="text">
+
+                        </div>
+
+
+
+                        <!-- ACIMA ORIGINAL -->
+
+                    </div>
+
+                </div>
+            </mat-card>
+
+
+            <mat-card>
+
+                <div class="fundoNovos">
+
+                    <div class="row">
+
+
+
+                        <div class="col-md-1">
+                            <h1>Valores Novos</h1>
+
+
+                        </div>
+
+
+
+                        <div class="col-md-2">
+                            <label>Cód Item</label>
+                            <input formControlName="rc170CodItem" class="form-control" type="text">
+                            <small *ngIf="formCadrc170.controls.rc170CodItem.hasError('erro')"
+                            class="message">
+                            {{ this.formCadrc170.get("rc170CodItem").errors | json }}
+                        </small>
+
+
+                        </div>
+
+                        <div class="col-md-5">
+                            <label>Descrição</label>
+                            <input id="r0200DescrItem" formControlName="r0200DescrItem"
+                                class="form-control" type="text">
+
+                        </div>
+
+
+                        <div class="col-md-1">
+                            <label>Und</label>
+                            <input id="r0200UnidInv" formControlName="r0200UnidInv" class="form-control"
+                                type="text">
+
+                        </div>
+
+                        <div class="col-md-1">
+                            <label>Quantidadel</label>
+                            <input formControlName="rc170Qtd" [mask]="getMaskForm(3)"
+                             thousandSeparator="."
+                                decimalMarker="," [dropSpecialCharacters]="true" [showMaskTyped]="false"
+                                placeholder="0,00" [leadZero]="true" [style]="getAlinhar('D')" class="form-control">
+                        </div>
+
+
+
+
+                        <div class="col-md-1">
+                            <label>Cod Ncm</label>
+                            <input id="r0200CodNcm" formControlName="r0200CodNcm" class="form-control"
+                                type="text">
+
+                        </div>
+
+
+
+                        <div class="col-md-1">
+                            <label>Cest</label>
+                            <input id="r0200Cest" formControlName="r0200Cest" class="form-control"
+                                type="text">
+
+                        </div>
+
+                        <!-- ACIMA ORIGINAL -->
+
+                    </div>
+
+                </div>
+            </mat-card>
+
+
+
+
+            <mat-card>
+                <div class="row">
+                    <div class="col-md-6">
+                            <button class="btn btn-primary mr-2; form-control"
+                                (click)="cancelarESairC170()">Cancelar</button>
+                    </div>
+
+                    <div class="col-md-6">
+                            <button class="btn btn-primary mr-2; form-control"
+                                (click)="gravarESairC170()">Gravar</button>
+                    </div>
+
+                    
+                </div>
+
+
+
+
+            </mat-card>
+
+
+
+
+
+        </form>
+    </div>
+</div>

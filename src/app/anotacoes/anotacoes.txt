@@ -1,0 +1,72 @@
+SELECT PD_INT_TIPO_ARQUIVO
+,SUM(PD_TAMANHO_ARQUIVO) AS TAMANHO 
+,ROUND(SUM(PD_TAMANHO_ARQUIVO*(CASE WHEN PD_INT_TIPO_ARQUIVO='EFDICMS' THEN 5.223 ELSE 1 END) )) AS TAMANHO_CALC FROM CADPESSOAS_doc
+GROUP BY PD_INT_TIPO_ARQUIVO
+
+
+importar oracle versao recente para anteriores
+  expdp system/senha@conexao_19c directory=dumper_dir dumpfile=export_19c.dmp logfile=export_19c.log VERSION=10 schemas=esquema_a,esquema_b
+
+
+
+const hoje = new Date();
+    const dataFormatada = new Intl.DateTimeFormat('pt-BR').format(hoje);
+
+    this.data = 'Unformatted date: ' + hoje +' Formatted date ldc: ${dataFormatada}';
+    console.log('Unformatted date: ${hoje} Formatted date: ${dataFormatada}');
+
+
+gerenciar versao do node.js
+nvm ls
+
+
+gerar componente em um deterninado module
+$ ng g c whatsAppQrCode --module=configuracoes.module
+
+npm install --legacy-peer-deps
+
+gitlab bloqueado desvincdulado com usuarios
+
+git config --global credential.helper wincred
+panel control->preferences do windows->gitlab
+
+
+
+<!-- subir para o git lab
+git add . 
+git commit -m "alteracoes ate 16/07/2020"
+git branch para saber o nome da sua branch
+git push origin nome-da-sua-branch
+-->
+
+git remote update --prune
+git checkout feature/validate-permission
+
+
+conflitos
+git pull --reabase
+git pull atualizar
+
+API
+identacao intellij
+
+ctrl-alt-l
+
+identacao html
+ctrl-shif-f no html
+
+
+para o front
+
+01-ver check box no formgroup
+02-mensagem do componente de data
+
+
+para o back
+01-deixar publico pegar usuario que fez a requisicao origem da requisicao
+
+
+
+
+
+

@@ -1,0 +1,261 @@
+.page-container {
+  padding: 16px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.upload-card,
+.processing-card,
+.report-group-card,
+.warning-card {
+  margin-bottom: 16px;
+  border-radius: 8px;
+}
+
+.upload-area {
+  margin: 16px 0;
+}
+
+.upload-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: #1565c0;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: Roboto, sans-serif;
+  font-size: 14px;
+  border: none;
+  transition: background 0.2s;
+
+  &:hover {
+    background: #0d47a1;
+  }
+}
+
+.file-input {
+  display: none;
+}
+
+.progress-section {
+  margin: 8px 0 16px;
+}
+
+.progress-label {
+  font-size: 12px;
+  color: #666;
+  margin-top: 4px;
+  display: block;
+}
+
+.processing-status {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  color: #1565c0;
+
+  h3 {
+    margin: 0;
+    color: #1565c0;
+  }
+}
+
+.spin-icon {
+  animation: spin 1.5s linear infinite;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.progress-subtitle {
+  text-align: center;
+  font-size: 13px;
+  color: #666;
+  margin-top: 8px;
+}
+
+.section-title {
+  font-size: 18px;
+  font-weight: 500;
+  color: #1565c0;
+  margin: 24px 0 12px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid #e3f2fd;
+}
+
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: 8px;
+  margin-bottom: 8px;
+
+  table {
+    width: 100%;
+    min-width: 600px;
+  }
+}
+
+.paginator-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.alert-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.warning-card {
+  background: #fff8e1;
+  border-left: 4px solid #ffc107;
+
+  .warning-message {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #e65100;
+
+    mat-icon {
+      color: #ffc107;
+    }
+  }
+}
+
+.reports-section {
+  margin-top: 8px;
+}
+
+.report-toggle {
+  margin-bottom: 16px;
+}
+
+.btn-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 10px;
+
+  button {
+    text-align: left;
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 600px) {
+  .page-container {
+    padding: 8px;
+  }
+
+  .btn-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .paginator-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+button:hover {
+  background-color: #3e8e41;
+}
+
+
+
+
+.titulo {
+  text-align: center;
+  background-color: #f0f0f0;
+  width: 80%;
+
+}
+
+.cabecalho {
+  text-align: center;
+  font-size: 30px;
+  background-color: #eeecf6db;
+  width: 100%;
+
+}
+
+
+.container {
+  width: 80%;
+
+  padding: 20px;
+  border: 1px solid #ddd;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.tabela {
+  background-color: transparent !important;
+}
+
+.mat-table,
+.mat-card {
+  background-color: transparent !important;
+}
+
+
+// animacao inicio
+
+
+.progress {
+  width: 100%;
+  height: 40px;
+  border-radius: 5px;
+  background-color: #f0f0f0;
+}
+
+.progress-bar {
+  height: 100%;
+  border-radius: 5px;
+  background-color: #007bff;
+  transition: width 0.5s;
+}
+
+// animacao termino
+
+.piscando {
+  animation: piscar 1s infinite;
+}
+
+@keyframes piscar {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+
+.flex-botoes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.flex-botoes button {
+  width: calc(33.33% - 10px);
+  margin: 5px;
+  padding: 10px;
+  height: 40px;
+  font-size: 16px;
+}

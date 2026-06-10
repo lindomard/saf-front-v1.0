@@ -1,0 +1,15 @@
+<section>
+    <aside>
+      <button (click)="close()"><i class="fa-solid fa-xmark"></i></button>
+    </aside>
+    <aside>
+      <h3>{{ title }}</h3>
+      <p [innerHTML]="message"></p>
+    </aside>
+  
+    <aside>
+      <button (click)="fechar(false)">Não, voltar</button>
+      <button (click)="fechar(true)">Sim, confirmar</button>
+    </aside>
+  </section>
+  

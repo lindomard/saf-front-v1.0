@@ -1,0 +1,38 @@
+<div class="main-container">
+    <div class="row" fxLayoutGap="10px"  fxLayoutGap.xs="2px" fxLayoutGap.sm="2px">
+        <button class="btn-header btn-primary" 
+            (click)="actionNew()"
+            [disabled]="showNew"
+        ><span class="fa fa-plus"></span>
+        Novo
+    </button>
+
+        <button class="btn-header btn-update"
+            (click)="actionUpdate()"
+            [disabled]="showUpdate"
+        ><span class="fa fa-edit"></span>
+        Alterar
+    </button>
+
+        <button class="btn-header btn-primary"
+            (click)="actionSave()"
+            [disabled]="showSave"
+        ><span class="fa fa-check"></span>
+        Gravar
+    </button>
+
+        <button class="btn-header btn-accent"
+            (click)="actionCancel()"
+            [disabled]="showCancel"    
+        ><span class="fa fa-eject"></span>
+        Cancelar
+    </button>
+
+        <button class="btn-header btn-warn"
+            (click)="actionDelete()"
+            [disabled]="showDelete"
+        ><span class="fa fa-trash"></span>
+        Excluir
+    </button>
+    </div>
+</div>

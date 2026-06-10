@@ -1,0 +1,17 @@
+<mat-card>
+    <app-form-build #instanceForm [fieldsConfig]="fields"></app-form-build>
+</mat-card>
+
+<mat-card>
+    <app-table-list #instanceTable
+        [itens]="itensTable"
+        [displayColumns]="displayColumns"
+        [data]="clientes"
+        (pageHandler)="pageAction($event)"
+        (clickRowHandler)="onRowDoubleClicked($event)"
+        (clickSelectRowHandler)="onRowClick($event)"
+    ></app-table-list>
+</mat-card> 
+
+<!-- [rowNameValidation]="rowNameValidation" -->
+        

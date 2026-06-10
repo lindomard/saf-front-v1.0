@@ -1,0 +1,27 @@
+<mat-card>
+    <app-form-build #instanceForm [fieldsConfig]="fields"></app-form-build>
+</mat-card>
+
+<mat-tab-group [disableRipple]="true" [selectedIndex]="selectedTab.value"
+    (selectedIndexChange)="selectedTab.setValue($event)">
+
+    <mat-tab label="Geral">
+        <app-general-person (instanceHandlePerson)="instancePersonComponent = $event"
+            (instanceHandleContacts)="instanceContactsComponent = $event"
+            (instanceHandleSocialNetwork)="instanceSocialNetworkComponent = $event"
+            (instanceReferenciaCliente)="instanceReferenciaComponente =  $event"
+            (instanceSociety)="instanceSocietyComponent = $event"
+            (instanceImagem)="instanceImagemComponet = $event"
+            (instanceHandler)="instanceGeneralComponent= $event"
+            (instanceLicenses)="instanceLicensesComponent = $event"></app-general-person>
+    </mat-tab>
+    <mat-tab label="Histórico">
+        instanceLicensesComponent
+    </mat-tab>
+    <mat-tab label="Observações">
+        <app-observacao></app-observacao>
+    </mat-tab>
+    <mat-tab label="Faturamento">
+        <app-faturamento></app-faturamento>
+    </mat-tab>
+</mat-tab-group>

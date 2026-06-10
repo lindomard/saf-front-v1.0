@@ -1,0 +1,28 @@
+@import '../../../../../../assets/style/root.scss';
+
+
+.form-build {
+    margin-bottom: 20px;
+    margin-left: 13px;
+}
+
+.btn-close {
+    top: 0;
+    right: 0;
+    position: absolute;
+    background-color: $white-ice;
+    border: none;
+    border-radius: 8px;
+    padding: 20px;
+    outline: none;
+}
+
+.fa-close{
+    color: $red-primary;
+}
+
+@media (max-width: 600px) {
+    .btn-close {
+        top: 10%;
+    }
+}

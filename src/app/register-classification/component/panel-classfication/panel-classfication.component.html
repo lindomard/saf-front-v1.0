@@ -1,0 +1,40 @@
+<div class="main-container">
+    <div class="row" fxLayoutGap="10px" fxLayoutGap.xs="2px" fxLayoutGap.sm="2px">
+        <button class="btn-header btn-primary" ><span class="fa fa-plus"></span>
+            Novo
+        </button>
+
+        <button class="btn-header btn-update" ><span class="fa fa-edit"></span>
+            Alterar
+        </button>
+
+        <button class="btn-header btn-primary" ><span class="fa fa-check"></span>
+            Gravar
+        </button>
+
+        <button class="btn-header btn-accent" ><span class="fa fa-eject"></span>
+            Cancelar
+        </button>
+
+        <button class="btn-header btn-warn" ><span class="fa fa-trash"></span>
+            Excluir
+        </button>
+    </div>
+</div>
+
+<mat-tab-group [disableRipple]="true" [selectedIndex]="selectedTabName.value"
+    (selectedIndexChange)="selectedTabName.setValue($event)">
+
+    <mat-tab label="Consulta">
+
+    </mat-tab>
+
+    <mat-tab label="Cadastro">
+        <app-register-classification></app-register-classification>
+    </mat-tab>
+
+    <mat-tab label="Relatórios">
+        relatorios
+    </mat-tab>
+
+</mat-tab-group>

@@ -1,0 +1,14 @@
+<mat-card>
+    <app-form-build #instanceForm [fieldsConfig]="fields"></app-form-build>
+</mat-card>
+
+<mat-card *ngIf="registroArmaForm?.registroArmas.length > 0">
+    <app-table-list #instanceTable 
+        [itens]="itemsTable" 
+        [displayColumns]="displayColumns" 
+        [data]="registroArmas"
+        [isPaginator]="false"
+        (editHandler)="onEditListener($event)"
+        (deleteHandler)="onDeleteListener($event)">
+    </app-table-list>
+</mat-card>

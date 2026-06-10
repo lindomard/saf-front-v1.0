@@ -1,0 +1,344 @@
+<mat-card>
+  <h1 mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle
+    style="background-color: rgb(28, 119, 161); text-align:center;"> {{ tipoAcaoName }}</h1>
+  <h1 mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle
+    style="background-color: rgb(21, 100, 19); text-align:center;"> {{ tipoEvento }}
+
+
+    <div class="col text-right">
+      <button class="btn btn-primary mr-2" (click)="cancelarESair()">Fechar</button>
+    </div>
+
+
+  </h1>
+
+</mat-card>
+
+
+
+
+<section class="table-container mat-elevation-z8">
+
+
+
+
+  <table mat-table [dataSource]="dataSourceWithPageSize">
+
+
+    <ng-container matColumnDef="rc100CodMod">
+      <mat-header-cell [ngStyle]="{'flex':'0 0 3%'}" *matHeaderCellDef>Mod</mat-header-cell>
+      <mat-cell [ngStyle]="{'flex':'0 0 3%'}" *matCellDef="let element">
+        <span class="mobile-label">Modelo:</span>
+        {{element.rc100CodMod}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="rc100CodSit">
+      <mat-header-cell [ngStyle]="{'flex':'0 0 3%'}" *matHeaderCellDef> Cód Sit</mat-header-cell>
+      <mat-cell [ngStyle]="{'flex':'0 0 3%'}" class="center-item" *matCellDef="let element">
+        <span class="mobile-label">Situação:</span>
+        {{element.rc100CodSit}}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="rc100Ser">
+      <mat-header-cell [ngStyle]="{'flex':'0 0 3%'}" *matHeaderCellDef> Série</mat-header-cell>
+      <mat-cell [ngStyle]="{'flex':'0 0 3%'}" *matCellDef="let element">
+        <span class="mobile-label">Serie:</span>
+        {{element.rc100Ser}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="rc100NumDoc">
+      <mat-header-cell [ngStyle]="{'flex':'0 0 4%'}" *matHeaderCellDef> Núm Doc</mat-header-cell>
+      <mat-cell [ngStyle]="{'flex':'0 0 4%'}" *matCellDef="let element">
+        <span class="mobile-label">Núm Doc::</span>
+        {{element.rc100NumDoc}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="rc100ChvNfe">
+      <mat-header-cell [ngStyle]="{'flex':'0 0 19%'}" *matHeaderCellDef> Chave Nfe</mat-header-cell>
+      <mat-cell [ngStyle]="{'flex':'0 0 19%'}" *matCellDef="let element">
+        <span class="mobile-label">Chave Nfe:</span>
+        {{element.rc100ChvNfe}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="rc100CodPart">
+      <mat-header-cell [ngStyle]="{'flex':'0 0 6%'}" *matHeaderCellDef> Cód Participante</mat-header-cell>
+      <mat-cell [ngStyle]="{'flex':'0 0 6%'}" *matCellDef="let element"> {{element.rc100CodPart}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="r0150Nome">
+      <mat-header-cell [ngStyle]="{'flex':'0 0 19%'}" *matHeaderCellDef>Razão Social</mat-header-cell>
+      <mat-cell [ngStyle]="{'flex':'0 0 19%'}" *matCellDef="let element"> {{element.r0150Nome}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="r0150Cnpj">
+      <mat-header-cell [ngStyle]="{'flex':'0 0 7%'}" *matHeaderCellDef>CNPJ</mat-header-cell>
+      <mat-cell [ngStyle]="{'flex':'0 0 7%'}" *matCellDef="let element"> {{element.r0150Cnpj}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="r0150Cpf">
+      <mat-header-cell [ngStyle]="{'flex':'0 0 7%'}" *matHeaderCellDef>CPF</mat-header-cell>
+      <mat-cell [ngStyle]="{'flex':'0 0 7%'}" *matCellDef="let element"> {{element.r0150Cpf}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="r0150Ie">
+      <mat-header-cell [ngStyle]="{'flex':'0 0 7%'}" *matHeaderCellDef>Inscrição Est</mat-header-cell>
+      <mat-cell [ngStyle]="{'flex':'0 0 7%'}" *matCellDef="let element"> {{element.r0150Ie}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="r0150CodMun">
+      <mat-header-cell [ngStyle]="{'flex':'0 0 5%'}" *matHeaderCellDef>Cód.Municipio</mat-header-cell>
+      <mat-cell [ngStyle]="{'flex':'0 0 5%'}" *matCellDef="let element"> {{element.r0150CodMun}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="r0150Suframa">
+      <mat-header-cell [ngStyle]="{'flex':'0 0 5%'}" *matHeaderCellDef>Suframa</mat-header-cell>
+      <mat-cell [ngStyle]="{'flex':'0 0 5%'}" *matCellDef="let element"> {{element.r0150Suframa}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="rc100DtDoc">
+      <mat-header-cell [ngStyle]="{'flex':'0 0 6%'}" *matHeaderCellDef> Data Doc</mat-header-cell>
+      <mat-cell [ngStyle]="{'flex':'0 0 6%'}" *matCellDef="let element">
+        {{ fRetornaFormatado(element.rc100DtDoc, "date") }}
+
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="rc100VlDoc">
+      <mat-header-cell [ngStyle]="{'flex':'0 0 5%'}" class="rigth-item" *matHeaderCellDef>Valor
+        Documento</mat-header-cell>
+      <mat-cell [ngStyle]="{'flex':'0 0 5%'}" class="rigth-item" *matCellDef="let element">
+        {{ fRetornaFormatado(element.rc100VlDoc, "valor2dec") }}
+
+
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="rc100IndPgto">
+      <mat-header-cell [ngStyle]="{'flex':'0 0 3%'}" *matHeaderCellDef class="center-item">Ind Pgto</mat-header-cell>
+      <mat-cell [ngStyle]="{'flex':'0 0 3%'}" *matCellDef="let element" class="center-item"> {{element.rc100IndPgto}}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="rc100VlMerc">
+      <mat-header-cell [ngStyle]="{'flex':'0 0 5%'}" *matHeaderCellDef class="rigth-item">Vlr
+        Mercadorias</mat-header-cell>
+      <mat-cell [ngStyle]="{'flex':'0 0 5%'}" *matCellDef="let element" class="rigth-item">
+
+        {{ fRetornaFormatado(element.rc100VlMerc, "valor2dec") }}
+
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="r0000IndAtiv">
+      <mat-header-cell [ngStyle]="{'flex':'0 0 3%'}" *matHeaderCellDef class="center-item">Ind Atv</mat-header-cell>
+      <mat-cell [ngStyle]="{'flex':'0 0 3%'}" *matCellDef="let element" class="center-item"> {{element.r0000IndAtiv}}
+      </mat-cell>
+    </ng-container>
+
+
+
+
+    <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true "></mat-header-row>
+
+    <mat-row *matRowDef="let row; columns: displayedColumns;" matRipple class="element-row" [cdkDetailRow]="row"
+      [cdkDetailRowTpl]="tpl" (click)="onToggleChange($event)">
+    </mat-row>
+  </table>
+
+  <mat-paginator #paginatorPageSize [length]="filterPaginator.totalPages" [pageIndex]="filterPaginator.page"
+    [pageSize]="filterPaginator.size" [pageSizeOptions]="pageLimitOptions" showFirstLastButtons
+    (page)="changeEvent()"></mat-paginator>
+
+
+
+  <ng-template #tpl let-element>
+    <div class="mat-row" [@detailExpand] style="overflow: hidden">
+
+
+      <mat-table #table [dataSource]="element.tabelaBaseRc170" style="background: rgb(114, 156, 185)">
+
+
+        <ng-container matColumnDef="rc170NumItem" [sticky]="isSticky()">
+          <mat-header-cell [ngStyle]="{'flex':'0 0 3%'}" *matHeaderCellDef>Item</mat-header-cell>
+          <mat-cell [ngStyle]="{'flex':'0 0 3%'}" *matCellDef="let element">
+
+            <span class="mobile-label">Item:</span>
+
+            {{element.rc170NumItem}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="r0200CodItem" [stickyEnd]="isSticky()">
+          <mat-header-cell [ngStyle]="{'flex':'0 0 5%'}" *matHeaderCellDef>Código Item</mat-header-cell>
+          <mat-cell [ngStyle]="{'flex':'0 0 5%'}" *matCellDef="let element">
+            <span class="mobile-label">Cód. Item:</span>
+            {{element.r0200CodItem}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="r0200DescrItem" [stickyEnd]="isSticky()">
+          <mat-header-cell [ngStyle]="{'flex':'0 0 20%'}" *matHeaderCellDef>Descrição</mat-header-cell>
+          <mat-cell [ngStyle]="{'flex':'0 0 20%'}" *matCellDef="let element">
+            <span class="mobile-label">Descrição:</span>
+            {{element.r0200DescrItem}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="r0200CodAntItem" [sticky]="isSticky()">
+          <mat-header-cell [ngStyle]="{'flex':'0 0 5%'}" *matHeaderCellDef>Cód Item Anterior</mat-header-cell>
+          <mat-cell [ngStyle]="{'flex':'0 0 5%'}" *matCellDef="let element"> {{element.r0200CodAntItem}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="r0200TipoItem">
+          <mat-header-cell [ngStyle]="{'flex':'0 0 3%'}" class="center-item" *matHeaderCellDef>Tipo</mat-header-cell>
+          <mat-cell [ngStyle]="{'flex':'0 0 3%'}" class="center-item" *matCellDef="let element">
+            {{element.r0200TipoItem}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="rc170Qtd">
+          <mat-header-cell [ngStyle]="{'flex':'0 0 5%'}" class="rigth-item" *matHeaderCellDef>Qtde</mat-header-cell>
+          <mat-cell [ngStyle]="{'flex':'0 0 5%'}" class="rigth-item" *matCellDef="let element"> {{element.rc170Qtd}}
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="rc170Unid">
+          <mat-header-cell [ngStyle]="{'flex':'0 0 3%'}" class="center-item" *matHeaderCellDef>Und</mat-header-cell>
+          <mat-cell [ngStyle]="{'flex':'0 0 3%'}" class="center-item" *matCellDef="let element"> {{element.rc170Unid}}
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="rc170VlItem">
+          <mat-header-cell [ngStyle]="{'flex':'0 0 5%'}" class="rigth-item"
+            *matHeaderCellDef>Pco.Unitário</mat-header-cell>
+          <mat-cell [ngStyle]="{'flex':'0 0 5%'}" class="rigth-item" *matCellDef="let element">
+            {{ fRetornaFormatado(element.rc170VlItem, "valor2dec") }}
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="rc170VlDesc">
+          <mat-header-cell [ngStyle]="{'flex':'0 0 5%'}" class="rigth-item" *matHeaderCellDef>Vlr
+            Desconto</mat-header-cell>
+          <mat-cell [ngStyle]="{'flex':'0 0 5%'}" class="rigth-item" *matCellDef="let element">
+            {{ fRetornaFormatado(element.rc170VlDesc, "valor2dec") }}
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="rc170CstIcms">
+          <mat-header-cell [ngStyle]="{'flex':'0 0 3%'}" class="center-item" *matHeaderCellDef>CST
+            Icms</mat-header-cell>
+          <mat-cell [ngStyle]="{'flex':'0 0 3%'}" class="center-item" *matCellDef="let element">
+            {{element.rc170CstIcms}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="rc170Cfop">
+          <mat-header-cell [ngStyle]="{'flex':'0 0 3%'}" *matHeaderCellDef>CFOP</mat-header-cell>
+          <mat-cell [ngStyle]="{'flex':'0 0 3%'}" *matCellDef="let element"> {{element.rc170Cfop}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="rc170VlBcIcms">
+          <mat-header-cell [ngStyle]="{'flex':'0 0 5%'}" class="rigth-item" *matHeaderCellDef>Bc Icms</mat-header-cell>
+          <mat-cell [ngStyle]="{'flex':'0 0 5%'}" class="rigth-item" *matCellDef="let element">
+            {{ fRetornaFormatado(element.rc170VlBcIcms, "valor2dec") }}
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="rc170AliqIcms">
+          <mat-header-cell [ngStyle]="{'flex':'0 0 5%'}" class="rigth-item" *matHeaderCellDef>% Icms</mat-header-cell>
+          <mat-cell [ngStyle]="{'flex':'0 0 5%'}" class="rigth-item" *matCellDef="let element">
+            {{element.rc170AliqIcms}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="rc170VlIcms">
+          <mat-header-cell [ngStyle]="{'flex':'0 0 5%'}" class="rigth-item" *matHeaderCellDef>Valor
+            Icms</mat-header-cell>
+          <mat-cell [ngStyle]="{'flex':'0 0 5%'}" class="rigth-item" *matCellDef="let element">
+            {{ fRetornaFormatado(element.rc170VlIcms, "valor2dec") }}
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="rc170VlBcIcmsSt">
+          <mat-header-cell [ngStyle]="{'flex':'0 0 5%'}" class="rigth-item" *matHeaderCellDef>Bc Icms
+            ST</mat-header-cell>
+          <mat-cell [ngStyle]="{'flex':'0 0 5%'}" class="rigth-item" *matCellDef="let element">
+            {{ fRetornaFormatado(element.rc170VlBcIcmsSt, "valor2dec") }}
+
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="rc170AliqSt">
+          <mat-header-cell [ngStyle]="{'flex':'0 0 5%'}" class="rigth-item" *matHeaderCellDef>% Icms
+            ST</mat-header-cell>
+          <mat-cell [ngStyle]="{'flex':'0 0 5%'}" class="rigth-item" *matCellDef="let element">
+            {{element.rc170AliqSt}}
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="rc170VlIcmsSt">
+          <mat-header-cell [ngStyle]="{'flex':'0 0 5%'}" class="rigth-item" *matHeaderCellDef>Vl Icms
+            St</mat-header-cell>
+          <mat-cell [ngStyle]="{'flex':'0 0 5%'}" class="rigth-item" *matCellDef="let element">
+            {{ fRetornaFormatado(element.rc170VlIcmsSt, "valor2dec") }}
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="rc170VlIpi">
+          <mat-header-cell [ngStyle]="{'flex':'0 0 5%'}" class="rigth-item" *matHeaderCellDef>Vlr IPI</mat-header-cell>
+          <mat-cell [ngStyle]="{'flex':'0 0 5%'}" class="rigth-item" *matCellDef="let element">
+            {{ fRetornaFormatado(element.rc170VlIpi, "valor2dec") }}
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="rc170VlPis">
+          <mat-header-cell [ngStyle]="{'flex':'0 0 5%'}" *matHeaderCellDef>Valor Pis</mat-header-cell>
+          <mat-cell [ngStyle]="{'flex':'0 0 5%'}" *matCellDef="let element">
+            {{ fRetornaFormatado(element.rc170VlPis, "valor2dec") }}
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="rc170CstCofins">
+          <mat-header-cell [ngStyle]="{'flex':'0 0 3%'}" class="center-item" *matHeaderCellDef>CST
+            Cofins</mat-header-cell>
+          <mat-cell [ngStyle]="{'flex':'0 0 3%'}" class="center-item" *matCellDef="let element">
+            {{element.rc170CstCofins}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="rc170VlFrt">
+          <mat-header-cell [ngStyle]="{'flex':'0 0 2%'}" *matHeaderCellDef> Valor do Frete</mat-header-cell>
+          <mat-cell [ngStyle]="{'flex':'0 0 2%'}" *matCellDef="let element"> {{element.rc170VlFrt}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="rc170VlSeg">
+          <mat-header-cell [ngStyle]="{'flex':'0 0 2%'}" *matHeaderCellDef> valor do seguro encontrado no
+            xml</mat-header-cell>
+          <mat-cell [ngStyle]="{'flex':'0 0 2%'}" *matCellDef="let element"> {{element.rc170VlSeg}} </mat-cell>
+        </ng-container>
+
+
+
+
+
+        <ng-container matColumnDef="calcDA">
+          <mat-header-cell [ngStyle]="{'flex':'0 0 10%'}" *matHeaderCellDef>Outras DA</mat-header-cell>
+          <mat-cell [ngStyle]="{'flex':'0 0 10%'}" *matCellDef="let element"> {{element.calcDA}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="rc170VlAbatNt">
+          <mat-header-cell [ngStyle]="{'flex':'0 0 10%'}" *matHeaderCellDef> valor do abatimento nao
+            tributado</mat-header-cell>
+          <mat-cell [ngStyle]="{'flex':'0 0 10%'}" *matCellDef="let element"> {{element.rc170VlAbatNt}} </mat-cell>
+        </ng-container>
+
+
+
+        <mat-header-row *matHeaderRowDef="displayedColumnsSub"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumnsSub;">
+        </mat-row>
+
+      </mat-table>
+
+
+
+
+    </div>
+  </ng-template>
+
+
+</section>

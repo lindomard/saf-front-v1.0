@@ -1,0 +1,9 @@
+<ng-template ngFor let-item [ngForOf]="items" #name>
+  <div class="form-check wrapper-radio">
+    <input class="form-check-input" type="radio" name="{{ item.radioGroup }}" value="{{ item.value }}" id="{{ item.name }}"
+      [formControl]="control">
+    <label class="form-check-label" for="{{ item.name }}">
+      {{ item.label }}
+    </label>
+  </div>
+</ng-template>

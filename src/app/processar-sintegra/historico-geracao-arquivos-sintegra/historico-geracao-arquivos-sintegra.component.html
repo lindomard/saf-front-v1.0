@@ -1,0 +1,95 @@
+<div>
+
+    <mat-toolbar color="warn" class="child">
+
+        <div class="col">
+            <div class="row">
+
+
+
+                <span> Baixar Arquivo por Efd Icms </span>
+                <!-- <span class="spacer"></span> -->
+
+
+                <div class="col text-right">
+                    <button class="btn btn-primary mr-2" [disabled]="mDisableBaixar" (click)="BaixarArquivo('')">Baixar 
+                        Agora</button>
+                </div>
+
+            </div>
+
+        </div>
+    </mat-toolbar>
+
+</div>
+
+
+
+
+
+
+<div class="example-container mat-elevation-z8">
+
+    <table mat-table [dataSource]="dataSource" [class.isMobile]="isMobile">
+      <!-- Position Column -->
+      <ng-container matColumnDef="gaDtIni">
+        <th mat-header-cell *matHeaderCellDef class="truncate-cell">Periodo de</th>
+        <td mat-cell *matCellDef="let element" class="truncate-cell">
+          <span class="mobile-label">Periodo de:</span>
+          {{ fRetornaFormatado(element.gaDtIni, "date") }}          
+        </td>
+      </ng-container>
+  
+      <!-- Name Column -->
+      <ng-container matColumnDef="gaDtFin">
+        <th mat-header-cell *matHeaderCellDef class="truncate-cell">Até</th>
+        <td mat-cell *matCellDef="let element" class="truncate-cell">
+          <span class="mobile-label">Até:</span>
+          {{ fRetornaFormatado(element.gaDtFin, "date") }}
+        </td>
+      </ng-container>
+  
+      <!-- Weight Column -->
+      <ng-container matColumnDef="gaDhInicio">
+        <th mat-header-cell *matHeaderCellDef class="truncate-cell">Inicio da Geração</th>
+        <td mat-cell *matCellDef="let element" class="truncate-cell">
+          <span class="mobile-label">Inicio da Geração:</span>
+  
+          {{ fRetornaFormatado(element.gaDhInicio, "datetime") }}
+  
+      </ng-container>
+  
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="gaDhTermino">
+        <th mat-header-cell *matHeaderCellDef class="truncate-cell">Termino da Geração</th>
+        <td mat-cell *matCellDef="let element" class="truncate-cell">
+          <span class="mobile-label">Termino da Geração:</span>
+  
+          {{ fRetornaFormatado(element.gaDhTermino, "datetime") }}
+  
+      </ng-container>
+  
+
+
+      <ng-container matColumnDef="baixar">
+        <th mat-header-cell *matHeaderCellDef> Baixar
+        </th>
+
+        <td mat-cell *matCellDef="let row; let i=index;">
+
+            <button color="primary" (click)="BaixarArquivo(row)">
+                <mat-icon aria-label="baixar">warning</mat-icon>
+            </button>
+
+        </td>
+    </ng-container>
+
+
+
+
+      
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>

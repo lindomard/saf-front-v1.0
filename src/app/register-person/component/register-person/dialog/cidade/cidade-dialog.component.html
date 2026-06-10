@@ -1,0 +1,18 @@
+<div class="wrapper-top">
+  <h1 mat-dialog-title class="title">Consulta Cidade</h1> 
+  <button (click)="onClick()" class="btn-close"><span class="fa fa-close"></span></button>
+</div>
+<div mat-dialog-content>
+
+  <div class="form-build">
+    <app-form-build #instanceForm [fieldsConfig]="fields"></app-form-build>
+  </div>
+
+  <app-table-list-hover #instanceTable
+    [itens]="itemsTable"
+    [displayColumns]="displayColumns"
+    [data]="data?.page.content"
+    (clickRowHandler)="actionRow($event)"
+  ></app-table-list-hover>
+
+</div>

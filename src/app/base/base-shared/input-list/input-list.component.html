@@ -1,0 +1,11 @@
+<div class="form-group">
+    <label>{{ label }}</label>
+    <div class="wrapper">
+        <input list="options" class="form-control form-control-sm" [formControl]="control" type="{{ type }}">
+        <span class="fa fa-{{ icon }} toggle-icon" (click)="handlerChangeFunction($event)">
+        </span>
+        <datalist id="options"> 
+                <option *ngFor="let item of options" value="{{ item[labelKey] }}"></option>
+            </datalist>
+    </div>
+</div>

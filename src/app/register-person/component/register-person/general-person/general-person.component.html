@@ -1,0 +1,36 @@
+<mat-tab-group  class="wr-group" [disableRipple]="true"
+    [selectedIndex]="selectedTab.value" 
+    (selectedIndexChange)="selectedTab.setValue($event)">
+
+    <mat-tab label="Pessoa">
+        <app-person (instanceHandler)="instanceHandlePerson.emit($event)" #personComponent></app-person>
+    </mat-tab>
+
+    <mat-tab label="Dados Gerais">
+        <app-general-data></app-general-data>
+    </mat-tab>
+
+    <mat-tab label="Redes Sociais">
+        <app-social-network (instanceHandle)="instanceHandleSocialNetwork.emit($event)"></app-social-network>
+    </mat-tab>
+
+    <mat-tab label="Contatos">
+        <app-contacts-person (instanceHandle)="instanceHandleContacts.emit($event)"></app-contacts-person>
+    </mat-tab>
+
+    <mat-tab label="Referência">
+        <app-reference (instanceHandle)="instanceReferenciaCliente.emit($event)"></app-reference>
+    </mat-tab>
+
+    <mat-tab label="Licenças">
+        <app-licenses (instanceHandler)="instanceLicenses.emit($event)"></app-licenses>
+    </mat-tab>
+
+    <mat-tab label="Sociedade">
+        <app-society (instanceHandle)="instanceSociety.emit($event)"></app-society>
+    </mat-tab>
+
+    <mat-tab label="Imagens">
+        <app-image-register (instanceHandler)="instanceImagem.emit($event)"></app-image-register>
+    </mat-tab>
+</mat-tab-group>

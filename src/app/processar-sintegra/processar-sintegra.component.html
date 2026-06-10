@@ -1,0 +1,28 @@
+<div class="row">
+
+
+    <div class="col-sm-4">
+        <app-selecionar-periodos-sintegra
+        (Acionarprocessar)="processar()"
+        (AcionarHistorico)="buscarProcessosArquivosGerados()" 
+        ></app-selecionar-periodos-sintegra>
+    </div>
+
+    <div class="col-sm-4">
+        <app-gerar-arq-magnetico-sintegra  (AcionarHistorico)="buscarProcessosArquivosGerados()"
+
+  
+
+        
+        #instanceGerarArqMagneticosSintegra ></app-gerar-arq-magnetico-sintegra> 
+    </div>
+
+
+    <div class="col-sm-4">
+                                     
+    <app-historico-geracao-arquivos-sintegra  [data]="cadGeraArquivosModel" #instanceGeraArquivos >  </app-historico-geracao-arquivos-sintegra>
+    </div>
+    
+
+
+</div>

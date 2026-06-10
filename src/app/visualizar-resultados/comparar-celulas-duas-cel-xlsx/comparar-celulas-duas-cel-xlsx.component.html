@@ -1,0 +1,64 @@
+<mat-card>
+    <mat-card-header>
+
+        <div class="progress" *ngIf="uploadResponse.message > 0">
+            <div class="progress-bar" [style.width]="uploadResponse.message + '%'">{{ uploadResponse.message }}% {{
+                this.mObsTempo
+                }}</div>
+        </div>
+
+        <mat-progress-bar *ngIf="uploadResponse.message > 0" mode="determinate"
+            value="{{ uploadResponse.message }}"></mat-progress-bar>
+        <span *ngIf="uploadResponse.message > 0">Percentual {{ uploadResponse.message }} % {{ this.mObsTempo
+            }} </span>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="form">
+            <div class="row">
+
+                <div class="col-xl-3">
+                    <label>celula tabela 01:</label>
+                    <input id="colTab01" formControlName="colTab01" class="form-control" type="number">
+
+                </div>
+
+                <div class="col-xl-3">
+                    <label>celula tabela 02:</label>
+                    <input id="colTab02" formControlName="colTab02" class="form-control" type="number">
+
+
+                </div>
+            </div>
+
+
+
+            <div class="row" *ngIf="mEstaProcessando === false">
+                <div class="fileUpload btn btn-primary">
+                    <span>Anexar <i class="fa fa-paperclip"></i></span>
+                    <input (change)="selecFiles($event)" type="file" class="upload" multiple formControlName="files" />
+                </div>
+            </div>
+            <div class="row">
+                <mat-list>
+                    <mat-list-item *ngFor="let item of files">
+                        <mat-icon matListIcon>folder</mat-icon>
+                        <p matLine>
+                            <span> {{ item.name }} </span>
+                        </p>
+                    </mat-list-item>
+                </mat-list>
+            </div>
+        </form>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-button color="warn" (click)="removerFiles()">Remover</button>
+        <button mat-button [disabled]="mEstaProcessando || files.length === 0" (click)="uploadFile()">Enviar</button>
+    </mat-card-actions>
+
+    <div class="col-xl-12">
+        <textarea style="background-color:black;color:white;" [(ngModel)]='mTextoRetorno' rows="30" cols="95">
+        </textarea>
+      </div>
+
+
+</mat-card>

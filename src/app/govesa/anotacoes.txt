@@ -1,0 +1,8 @@
+membros do caso govesa
+fernando  - dr fernando advogado
+marco tulio (ti) - 62 9227-1571
+carla cury botezelli - contadora govesa - 62 8182-5111
+
+
+importar oracle versao recente para anteriores
+  expdp system/senha@conexao_19c directory=dumper_dir dumpfile=export_19c.dmp logfile=export_19c.log VERSION=10 schemas=esquema_a,esquema_b

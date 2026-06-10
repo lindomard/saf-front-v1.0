@@ -1,0 +1,43 @@
+@import '../../../../assets/style/root.scss';
+@import '../../../../assets/style/style-component-form.scss';
+
+.form-group.edit-datepicker {
+    label {
+        padding-left: 5px;
+    }
+
+    .wrapper {
+        position: relative;
+
+        .toggle-icon {
+            cursor: pointer;
+            position: absolute;
+            right: 10px;
+            top: 5px;
+        }
+    }
+}
+
+.form-control.is-invalid{
+    background-image: none;
+}
+
+.fa-calendar {
+    &.error {
+        color: $red-error;
+    }
+}
+
+mat-calendar {
+    width: 240px;
+    z-index: 99999999 !important;
+    display: block;
+    position: absolute;
+    background-color: $white;
+    border-radius: 4px;
+    border: 1px solid #eee;
+
+    &.hide-calendar {
+        visibility: hidden;
+    }
+}

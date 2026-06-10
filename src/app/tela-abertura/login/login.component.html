@@ -1,0 +1,66 @@
+<loadingV01 *ngIf="isLoading"></loadingV01>
+
+<div class="login-card-wrapper">
+  <mat-card class="login-card">
+
+    <!-- Cabeçalho -->
+    <div class="login-header">
+      <div class="login-logo-circle">
+        <mat-icon>account_balance</mat-icon>
+      </div>
+      <h2 class="login-title">SAF</h2>
+      <p class="login-subtitle">Sistema de Auditoria Fiscal</p>
+    </div>
+
+    <mat-card-content>
+      <form [formGroup]="form_login" (ngSubmit)="validar()" autocomplete="off">
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Registro da Empresa</mat-label>
+          <mat-icon matPrefix class="field-prefix-icon">business</mat-icon>
+          <input matInput formControlName="company" type="number" placeholder="Ex: 81">
+          <mat-error *ngIf="form_login.get('company').hasError('required')">Campo obrigatório</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Usuário</mat-label>
+          <mat-icon matPrefix class="field-prefix-icon">person</mat-icon>
+          <input matInput formControlName="username" type="text" autocomplete="username">
+          <mat-error *ngIf="form_login.get('username').hasError('required')">Campo obrigatório</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Senha</mat-label>
+          <mat-icon matPrefix class="field-prefix-icon">lock</mat-icon>
+          <input matInput formControlName="password"
+                 [type]="showPass ? 'text' : 'password'"
+                 autocomplete="current-password">
+          <button mat-icon-button matSuffix type="button"
+                  (click)="togglePass()"
+                  [attr.aria-label]="showPass ? 'Ocultar senha' : 'Mostrar senha'">
+            <mat-icon>{{ showPass ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+          <mat-error *ngIf="form_login.get('password').hasError('required')">Campo obrigatório</mat-error>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" class="btn-entrar" type="submit"
+                [disabled]="isLoading || form_login.invalid">
+          <mat-spinner *ngIf="isLoading" diameter="18" class="btn-spinner"></mat-spinner>
+          <mat-icon *ngIf="!isLoading">login</mat-icon>
+          <span>{{ isLoading ? 'Entrando...' : 'Entrar' }}</span>
+        </button>
+
+      </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+    <mat-card-actions class="login-footer">
+      <button mat-button color="primary" type="button" (click)="naoTenhoCadastro()">
+        <mat-icon>person_add</mat-icon>
+        Primeiro acesso
+      </button>
+    </mat-card-actions>
+
+  </mat-card>
+</div>

@@ -1,0 +1,303 @@
+@import "./assets/style/root.scss";
+
+// CSS Custom Properties (design tokens)
+:root {
+    --color-primary: #1565c0;
+    --color-primary-light: #1976d2;
+    --color-primary-dark: #0d47a1;
+    --color-accent: #0277bd;
+    --color-warn: #db2d3c;
+    --color-surface: #ffffff;
+    --color-background: #f5f7fa;
+    --color-border: #e0e0e0;
+    --color-text: #212121;
+    --color-text-secondary: #757575;
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 16px;
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+}
+
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+html,
+body {
+    overflow: auto;
+    height: 100%;
+    -webkit-touch-callout: none; // iOS Safari 
+    -webkit-user-select: none; // Safari 
+    -khtml-user-select: none; // Konqueror HTML 
+    -moz-user-select: none; // Firefox 
+    -ms-user-select: none; // Internet Explorer/Edge 
+    user-select: none; // Non-prefixed version, currently 
+}
+
+.app-no-padding-dialog .mat-dialog-container {
+    padding: 0px 20px 20px 20px;
+}
+
+.row-height {
+    height: 100%;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    background-color: rgb(165, 158, 149);
+}
+
+
+label {
+    font-size: 15px !important;
+}
+
+.erro-label-feedback {
+    color: $red-error;
+}
+
+.form-control-sm {
+    height: calc(1.4em + 0.4rem + 0px) !important;
+}
+
+input:disabled {
+    background-color: #fff;
+}
+
+
+
+mat-footer-row,
+mat-row {
+    min-height: 25px !important;
+    cursor: pointer;
+}
+
+.col-1,
+.col-2,
+.col-3,
+.col-4,
+.col-5,
+.col-6,
+.col-7,
+.col-8,
+.col-9,
+.col-10,
+.col-11,
+.col-12,
+.col,
+.col-auto,
+.col-sm-1,
+.col-sm-2,
+.col-sm-3,
+.col-sm-4,
+.col-sm-5,
+.col-sm-6,
+.col-sm-7,
+.col-sm-8,
+.col-sm-9,
+.col-sm-10,
+.col-sm-11,
+.col-sm-12,
+.col-sm,
+.col-sm-auto,
+.col-md-1,
+.col-md-2,
+.col-md-3,
+.col-md-4,
+.col-md-5,
+.col-md-6,
+.col-md-7,
+.col-md-8,
+.col-md-9,
+.col-md-10,
+.col-md-11,
+.col-md-12,
+.col-md,
+.col-md-auto,
+.col-lg-1,
+.col-lg-2,
+.col-lg-3,
+.col-lg-4,
+.col-lg-5,
+.col-lg-6,
+.col-lg-7,
+.col-lg-8,
+.col-lg-9,
+.col-lg-10,
+.col-lg-11,
+.col-lg-12,
+.col-lg,
+.col-lg-auto,
+.col-xl-1,
+.col-xl-2,
+.col-xl-3,
+.col-xl-4,
+.col-xl-5,
+.col-xl-6,
+.col-xl-7,
+.col-xl-8,
+.col-xl-9,
+.col-xl-10,
+.col-xl-11,
+.col-xl-12,
+.col-xl,
+.col-xl-auto {
+    position: relative !important;
+    width: 100% !important;
+    padding-right: 3px !important;
+    padding-left: 3px !important;
+}
+
+label {
+    margin-bottom: 0rem !important;
+}
+
+.form-group {
+    margin-bottom: 0rem !important;
+}
+
+.mat-card {
+    padding-left: 10px !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    padding-right: 10px !important;
+    border: 1px solid rgb(235, 226, 226);
+    //padding: 5px;
+}
+
+.mat-tab-label-container {
+    flex-grow: 0 !important;
+    color: black;
+}
+
+.mat-tab-label {
+    opacity: 1 !important;
+}
+
+::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+}
+
+// Track 
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+}
+
+// Handle 
+::-webkit-scrollbar-thumb {
+    background: $blue-light;
+    border-radius: 10px;
+}
+
+// Handle on hover 
+::-webkit-scrollbar-thumb:hover {
+    background: $blue-light;
+}
+
+.row {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+
+
+body {
+    margin: 0;
+    font-family: Roboto, sans-serif;
+}
+
+
+// .mat-toolbar {
+//     display:flex;
+//     width: 50;
+//     position: fixed;
+//     justify-content:  space-between;
+//     z-index: 1000;
+//   }
+
+
+// .mat-toolbar {
+//     position: fixed;
+//     top: 50;
+// //    width: 60%;
+// //    z-index: 1000;
+// }
+
+.spacer {
+    flex: 1 1 auto;
+}
+
+
+// inicio
+
+.app {
+    display: flex;
+  }
+  
+  .dashboard {
+    background-color: #f0f0f0;
+    padding: 20px;
+    width: 200px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+  }
+  
+
+  
+
+
+  @import "~swiper/swiper-bundle";
+
+body,
+html {
+  padding: 0;
+  margin: 0;
+  position: relative;
+  height: 100%;
+}
+
+.swiper-container {
+  width: 100%;
+  height: 300px;
+  margin: 50px auto;
+}
+
+.swiper-slide {
+  background: #f1f1f1;
+  color: #000;
+  text-align: center;
+  line-height: 300px;
+}
+
+
+
+  /* Adicione estilos adicionais conforme necessário */
+  
+// termion

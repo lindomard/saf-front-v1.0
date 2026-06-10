@@ -1,0 +1,100 @@
+
+<loadingV01 *ngIf="isLoading">{{ isLoading }}</loadingV01>
+
+
+<mat-card>
+    <h1 mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle
+        style="background-color: rgb(28, 119, 161); text-align:center;"> {{ titulo }} </h1>
+    <h1 mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle
+        style="background-color: rgb(21, 100, 19); text-align:center;"> {{ tipoEvento }}
+
+
+        <div class="col text-right">
+            <button class="btn btn-primary mr-2" (click)="fBuscarPlanilha()">Planilha</button>
+        </div>
+
+        <div class="col text-right">
+            <button class="btn btn-primary mr-2" (click)="cancelarESair()">Fechar</button>
+        </div>
+
+
+    </h1>
+
+</mat-card>
+
+
+<table mat-table #demomatdatatable [dataSource]="dataSourceWithPageSize"  class="mat-elevation-z8">
+    <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">
+        <th mat-header-cell [style]="getAlingn(column)"  [width]="getStyle3(column)" *matHeaderCellDef>
+            {{ getColumnName(column) }} </th>
+
+
+            <div *ngIf="column==='visualizar'">
+                <td mat-cell [style]="getAlingn(column)" *matCellDef="let element">
+    
+                    <button color="primary" (click)="VisualizarDanfe(element)">
+                        <mat-icon>warning</mat-icon>
+                    </button>
+                </td>
+    
+            </div>
+    
+
+            <div *ngIf="column==='editar'">
+                <td mat-cell [style]="getAlingn(column)" [width]="getStyle3(column)" *matCellDef="let element">
+    
+                    <button color="primary" (click)="Editar(element)">
+                        <mat-icon>warning</mat-icon>
+                    </button>
+                </td>
+    
+            </div>
+    
+
+        <div *ngIf="column!=='visualizar' && column!=='editar'">
+
+
+            <td mat-cell [style]="getAlingn(column)" [width]="getStyle3(column)" *matCellDef="let element"
+             (dblclick)="copyToClipboard(element,column)"
+            >
+                {{ fValorENomeDoCampoParaformatar(element,column) }}
+
+
+            </td>
+        </div>
+
+
+
+    </ng-container>
+
+
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr
+    mat-row
+    #demmatrow
+    *matRowDef="let row; columns: displayedColumns;"
+    [matRowKeyboardSelection]="selection"
+    [rowModel]="row"
+    [matTable]="demomatdatatable"
+    [page]="filterPaginator"
+    [row]="demmatrow"
+    (paginaProxima)="paginaProxima()"
+    (paginaAnterior)="paginaAnterior()"
+    (paginaUltima)="paginaUltima()"
+    (paginaPrimeira)="paginaPrimeira()"
+
+
+    [ngClass]="{selected: selection.isSelected(row)}"
+    (click)="selection.toggle(row)"
+  ></tr>
+
+
+
+</table>
+
+
+<mat-paginator #paginatorPageSize [pageSize]="filterPaginator.size" [length]="filterPaginator.totalElements"
+    [pageIndex]="filterPaginator.page" [pageSizeOptions]="pageLimitOptions" showFirstLastButtons (page)="changeEvent()">
+</mat-paginator>

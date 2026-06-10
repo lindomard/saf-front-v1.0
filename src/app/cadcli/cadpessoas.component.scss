@@ -1,0 +1,86 @@
+
+
+/* styles.scss */
+
+.fade-in {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.fade-in.active {
+  opacity: 1;
+}
+
+
+.child {
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+
+
+
+:host nb-tab {
+  padding: 1.25rem;
+}
+
+
+
+
+
+@import "~bootstrap/scss/bootstrap.scss";
+
+
+
+
+input.ng-dirty.ng-valid {
+  @extend .is-valid;
+}
+
+input.ng-dirty.ng-invalid {
+  @extend .is-invalid;
+}
+
+
+
+.message {
+  border: 1 solid red;
+  color: red;
+  width: 100%;
+  text-align: end;
+}
+
+
+body {
+  margin: 0;
+  font-family: Roboto, sans-serif;
+}
+/*
+.container {
+  margin-top: 56px;
+}
+*/
+/*
+.mat-tab-group {
+  margin-top: 20px;
+}
+*/
+
+
+
+// inicio 
+
+
+
+
+
+
+.background {
+  height: 100%;
+  max-width: 100%;
+  padding: 0;
+  background: blue;
+  background-size: auto auto;
+}

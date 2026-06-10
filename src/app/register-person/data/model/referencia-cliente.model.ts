@@ -1,0 +1,30 @@
+export interface ReferencePerson {
+    name?: string
+    phone?: string
+    cellPhone?: string
+    relationship?: string
+    nameOption?: string
+    phoneOption?: string
+    cellPhoneOption?: string
+    relationshipOption?: string
+    bank?: string
+    agency?: string
+    currentCount?: string
+    phoneBank?: string
+    manage?: string
+    emailBank?: string
+    bankOption?: string
+    agencyOption?: string
+    currentCountOption?: string
+    phoneBankOption?: string
+    manageOption?: string
+    emailBankOption?: string
+    company?: string
+    contact?: string
+    commercialPhone?: string
+    emailComercial?: string
+    companyOption?: string
+    contactOption?: string
+    commercialPhoneOption?: string
+    emailComercialOption?: string
+}

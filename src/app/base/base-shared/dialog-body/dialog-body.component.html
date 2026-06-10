@@ -1,0 +1,7 @@
+<div class="wrapper-top">
+    <h1 mat-dialog-title class="title">{{ title }}</h1> 
+    <button (click)="handlerClick.emit()" class="btn-close"><span class="fa fa-close"></span></button>
+  </div>
+  <div mat-dialog-content>
+      <ng-content></ng-content>
+  </div>

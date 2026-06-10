@@ -1,0 +1,108 @@
+
+
+
+/* styles.scss */
+
+button {
+    background: #4285F4;
+    color: white;
+    height: 30px;
+    width: 150px;
+  }
+  
+  
+  
+  
+  .fade-in {
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+    }
+    
+    .fade-in.active {
+      opacity: 1;
+    }
+    
+    
+    .child {
+      width:  58%;
+    //  height: 7%;
+      background: blue;
+      position: fixed;
+      z-index: 1000;
+    
+    //  width: 68vw;
+    //  position: relative;
+    //  left: 50%;
+    //  right: 50%;
+      //margin-left: -50vw;
+    //  margin-right: -50vw;
+    //  left: 0;
+    //  top: 0;
+    }
+    
+    
+    
+    
+    :host nb-tab {
+      padding: 1.25rem;
+    }
+    
+    
+    
+    
+    
+    @import "~bootstrap/scss/bootstrap.scss";
+    
+    
+    
+    
+    input.ng-dirty.ng-valid {
+      @extend .is-valid;
+    }
+    
+    input.ng-dirty.ng-invalid {
+      @extend .is-invalid;
+    }
+    
+    
+    
+    .message {
+      border: 1 solid red;
+      color: red;
+      width: 100%;
+      text-align: end;
+    }
+    
+    
+    body {
+      margin: 0;
+      font-family: Roboto, sans-serif;
+    }
+    /*
+    .container {
+      margin-top: 56px;
+    }
+    */
+    /*
+    .mat-tab-group {
+      margin-top: 20px;
+    }
+    */
+    
+    
+    
+    // inicio 
+    
+    
+    
+    
+    
+    
+    .background {
+      height: 100%;
+      max-width: 100%;
+      padding: 0;
+      background: blue;
+      background-size: auto auto;
+    }
+    

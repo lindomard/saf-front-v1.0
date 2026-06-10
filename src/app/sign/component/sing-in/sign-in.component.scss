@@ -1,0 +1,24 @@
+
+@import './../../../../assets/style/flexible/centered-flex.scss';
+@import './../../../../assets/style/button/_button-style.scss';
+
+.btn-login {
+    @include btnGenesisPrimary()
+}
+
+.main-align {
+    height: 100%;
+    background-color:#5bc0de;
+}
+.div-sign {
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+@media all and (max-width: 600px) {
+    .div-sign {
+        margin: 20px;
+    }
+}

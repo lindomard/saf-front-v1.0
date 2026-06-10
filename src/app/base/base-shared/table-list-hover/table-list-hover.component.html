@@ -1,0 +1,50 @@
+<mat-table [dataSource]="dataSource" #table>
+
+    <ng-container matColumnDef="select">
+        <mat-header-cell *matHeaderCellDef>
+            <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()"
+                [indeterminate]="selection.hasValue() && !isAllSelected()" [aria-label]="checkboxLabel()">
+            </mat-checkbox>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row, let i = index" class="center-item" data-label="select">
+            <mat-checkbox #instanceCheckbox (click)="$event.stopPropagation()" (change)="selectRow($event, row)"
+                [checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row)"></mat-checkbox>
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="{{ item.columnName }}" *ngFor="let item of itens">
+        <mat-header-cell [ngStyle]="changeStyle(item)" class="truncate-cell" *matHeaderCellDef> {{ item.headerName }}
+        </mat-header-cell>
+        <mat-cell [ngStyle]="changeStyle(item)" class="truncate-cell" *matCellDef="let element"
+            [attr.data-label]="item.columnName" [ngClass]="{
+                'center-item': !item.notCenter
+            }">
+            <span>{{ element[item?.columnName] }}</span>
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+        <mat-header-cell *matHeaderCellDef>
+            <span>Edit.</span>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row, let i = index" class="center-item" data-label="edit">
+            <span (click)="actionEdit(i)" class="fa fa-edit"></span>
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="delete">
+        <mat-header-cell *matHeaderCellDef>
+            <span>Del.</span>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row, let i = index" class="center-item" data-label="delete">
+            <span (click)="actionDelete(i)" class="fa fa-trash"></span>
+        </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayColumns; sticky: true"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayColumns;" (dblclick)="onRowDoubleClicked(row)"></mat-row>
+</mat-table>
+
+<mat-paginator *ngIf="isPaginator" [length]="length" [pageIndex]="pageIndex" [pageSize]="pageSize"
+    [pageSizeOptions]="paginatorSize" (page)="pageHandler.emit($event)" showFirstLastButtons>
+</mat-paginator>

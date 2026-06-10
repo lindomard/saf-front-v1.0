@@ -1,0 +1,30 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./out-tsc/app",
+    "types": [],
+    "baseUrl": "./",
+    "paths": {
+      "@base-core/*": ["src/app/base/base-core/*"],
+      "@base-shared/*": ["src/app/base/base-shared/*"],
+      "@home/*": ["src/app/home/*"],
+      "@root/*": ["src/assets/style/*"],
+      "@di/*": ["src/app/di/*"],
+      "@register/*": ["src/app/register-person/*"],
+      "@sign/*": ["src/app/sign/*"]
+    }
+  },
+  "files": [
+    "src/main.ts",
+    "src/polyfills.ts",
+
+  ],
+  "include": [
+    //"src/**/*.ts"
+  ],
+  "exclude": [
+    "src/test.ts",
+    "src/**/*.spec.ts",
+    "src/environments/environment.prod.ts"
+  ]
+}

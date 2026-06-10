@@ -1,0 +1,137 @@
+<mat-card class="example-card">
+
+  <h6 style="color: black">Fields Para Relatorio/Planilha </h6>
+  <div class="col">
+
+    <div class="row">
+      <div class="col-xl-12">
+        <div class="row">
+
+          <div class="col-md-2">
+            <div class="col text-right">
+              <button [disabled]="mSalvando"   class="form-control btn btn-primary mr-2" (click)="salvarRelatorioPadrao()">Salvar Padrão</button>
+            </div>
+          </div>
+
+          <div class="col-md-2">
+            <div class="col text-right">
+              <button [disabled]="mSalvando"  class="form-control btn btn-primary mr-2" (click)="fSalvarRelatorioComoDialog()">Salvar Relatorio</button>
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <div class="col text-right">
+              <button [disabled]="mSalvando"  class="form-control btn btn-primary mr-2" (click)="ordenar()">Ordem Impressão</button>
+            </div>
+          </div>
+
+
+          <div class="col-md-2">
+            <br>
+            <input type="checkbox" [(ngModel)]="isChecked">
+            "Relatorio Paisagem" 
+          </div>
+
+
+    <!-- <div>
+        <input [checked]="mGerarPlanilha" type="checkbox" name="gerarPlanilha" (click)="validarPlanilha()">
+        {{ mGerarPlanilha ? "Gerar Planilha" : "Gerar Relatorio" }} <br>
+
+    </div>
+         -->
+
+
+          <div class="col-md-3">
+            <div class="col text-right">
+              <button [disabled]="mSalvando && relatorioSelecionado.id>0 "  class="form-control btn btn-primary mr-2"
+               (click)="excluirRelatorio()">Excluir Relatorio {{ relatorioSelecionado.name }}</button>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+
+    <div style="height: 210px; overflow: auto;">
+      <table mat-table #tableCamposFiltros [dataSource]="dataSourceTableFilpadCab.cadTableFilpadCampos"
+        class="mat-elevation-z8" cdkDropList [cdkDropListData]="dataSourceTableFilpadCab.cadTableFilpadCampos"
+        (cdkDropListDropped)="dropTableIndicesCampos($event)">
+
+
+
+
+        <ng-container matColumnDef="selecionado">
+          <th style="min-width: 80px" mat-header-cell *matHeaderCellDef>
+            <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()"
+              [indeterminate]="selection.hasValue() && !isAllSelected()">
+            </mat-checkbox>
+          </th>
+          <td mat-cell *matCellDef="let row">
+            <mat-checkbox (click)="$event.stopPropagation()" (change)="selecionado($event,row)"
+              [checked]="selection.isSelected(row)" [(ngModel)]="row.selecionado">
+            </mat-checkbox>
+          </td>
+        </ng-container>
+
+        <!-- (change)="$event ? selection.toggle(row) : null" -->
+
+
+        <ng-container matColumnDef="position">
+          <th [width]="20" mat-header-cell *matHeaderCellDef> Ordem </th>
+          <td mat-cell *matCellDef="let element , index as i ">
+            {{i+1}}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="descricao">
+          <th [width]="20" mat-header-cell *matHeaderCellDef> Campo </th>
+          <td mat-cell *matCellDef="let element">
+
+            <input type="text" [width]="20" name="tfpcDescricaoCustom" [(ngModel)]="element.tfpcDescricaoCustom">
+
+          </td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="Tamanho">
+          <th style="min-width: 20px" mat-header-cell *matHeaderCellDef> Tamanho </th>
+          <td mat-cell *matCellDef="let element ">
+
+            <input type="number" name="tfpcTamanhoPerc" [(ngModel)]="element.tfpcTamanhoPerc">
+
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Alinhar">
+          <th style="min-width: 20px" mat-header-cell *matHeaderCellDef> Alinhamento </th>
+
+
+
+          <td mat-cell *matCellDef="let element ">
+
+            <select [(ngModel)]="element.tfpcAlign" (change)="valueChange($event)">
+              <option *ngFor="let x of aliqgn" [ngValue]="x.id">
+                {{ x.name }}
+              </option>
+            </select>
+
+
+
+
+          </td>
+
+
+        </ng-container>
+
+
+
+
+
+        <tr mat-header-row *matHeaderRowDef="displayColumnsCamposIndices"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayColumnsCamposIndices;" cdkDrag [cdkDragData]="row">
+        </tr>
+      </table>
+    </div>
+  </div>
+</mat-card>

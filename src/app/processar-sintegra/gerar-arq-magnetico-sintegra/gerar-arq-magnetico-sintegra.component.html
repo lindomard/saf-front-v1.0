@@ -1,0 +1,48 @@
+<h1 *ngIf="mProcessando">Processando</h1>
+<h1 *ngIf="!mProcessando">Parado</h1>
+
+
+
+<h1> quantidade de vezes {{ mQtdNotificacao }} </h1>
+
+
+
+
+
+<button class="btn btn-primary mr-2" (click)="processar()"> parar/continuar</button>
+
+
+<mat-toolbar color="primary">
+    Historico de processamento
+</mat-toolbar>
+
+<div *ngIf="mProcessando">
+
+    <h1>
+        Processando, aguarde...
+        <br>
+        <blink [active]="true">Processando, aguarde...</blink>
+    </h1>
+</div>
+
+<div class="scroll-me">
+
+    <mat-nav-list>
+        <mat-list-item *ngFor="let i of data">
+            <div mat-line>
+                {{ i.Notificacao }}
+            </div>
+            <p mat-line>
+                {{ i.name }}
+            </p>
+            <p mat-line>
+                {{ i.log }}
+            </p>
+
+        </mat-list-item>
+    </mat-nav-list>
+</div>
+<mat-toolbar color="primary">
+    FINAL
+</mat-toolbar>
+

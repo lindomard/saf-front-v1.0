@@ -1,0 +1,26 @@
+<div class="form-group edit-datepicker"
+[ngClass]="{
+    'calendar-open': open,
+    'has-danger': showError
+}">
+    <label class="control-label" *ngIf="label"> {{ label }}</label>
+    <div class="wrapper">
+        <input 
+        id="{{ id ? id + '-input': null }}"
+        type="text"
+        class="form-control form-control-sm"
+        name="init-date"
+        (blur)="blurHandler()"
+        [formControl]="control"
+        placeholder="__/__/____"
+        ngbDatepicker
+        #dp="ngbDatepicker"
+        [minDate]="minDate"
+        [maxDate]="limitDate">
+        <span class="toggle-icon fa fa-calendar" (click)="calendarClickHandler($event)"></span>
+        <small *ngIf="showError" class="form-control-feedback">{{ message }}</small>
+    </div>
+</div>
+
+
+<!-- rInputMask="{{ maskText }}" -->

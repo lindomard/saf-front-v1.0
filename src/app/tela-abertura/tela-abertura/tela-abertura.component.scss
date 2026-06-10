@@ -1,0 +1,173 @@
+// ─── Wrapper geral ────────────────────────────────────────────────────────────
+
+.page-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, #0d1b2a 0%, #1a2f4e 50%, #1565c0 100%);
+  color: #fff;
+}
+
+// ─── Hero ─────────────────────────────────────────────────────────────────────
+
+.hero-section {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+  padding: 48px 40px;
+  flex-wrap: wrap;
+}
+
+// ─── Lado esquerdo: branding ──────────────────────────────────────────────────
+
+.hero-left {
+  flex: 1 1 340px;
+  max-width: 480px;
+}
+
+.hero-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.hero-brand-icon {
+  font-size: 36px;
+  width: 36px;
+  height: 36px;
+  color: #90caf9;
+}
+
+.hero-brand-name {
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #fff;
+
+  small {
+    font-size: 13px;
+    font-weight: 400;
+    opacity: 0.65;
+    margin-left: 4px;
+  }
+}
+
+.hero-title {
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 800;
+  line-height: 1.15;
+  margin: 0 0 16px;
+  letter-spacing: -0.5px;
+}
+
+.hero-desc {
+  font-size: 16px;
+  line-height: 1.6;
+  opacity: 0.82;
+  margin: 0 0 32px;
+  max-width: 400px;
+}
+
+.hero-features {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  opacity: 0.88;
+
+  mat-icon {
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+    color: #90caf9;
+    flex-shrink: 0;
+  }
+}
+
+// ─── Lado direito: card auth ──────────────────────────────────────────────────
+
+.hero-right {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.auth-card-wrapper {
+  width: 100%;
+  max-width: 400px;
+  min-width: 300px;
+}
+
+// ─── Seção carrossel ─────────────────────────────────────────────────────────
+
+.carousel-section {
+  background: rgba(0, 0, 0, 0.25);
+  padding: 24px 40px 32px;
+}
+
+.carousel-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: 0.75;
+
+  mat-icon {
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+  }
+}
+
+// ─── Rodapé ───────────────────────────────────────────────────────────────────
+
+.page-footer {
+  text-align: center;
+  padding: 14px;
+  font-size: 12px;
+  opacity: 0.5;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+// ─── Responsivo ───────────────────────────────────────────────────────────────
+
+@media (max-width: 720px) {
+  .hero-section {
+    padding: 32px 20px;
+    gap: 32px;
+  }
+
+  .hero-left {
+    text-align: center;
+
+    .hero-brand {
+      justify-content: center;
+    }
+
+    .hero-desc {
+      margin: 0 auto 28px;
+    }
+
+    .hero-features {
+      align-items: flex-start;
+      padding-left: 24px;
+    }
+  }
+
+  .carousel-section {
+    padding: 20px;
+  }
+}

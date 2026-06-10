@@ -1,0 +1,159 @@
+<div>
+
+    <mat-toolbar color="warn" class="child">
+
+        <div class="col">
+            <div class="row">
+
+
+
+                <span> {{ mTipoOperacao }} </span>
+                <!-- <span class="spacer"></span> -->
+
+
+                <div class="col text-right">
+                    <button class="btn btn-dark" (click)="cancelarESair()">Cancelar/Sair</button>
+                </div>
+
+            </div>
+
+        </div>
+    </mat-toolbar>
+
+</div>
+
+
+<mat-card>
+
+    <div class="feed">
+        <div class="row">
+            <div class="col-xl-12">
+                <form [formGroup]="formulario">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label>Versao Efd-Icms:</label>
+                            <input id="versaoEfdIcms" formControlName="versaoEfdIcms" class="form-control" type="text">
+                        </div>
+
+                        <div class="col-md-3">
+                            <label>Efd-Contribuições</label>
+                            <input formControlName="versaoContribuicoes" class="form-control" type="text">
+                        </div>
+
+                        <div class="col-md-3">
+                            <label>Sintegra</label>
+                            <input formControlName="versaoSintegra" class="form-control" type="text">
+                        </div>
+
+                        <div class="col-md-3">
+                            <br>
+
+                            <mat-checkbox formControlName="mSubstituirAnteriores" class="form-control">Excluir Anteriores</mat-checkbox>
+
+
+                        </div>
+
+                        <div class="col-md-3">
+                            <button class="btn btn-primary mr-2" [disabled]="mDisableGerar" (click)="GerarEfdIcms()">Gerar Efd-Icms</button>
+                        </div>
+                        <div class="col-md-3">
+                        </div>
+
+                        <div class="col-md-3">
+                            <button class="btn btn-primary mr-2" [disabled]="mDisableGerar" (click)="GerarSintegra()">Gerar Sintegra</button>
+
+                        </div>
+                        <div class="col-md-3">
+                        </div>
+
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</mat-card>
+
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!-- Checkbox Column -->
+    <ng-container matColumnDef="select">
+        <th mat-header-cell *matHeaderCellDef>
+            <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue()"
+                [indeterminate]="selection.hasValue() && !isAllSelected()">
+            </mat-checkbox>
+        </th>
+        <td mat-cell *matCellDef="let row">
+            <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null"
+                [checked]="selection.isSelected(row)">
+            </mat-checkbox>
+        </td>
+    </ng-container>
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="cnpj">
+        <th mat-header-cell *matHeaderCellDef> Cnpj </th>
+        <td mat-cell *matCellDef="let element">
+            <span class="mobile-label">Cnpj:</span>
+            {{ fRetornaFormatado(element.cnpj, "cnpj") }}
+
+        </td>
+    </ng-container>
+
+
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="dtInicio">
+        <th mat-header-cell *matHeaderCellDef> Data Inicial </th>
+        <td mat-cell *matCellDef="let element">
+            <span class="mobile-label">Data Inicial:</span>
+            {{ fRetornaFormatado(element.dtInicio, "date") }}
+
+
+        </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="dtFinal">
+        <th mat-header-cell *matHeaderCellDef> Data Final </th>
+        <td mat-cell *matCellDef="let element">
+            <span class="mobile-label">Data Final:</span>
+            {{ fRetornaFormatado(element.dtFinal, "date") }}
+        </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="uf">
+        <th mat-header-cell *matHeaderCellDef> UF </th>
+        <td mat-cell *matCellDef="let element">
+            <span class="mobile-label">UF:</span>
+            {{ fRetornaFormatado(element.uf, "string") }}
+        </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="ie">
+        <th mat-header-cell *matHeaderCellDef> Incrição Estadual </th>
+        <td mat-cell *matCellDef="let element">
+            <span class="mobile-label">Incrição Estadual:</span>
+            {{ fRetornaFormatado(element.if, "string") }}
+
+        </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="tipo">
+        <th mat-header-cell *matHeaderCellDef> Tipo </th>
+        <td mat-cell *matCellDef="let element">
+            <span class="mobile-label">Tipo:</span>
+            {{ fRetornaFormatado(element.tipo, "string") }}
+        </td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)">
+    </tr>
+</table>

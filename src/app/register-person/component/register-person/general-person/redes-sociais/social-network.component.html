@@ -1,0 +1,9 @@
+<mat-card class="wrapper-form">
+    <app-form-build #instanceForm [fieldsConfig]="fields"></app-form-build>
+
+    <div class="wrapper-table" [ngStyle]="getStyleShowTable()">
+        <app-table-list #instanceTable [itens]="itemsTable" [displayColumns]="displayColumns" [data]="socialNetworks"
+            [isPaginator]="false" (editHandler)="onEditListener($event)" (deleteHandler)="onDeleteListener($event)">
+        </app-table-list>
+    </div>
+</mat-card>

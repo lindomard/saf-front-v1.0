@@ -1,0 +1,9 @@
+@mixin flexible() {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+@mixin noneFlexible {
+    display: none;
+}

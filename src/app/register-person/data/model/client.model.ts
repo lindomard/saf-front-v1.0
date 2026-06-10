@@ -1,0 +1,81 @@
+import { Category } from './category.model';
+import { Contato } from './contato.model';
+import { ReferencePerson } from './referencia-cliente.model';
+import { Sociedade } from './sociedade.model';
+import { LicensesModel } from './license.model';
+import { SocialNetwork } from './person-response.model';
+import { RegistroArmas } from './registro-armas.model';
+
+export interface Client {
+    id?: number;
+    companyName?: string;
+    registerDate?: number;
+    fantasyName?: string;
+    cnpj?: string;
+    fantasy?: string;
+    contact?: string;
+    dateOfBid?: number;
+    address?: string;
+    number?: string;
+    complement?: string;
+    neighborhood?: string;
+    cep?: string;
+    cityCode?: number;
+    phone?: string;
+    stateRegistration?: string;
+    situation?: string;
+    typePerson?: number;
+    municipalRegistration?: string;
+    cnae?: string;
+    salesman?: number;
+    country?: string;
+    region?: string;
+    branch?: number;
+    referencePoint?: string;
+    categoryCode?: number;
+    startActicity?: number;
+    husband?: string;
+    rg?: string;
+    personName?: string;
+    personPhone?: string;
+    company?: string;
+    rgHusband?: string;
+    cpfHusband?: string;
+    workPlace?: string;
+    cellPhoneHusband?: string;
+    phoneHusband?: string;
+    workCard?: string;
+    finalConsumer?: number,
+    categories?: Category[];
+    contacts?: Contato[];
+    socialNetwork?: SocialNetwork[];
+    licenses?: LicensesModel[];
+    gunRegistration?: RegistroArmas[];
+    referencePerson?: ReferencePerson;
+    societies?: Sociedade[];
+    uf?: string;
+    email: string;
+    generalData?: GeneralData;
+    workPlaceHusband?: string;
+    condominium?: string;
+    zone?: string;
+    nameCity?: string; 
+}
+
+export interface GeneralData {
+    id?: number;
+    profession?: string;
+    workCard?: string;
+    company?: string;
+    rg?: string;
+    dateOfBirth?: number;
+    rgHusband?: string;
+    personalPhone?: string;
+    email?: string;
+    emailHusband?: string;
+    husband?: string;
+    cpfHusband?: string;
+    workPlaceSpouse?: string;
+    cellHusband?: string;
+    phoneHusband?: string;
+}

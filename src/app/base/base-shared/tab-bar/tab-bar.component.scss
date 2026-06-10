@@ -1,0 +1,45 @@
+@import "../../../../assets/style/color/_color.scss";
+@import "../../../../assets/style/type/type";
+
+.tab-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tabs {
+    display: flex;
+    flex-wrap: 1;
+
+    .tab {
+        @extend .type-small;
+        line-height: 30px;
+        color: $blackPrimary;
+        background-color: $white;
+        border-right: 3px solid $light-blue;
+        padding: 0px 20px;
+        min-width: 60px;
+        cursor: pointer;
+        text-align: center;
+
+        &:first-child {
+            border-top-left-radius: 6px;
+        }
+        &:last-child {
+            border-top-right-radius: 6px;
+            border-right: 0px;
+        }
+        &.active {
+            color: $white;
+            background-color: $blue-light-dark03;
+        }
+    }
+}
+
+.tab-content {
+    width: 100%;
+    flex-basis: 100%;
+    background-color: $white;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+}

@@ -1,0 +1,28 @@
+<div class="form-group edit-search">
+    <label [ngClass]="{
+        'erro-label-feedback': showError
+    }">{{ label }}</label>
+    <div class="wrapper">
+        <input #instanceRef class="form-control form-control-sm" [ngClass]="{
+                'is-invalid': showError
+            }" [formControl]="control" onkeypress="return String.fromCharCode(event.charCode).match(/[^a-zA-Z0-9.:;-\s]/g) === null"
+            placeholder="{{ placeholder }}" min="0" type="{{ type }}" [attr.list]="idList" [attr.id]="name"
+            (ngModelChange)="handlerChangeFunction()" (focus)="onFocusListener()" (blur)="handlerBlur()" listOptions
+            (handlerTabEvent)="onListenerTabEvent($event)">
+        <span *ngIf="control?.disabled ? false : true" class="fa fa-{{ icon }} toggle-icon" (click)="click()">
+        </span>
+
+        <div *ngIf="showError" class="invalid-feedback">
+            {{ message }}
+        </div>
+
+        <div class="wrapper-list-component">
+            <div class="wrapper-datalist" *ngIf="showDataList">
+                <ul class="list-group wrapper-list" *ngFor="let item of options; let i = index"
+                    (click)="handleSelected(item)">
+                    <li class="list-group-item">{{ item[labelValue] }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

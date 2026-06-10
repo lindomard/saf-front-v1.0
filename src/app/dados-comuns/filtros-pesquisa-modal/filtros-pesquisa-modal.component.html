@@ -1,0 +1,161 @@
+<mat-card>
+    <h1 mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle
+        style="background-color: rgb(21, 100, 19); text-align:center;"> {{ tipoEvento }}
+
+
+        <div class="col text-right">
+            <button class="btn btn-primary mr-2" (click)="cancelarESair()">Fechar</button>
+        </div>
+
+
+    </h1>
+
+</mat-card>
+
+
+
+<h6 style="color: black">Filtros Para Campos</h6>
+
+
+
+<div class="row">
+    <div class="col-xl-12">
+        <form [formGroup]="formfiltro" (ngSubmit)="validar()">
+            <div class="row">
+
+                <div class="col-md-2">
+                    <label>Tipo:</label>
+                    <select class="form-control" formControlName="relacionarCondicao">
+                        <option *ngFor="let condicao of tipoCondicao" [value]="condicao.id">
+                            {{condicao.name}}
+                        </option>
+                    </select>
+
+                </div>
+
+                <div class="col-md-3">
+                    <label>Nome do Campo:</label>
+
+
+                    <select formControlName="nomeDoCampo" class="form-control"
+                        (change)="clickcamposConsultaPor($event.target.selectedIndex)">
+                        <option *ngFor="let x of dataSourceTableFilpadCab.cadTableFilpadCampos"
+                            [ngValue]="x.tfpcNomeCampo">
+                            {{ x.tfpcDescricaoCustom }}
+                        </option>
+                    </select>
+                </div>
+
+
+                <div class="col-md-2">
+                    <label>Condição</label>
+
+                    <select formControlName="condicao" class="form-control">
+                        <option *ngFor="let x of condicoesDosCampos" [ngValue]="x.id">
+                            {{ x.name }}
+                        </option>
+                    </select>
+
+                </div>
+
+                <div class="col-md-2">
+                    <label>Valor a Ser Filtrado </label>
+                    <input formControlName="valor" type="{{ type }}" class="form-control"
+                        placeholder="Valor a Ser Filtrado" #valor>
+                </div>
+
+                <div class="col-md-1">
+                    <label>Nivel(grupo) </label>
+                    <input formControlName="grupoFiltro" type="number" class="form-control"
+                        placeholder="Nivel/Grupo a Ser Filtrado" #valor>
+                </div>
+
+                <div class="col-md-2">
+                    <br>
+                    <div class="col text-center">
+                        <button class="btn btn-primary mr-2" (click)="fAdicionar()">Adicionar</button>
+                    </div>
+
+                </div>
+
+
+
+                <br>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+<div style="height: 210px; overflow: auto;">
+    <section class="table-container mat-elevation-z8" tabindex="0">
+        <table mat-table #tableCamposFiltros [dataSource]="dataSourcecamposParaFiltrosList" class="mat-elevation-z8"
+            cdkDropList [cdkDropListData]="dataSourcecamposParaFiltrosList"
+            (cdkDropListDropped)="dropTableIndicesCampos($event)">
+
+
+
+
+
+
+
+            <ng-container matColumnDef="relacionarCondicao">
+                <th mat-header-cell *matHeaderCellDef [width]="200"> Tipo </th>
+                <td mat-cell *matCellDef="let element">
+                    {{ fValorENomeDoCampoParaformatar(element,"relacionarCondicao") }}
+
+                </td>
+            </ng-container>
+
+
+
+            <ng-container matColumnDef="nomeDoCampo">
+                <th mat-header-cell *matHeaderCellDef [width]="250">Nome do Campo</th>
+                <td mat-cell *matCellDef="let element">
+                    {{ fValorENomeDoCampoParaformatar(element,"nomeDoCampo") }} </td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="condicao">
+                <th mat-header-cell *matHeaderCellDef [width]="150">Condição</th>
+                <td mat-cell *matCellDef="let element">
+
+                    {{ fValorENomeDoCampoParaformatar(element,"condicao") }}
+                </td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="valor">
+                <th mat-header-cell *matHeaderCellDef [width]="150">Valor</th>
+                <td mat-cell *matCellDef="let element"> {{element.valor}} </td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="grupoFiltro">
+                <th mat-header-cell *matHeaderCellDef [width]="150">Grupo</th>
+                <td mat-cell *matCellDef="let element"> {{element.grupoFiltro}} </td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="excluir">
+
+                <th mat-header-cell *matHeaderCellDef [width]="150">Grupo</th>
+                <td mat-cell *matCellDef="let element; let i=index;">
+
+
+                    <button color="primary" (click)="excluir(i)">
+                        <mat-icon>warning</mat-icon>
+                    </button>
+                </td>
+
+            </ng-container>
+
+
+
+            <tr mat-header-row *matHeaderRowDef="displayColumnsCamposIndices; sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayColumnsCamposIndices;" cdkDrag [cdkDragData]="row">
+            </tr>
+        </table>
+    </section>
+</div>

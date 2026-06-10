@@ -1,0 +1,22 @@
+<section class="main-align">
+    <div class="container" fxFlexFill fxLayout="row wrap" fxLayoutAlign="center center">
+        <mat-card fxFlex.lg="30" fxFlex.md="40" fxFlex.xs="98">
+            <mat-card-header>Acesso ao Sistema</mat-card-header>
+            <mat-card-content>
+                <div class="div-sign">
+                    <app-form-build  #instanceForm [fieldsConfig]="fields"></app-form-build>
+                    <button (click)="signIn()" mat-raised-button class="btn-login">
+                        <mat-icon>check</mat-icon>
+                        Entrar
+                    </button>
+                    
+                    <button (click)="naoTenhoCadastro()" mat-raised-button class="btn-login">
+                        <mat-icon>check</mat-icon>
+                        Não Tenho Cadastro
+                    </button>
+
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</section>

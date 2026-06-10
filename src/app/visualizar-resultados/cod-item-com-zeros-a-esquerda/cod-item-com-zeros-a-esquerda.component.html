@@ -1,0 +1,133 @@
+<mat-card>
+    <h1 mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle
+        style="background-color: rgb(28, 119, 161); text-align:center;"> {{ tipoAcaoName }}</h1>
+    <h1 mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle
+        style="background-color: rgb(21, 100, 19); text-align:center;"> {{ tipoEvento }}
+
+
+
+        <div class="col text-right">
+            <button class="btn btn-primary mr-3" (click)="fAtualizarBusca()">Atualizar Dados</button>
+        </div>
+
+        <div class="col text-right">
+            <button class="btn btn-primary mr-2" (click)="cancelarESair()">Fechar</button>
+        </div>
+
+
+    </h1>
+
+
+
+
+
+</mat-card>
+
+
+
+<mat-card class="example-card">
+
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="col-md-6">
+
+
+                    <!-- <app-filtros-campos 
+                    [camposConsultaPor]="camposDaTabela"
+                    [dataSourceFiltros]="dataSourceFiltros"
+                    (fAtualizarDadosTabela)="fAtualizarBusca()"
+                    ></app-filtros-campos> -->
+
+
+                </div>
+            </div>
+        </div>
+</mat-card>
+
+
+
+
+<cdk-virtual-scroll-viewport [itemSize]="itemSize" class="border scroll-gray mx-2" id="container"
+    [style.height.vh]="'70'" [style.minHeight.px]="200">
+
+
+
+
+
+    <div class="table-container mat-elevation-z8">
+        <table mat-table [dataSource]="dataSourceWithPageSize">
+
+            <ng-container matColumnDef="r0200zeCodOriginal">
+                <mat-header-cell [ngStyle]="{'flex':'0 0 9%'}" *matHeaderCellDef> código Original</mat-header-cell>
+                <mat-cell [ngStyle]="{'flex':'0 0 9%'}" *matCellDef="let element"> {{element.r0200zeCodOriginal}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="r0200zeCodSemZeroEsq">
+                <mat-header-cell [ngStyle]="{'flex':'0 0 9%'}" *matHeaderCellDef>sem zeros a
+                    esquerda</mat-header-cell>
+                <mat-cell [ngStyle]="{'flex':'0 0 9%'}" *matCellDef="let element"> {{element.r0200zeCodSemZeroEsq}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="r0200zeDescMenor">
+                <mat-header-cell [ngStyle]="{'flex':'0 0 27%'}" *matHeaderCellDef> descrição menor</mat-header-cell>
+                <mat-cell [ngStyle]="{'flex':'0 0 27%'}" *matCellDef="let element"> {{element.r0200zeDescMenor}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="r0200zeUndMenor">
+                <mat-header-cell [ngStyle]="{'flex':'0 0 6%'}" *matHeaderCellDef> unidade menor</mat-header-cell>
+                <mat-cell [ngStyle]="{'flex':'0 0 6%'}" *matCellDef="let element"> {{element.r0200zeUndMenor}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="r0200zeDescMaiorcampo">
+                <mat-header-cell [ngStyle]="{'flex':'0 0 27%'}" *matHeaderCellDef> Descrição Maior</mat-header-cell>
+                <mat-cell [ngStyle]="{'flex':'0 0 27%'}" *matCellDef="let element"> {{element.r0200zeDescMaiorcampo}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="r0200zeUndMaior">
+                <mat-header-cell [ngStyle]="{'flex':'0 0 6%'}" *matHeaderCellDef> Unidade Maior</mat-header-cell>
+                <mat-cell [ngStyle]="{'flex':'0 0 6%'}" *matCellDef="let element"> {{element.r0200zeUndMaior}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="r0200zeQtdOcor">
+                <mat-header-cell [ngStyle]="{'flex':'0 0 10%'}" *matHeaderCellDef> quantidade de
+                    ocorrencias</mat-header-cell>
+                <mat-cell [ngStyle]="{'flex':'0 0 10%'}" *matCellDef="let element"> {{element.r0200zeQtdOcor}}
+                </mat-cell>
+            </ng-container>
+
+
+
+            <ng-container matColumnDef="Visualizar">
+                <th mat-header-cell [ngStyle]="{'flex':'0 0 6%'}" *matHeaderCellDef> Detalhes
+                </th>
+
+                <td mat-cell [ngStyle]="{'flex':'0 0 6%'}" *matCellDef="let row; let i=index;">
+
+                    <button color="primary" (click)="BaixarArquivo(row)">
+                        <mat-icon aria-label="Ver Detalhes">warning</mat-icon>
+                    </button>
+
+                </td>
+            </ng-container>
+
+
+
+
+            <mat-header-row *matHeaderRowDef="displayedColumns sticky: false"></mat-header-row>
+
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+        </table>
+    </div>
+
+<mat-paginator #paginatorPageSize [length]="filterPaginator.totalElements" [pageIndex]="filterPaginator.page"
+    [pageSize]="filterPaginator.size" [pageSizeOptions]="pageLimitOptions" showFirstLastButtons
+    (page)="changeEvent()"></mat-paginator>
+    
+</cdk-virtual-scroll-viewport>

@@ -1,0 +1,17 @@
+<div class="form-group edit-search">
+    <label [ngClass]="{
+        'erro-label-feedback': showError
+    }">{{ label }}</label>
+    <div class="wrapper">
+        <input class="form-control form-control-sm" [ngClass]="{
+                'is-invalid': showError
+            }" [formControl]="control" [textMask]=" mask ? { mask: mask } : { mask: false }"
+            placeholder="{{ placeholder }}" min="0" type="{{ type }}">
+        <span class="fa fa-{{ icon }} toggle-icon" (click)="click()">
+        </span>
+
+        <div *ngIf="showError" class="invalid-feedback">
+            {{ message }}
+        </div>
+    </div>
+</div>

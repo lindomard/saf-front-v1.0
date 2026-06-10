@@ -1,0 +1,18 @@
+@import "~bootstrap/scss/bootstrap.scss";
+
+input.ng-dirty.ng-valid {
+  @extend .is-valid;
+}
+
+input.ng-dirty.ng-invalid {
+  @extend .is-invalid;
+}
+
+
+
+.message {
+  border: 1 solid red;
+  color: red;
+  width: 100%;
+  text-align: end;
+}

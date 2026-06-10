@@ -1,0 +1,59 @@
+@import "color/_color.scss";
+@import "type/type.scss";
+@import "button/button-style.scss";
+
+.loader {
+    position: absolute;
+    z-index: 999999999999999;
+    right: 10px;
+    top: 5px;
+    border: 5px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 5px solid $red-primary;
+    width: 50px;
+    height: 50px;
+    -webkit-animation: spin 1s linear infinite; /* Safari */
+    animation: spin 1s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.main-container {
+    display: flex;
+    flex-direction: row;
+    flex-flow: row wrap;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    padding: 8px 0px 8px 0px;
+    margin-left: 20px;
+}
+
+.btn-primary {
+    background-color: $green-dark3;
+}
+.btn-update {
+    background-color: $blue-light-dark03;
+}
+.btn-accent {
+    background-color: $red-primary;
+}
+.btn-warn {
+    background-color: $orange-dark4;
+}

@@ -1,0 +1,95 @@
+<!-- <div class="col text-right">
+    <button class="btn btn-primary mr-2" (click)="mudarDiv()">Mudar div</button>
+</div> -->
+
+
+<mat-card class="example-card">
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="row">
+                <!-- <div class="col-md-12">
+                    <app-config-dados-tabela-consulta #instanceConfigDadosTabela 
+                        (fAtualizarDadosTabela)="fAtualizarBusca()"></app-config-dados-tabela-consulta>
+
+                        [dataSourceTableFilpadCampos]="dataSourceTableFilpadCampos"
+                        [dataSourceTableFilpadOrdemResult]="dataSourceTableFilpadOrdemResult"
+                        [dataSourceCadTableFidlpadCamposFiltrosExtras]="dataSourceCadTableFidlpadCamposFiltrosExtras"
+
+                </div> -->
+
+                <div [ngClass]="telaCheia ? 'col-xl-12' : 'col-xl-6' ">
+                    <app-pesquisar-por #instancePesquisarPorComponent
+                        [dataSourcecamposParaFiltrosList]="dataSourcecamposParaFiltrosList"
+                        [dataSourceTableFilpadCab]="dataSourceTableFilpadCab"
+                        (fAtualizaAtualizarPor)="fAtualizarBusca2($event)"
+                        (fAjustarDisplayColumnsTableEmit)="fAjustarDisplayColumnsTable($event)"
+                        (fTelacheiaEmit)="fTelaCheia($event)"
+                        
+                        ></app-pesquisar-por>
+
+
+                </div>
+
+
+
+                <div class="col-md-6">
+                    <div class="row">
+
+                        <div class="col-md-12">
+
+                            <div *ngIf="telaCheia===false">
+
+                                <app-relatorios-planilhas [mDisableGerar]="mDisableGerar"
+                                    [dataSourceTableFilpadCab]="dataSourceTableFilpadCab" 
+                                    (fGerarPdf)="baixarRelatorio()"
+                                    (fGerarPlanilha)="fBuscarPlanilha()"
+                                    (fSalvarRelatorioPadrao)="fSalvarRelatorioPadraoDialog()"
+                                    (fBuscarCadlRelPad)="fBuscarCadlRelPadChama($event)"
+                                    (resetarConfiguracoesEmit)="resetarConfiguracoes()"
+                                    
+                                    ></app-relatorios-planilhas>
+                            </div>
+
+                            <!-- <div class="col-md-6">
+
+                            <app-config-relatorio #instanceFieldsFilter
+                                [dataSourceTableFilpadCab]="dataSourceTableFilpadCab"
+                                (fAtualizarDadosTabela)="fAtualizarBusca()"></app-config-relatorio>
+
+
+                        </div> -->
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <!-- 
+                <div class="col-md-12">
+                    <app-filtros-campos #instanceFiltrosCampos [camposConsultaPor]="camposConsultaPor"
+                        [dataSourceFiltros]="dataSourceFiltros"
+                        (fAtualizarDadosTabelaFiltros)="fAtualizarBusca()"></app-filtros-campos>
+                </div> 
+ -->
+                <!--
+                <div class="col-md-2">
+                    <app-ordem-campos #instanceOrdemCampos [tableCamposFiltros]="camposDaTabela"
+                        [dataSourceOrdem]="dataSourceOrdem"
+                        (fAtualizarDadosTabela)="fAtualizarBusca()"></app-ordem-campos>
+                </div>
+
+                <div class="col-md-2">
+                    <app-fields-filter #instanceFieldsFilter [tableCamposFiltros]="camposParaFieldsFilter"
+                        [dataSourceFieldsfilter]="dataSourceFieldsFilter"
+                        (fAtualizarDadosTabela)="fAtualizarBusca()"></app-fields-filter>
+                </div>
+-->
+
+
+
+
+            </div>
+        </div>
+    </div>
+</mat-card>

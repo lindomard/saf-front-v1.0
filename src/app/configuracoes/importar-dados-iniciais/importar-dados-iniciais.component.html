@@ -1,0 +1,43 @@
+<loadingV01 *ngIf="isLoading">{{ isLoading }}</loadingV01>
+
+<div class="container">
+
+
+
+
+    <div>
+
+        <mat-toolbar color="warn" class="child">
+
+            <div class="col">
+                <div class="row">
+
+
+
+                    <span> {{ mTipoOperacao }} </span>
+                    <!-- <span class="spacer"></span> -->
+
+
+                    <div class="col text-right">
+                        <button class="btn btn-primary mr-2" (click)="importarPlanilhaCfop()">Importar Planilha CFOP</button>
+                        <button class="btn btn-dark" (click)="sair()">Sair</button>
+                    </div>
+
+                </div>
+
+            </div>
+        </mat-toolbar>
+
+
+        <br>
+        <br>
+
+
+        <br>
+        <br>
+
+
+
+    </div>
+
+</div>

@@ -1,0 +1,111 @@
+<div class="dashboard-container">
+    <div class="dashboard-grid">
+
+        <!-- Painel 1: Status do Processamento -->
+        <mat-card class="panel-card">
+            <mat-card-header>
+                <mat-icon mat-card-avatar>monitor</mat-icon>
+                <mat-card-title>Status do Processamento</mat-card-title>
+                <mat-card-subtitle>
+                    <span class="status-badge" [class.active]="mProcessando" [class.stopped]="!mProcessando">
+                        <mat-icon>{{ mProcessando ? 'play_circle' : 'pause_circle' }}</mat-icon>
+                        {{ mProcessando ? 'Processando' : 'Parado' }}
+                    </span>
+                </mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <p class="qty-label">Notificações recebidas: <strong>{{ mQtdNotificacao }}</strong></p>
+
+                <div class="panel-actions">
+                    <button mat-stroked-button (click)="Sair()">
+                        <mat-icon>close</mat-icon> Fechar Janela
+                    </button>
+                    <button mat-raised-button color="primary" (click)="processar()">
+                        <mat-icon>{{ mProcessando ? 'pause' : 'play_arrow' }}</mat-icon> Parar/Continuar
+                    </button>
+                    <button mat-raised-button color="warn" (click)="fChamarFormCadlogExcessoes()">{{ buttonErros }}</button>
+                    <button mat-raised-button color="accent" (click)="MostrarErros()">{{ buttonAdvertencia }}</button>
+                </div>
+
+                <mat-divider></mat-divider>
+
+                <mat-toolbar color="primary" class="section-toolbar">
+                    <mat-icon>history</mat-icon>&nbsp;Histórico de Processamento
+                </mat-toolbar>
+
+                <div *ngIf="mProcessando" class="processing-indicator">
+                    <mat-icon class="spin-icon">autorenew</mat-icon>
+                    <span>Processando, aguarde...</span>
+                </div>
+
+                <div class="scroll-me">
+                    <mat-nav-list>
+                        <mat-list-item *ngFor="let i of data">
+                            <mat-icon matListItemIcon>circle</mat-icon>
+                            <span matListItemTitle>{{ i.Notificacao }}</span>
+                            <span matListItemLine>{{ i.log }}</span>
+                        </mat-list-item>
+                    </mat-nav-list>
+                </div>
+
+                <mat-toolbar color="primary" class="section-toolbar">
+                    <mat-icon>done_all</mat-icon>&nbsp;Final
+                </mat-toolbar>
+            </mat-card-content>
+        </mat-card>
+
+        <!-- Painel 2: Gráfico -->
+        <mat-card class="panel-card">
+            <mat-card-header>
+                <mat-icon mat-card-avatar>bar_chart</mat-icon>
+                <mat-card-title>Gráfico de Análise</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <form [formGroup]="profileForm" class="chart-form">
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-label>Tipo do Gráfico</mat-label>
+                        <select matNativeControl (change)="changeDash01($event)" formControlName="firstNameDash01">
+                            <option *ngFor="let item of optionsDash01" value="{{ item[valueKey] }}">{{ item[labelKey] }}</option>
+                        </select>
+                    </mat-form-field>
+                </form>
+                <div class="chart-wrapper">
+                    <canvas baseChart [data]="barChartData" [options]="barChartOptions"
+                        [plugins]="barChartPlugins" [legend]="barChartLegend" [type]="chartTypeDash01">
+                    </canvas>
+                </div>
+            </mat-card-content>
+        </mat-card>
+
+        <!-- Painel 3: Processos Executados -->
+        <mat-card class="panel-card">
+            <mat-card-header>
+                <mat-icon mat-card-avatar>list_alt</mat-icon>
+                <mat-card-title>Processos Executados</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <app-processos-executados [data]="processosExecutadosModel" #instanceTableListGerais>
+                </app-processos-executados>
+            </mat-card-content>
+        </mat-card>
+
+    </div>
+</div>
+
+
+
+<!-- 
+  <div style="display: block">
+    <canvas baseChart  width="400" height="400"
+            [data]="pieChartData"
+            [labels]="pieChartLabels"
+            [type]="'bar'"
+            (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)"
+            >
+        </canvas>
+    </div>
+     -->
+
+
+<!-- <piechart></piechart> -->

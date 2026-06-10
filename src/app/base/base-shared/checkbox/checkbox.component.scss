@@ -1,0 +1,104 @@
+.checkBox {
+  margin-top: 30px;
+  margin-left: 20px;
+  font-size: 12px;
+}
+
+
+
+/*
+@import '../../../../assets/style/style-component-form.scss';
+@import '../../../../assets/style/root.scss';
+
+.check-box {
+    margin-top: 32px;
+    margin-left: 20px;
+}
+
+
+*/
+/*
+.label {
+
+  text-align:right;
+  line-height:250%;
+  font-size:.185em;
+  color: blue;
+
+  }
+
+
+.label-checkbox {
+
+  text-align:center;
+vertical-align:middle; 
+    font-weight: bold;
+}
+*/
+// .container {
+//     display: block;
+//     position: relative;
+//     padding-left: 35px;
+//     margin-bottom: 12px;
+//     margin-left: 15px;
+//     cursor: pointer;
+//     font-size: 22px;
+//     -webkit-user-select: none;
+//     -moz-user-select: none;
+//     -ms-user-select: none;
+//     user-select: none;
+//   }
+  
+//   __<<ngThemingMigrationEscapedComment2>>__
+//   .container input {
+//     position: absolute;
+//     opacity: 0;
+//     cursor: pointer;
+//     height: 0;
+//     width: 0;
+//   }
+  
+//   __<<ngThemingMigrationEscapedComment3>>__
+//   .checkmark {
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     height: 25px;
+//     width: 25px;
+//     background-color: #eee;
+//   }
+  
+//   __<<ngThemingMigrationEscapedComment4>>__
+//   .container:hover input ~ .checkmark {
+//     background-color: #ccc;
+//   }
+  
+//   __<<ngThemingMigrationEscapedComment5>>__
+//   .container input:checked ~ .checkmark {
+//     background-color: $green-accent3;
+//   }
+  
+//   __<<ngThemingMigrationEscapedComment6>>__
+//   .checkmark:after {
+//     content: "";
+//     position: absolute;
+//     display: none;
+//   }
+  
+//   __<<ngThemingMigrationEscapedComment7>>__
+//   .container input:checked ~ .checkmark:after {
+//     display: block;
+//   }
+  
+//   __<<ngThemingMigrationEscapedComment8>>__
+//   .container .checkmark:after {
+//     left: 9px;
+//     top: 5px;
+//     width: 5px;
+//     height: 10px;
+//     border: solid white;
+//     border-width: 0 3px 3px 0;
+//     -webkit-transform: rotate(45deg);
+//     -ms-transform: rotate(45deg);
+//     transform: rotate(45deg);
+//   }

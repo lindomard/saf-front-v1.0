@@ -1,0 +1,30 @@
+
+<nb-card>
+  <nb-card-header>
+    Indicador de Carregamento
+  </nb-card-header>
+  <nb-card-body>
+    <button nbButton (click)="processData()">Processar</button>
+    <nb-spinner *ngIf="loading" size="medium"></nb-spinner>
+  </nb-card-body>
+</nb-card>
+
+
+
+<!-- <nb-layout>
+    <nb-layout-column>
+  
+      <nb-card [nbSpinner]="loading"
+               nbSpinnerStatus="danger"
+               nbSpinnerSize="large"
+               nbSpinnerMessage="This is my test spinner">
+        <nb-card-header class="h1">Home Component Card Test</nb-card-header>
+        <nb-card-body>
+          <div>This is my test</div>
+        </nb-card-body>
+        <nb-card-footer></nb-card-footer>
+      </nb-card>
+  
+    </nb-layout-column>
+  </nb-layout>
+   -->

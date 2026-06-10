@@ -1,0 +1,68 @@
+label {
+    text-align: center;
+    display: block;
+  }
+
+.fundo {
+
+background-color: chocolate;
+
+border: 4px solid #12047a;
+ background-size: cover;
+ background-position: center;
+// min-height: 100dvh;
+display: flex;
+//flex-direction: column;
+align-items: center;
+padding: 20px;
+}
+
+// daqui para baixo
+
+body{
+    background: #000;
+    color: #fff;
+ }
+ 
+ 
+ .realiza{
+   text-align: center;
+//   margin-top: 30px;
+//   position: relative;
+ 
+   
+ 
+ }
+ 
+ .realiza div {
+   width: 100%;
+   position: absolute;
+   line-height: 20px;
+   height: 20px;
+   top: -10px;
+   left: 0;
+ 
+ }
+ 
+ .realiza div span{
+    background: #000;
+   padding: 0 15px;
+   color:#fff;
+ }
+
+ table tr.selected, mat-table mat-row.selected {
+  background-color: seagreen;
+}
+tr:focus {
+    outline: none !important;
+  transform: scale(1);
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  box-shadow: 0px 0px 5px #f7d304e7;
+  -webkit-box-shadow: 0px 0px 5px #f7d304e7;
+  -moz-box-shadow: 0px 0px 5px #f7d304e7;
+  background: #0d64b6;
+  /* color: white; */
+  -webkit-text-fill-color: aliceblue
+  
+}

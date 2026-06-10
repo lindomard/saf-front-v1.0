@@ -1,0 +1,218 @@
+<div class="v-cardp">
+
+  <form [formGroup]="filtrosForm">
+
+    <div class="row">
+
+
+      <div class="col-sm-6">
+
+
+
+
+        <!-- <cdk-virtual-scroll-viewport itemSize="1" class="viewport-customizado"> -->
+          <h2 class="text-center">filtrar customizados</h2>
+
+          <mat-list>
+            <mat-list-item>
+
+
+
+              <div class="ui-g-6 ui-md-2 ui-lg-2">
+                <mat-form-field>
+                  <mat-label>Nome do Campo</mat-label>
+                  <mat-select formControlName="nomeDoCampo" (ngModelChange)="nomeDoCampo($event)">
+                    <mat-option *ngFor="let item of filtrosForm.controls.camposParaFiltrosModel.value " [value]="item">
+                      {{item.name}}
+                    </mat-option>
+                  </mat-select>
+                  <!-- <mat-hint>valor do hint {{ tipoConsulta }}</mat-hint> -->
+                </mat-form-field>
+              </div>
+
+
+              <div *ngIf="tipoDoCampo!=='string'" class="ui-g-6 ui-md-2 ui-lg-2">
+                <mat-form-field>
+                  <mat-label>Condição</mat-label>
+                  <mat-select formControlName="condicao">
+                    <mat-option *ngFor="let item of condicaoNumeroData" [value]="item">
+                      {{item.name}}
+                    </mat-option>
+                  </mat-select>
+                  <!-- <mat-hint>valor do hint {{ tipoConsulta }}</mat-hint> -->
+                </mat-form-field>
+              </div>
+
+
+              <div *ngIf="tipoDoCampo==='string'" class="ui-g-6 ui-md-2 ui-lg-2">
+                <mat-form-field>
+                  <mat-label>Condição</mat-label>
+                  <mat-select formControlName="condicao">
+                    <mat-option *ngFor="let item of condicaoString" [value]="item">
+                      {{item.name}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+
+
+
+              <div *ngIf="tipoDoCampo==='3DEC'" class="ui-g-6 ui-md-2 ui-lg-2">
+                <mat-form-field appearance="legacy">
+                  <mat-label>Valor</mat-label>
+                  <input matInput placeholder="Placeholder" currencyMask
+                    [options]="{ prefix: '', precision: '3', thousands: '.', decimal: ','  }"
+                    formControlName="valorString" (blur)="onblurFiltrosCustomizados($event)">
+                </mat-form-field>
+              </div>
+
+              <div *ngIf="tipoDoCampo==='2DEC'" class="ui-g-6 ui-md-2 ui-lg-2">
+                <mat-form-field appearance="legacy">
+                  <mat-label>Valor</mat-label>
+                  <input matInput placeholder="Placeholder" currencyMask
+                    [options]="{ prefix: '', precision: '2', thousands: '.', decimal: ','  }"
+                    formControlName="valorString" (blur)="onblurFiltrosCustomizados($event)">
+                </mat-form-field>
+              </div>
+
+              <div *ngIf="tipoDoCampo==='double'" class="ui-g-6 ui-md-2 ui-lg-2">
+                <mat-form-field appearance="legacy">
+                  <mat-label>Valor</mat-label>
+                  <input matInput placeholder="Placeholder" currencyMask
+                    [options]="{ prefix: '', precision: mQtdDec, thousands: '.', decimal: ','  }"
+                    formControlName="valorString" (blur)="onblurFiltrosCustomizados($event)">
+                </mat-form-field>
+              </div>
+
+
+         <div *ngIf="tipoDoCampo==='long'" class="ui-g-6 ui-md-2 ui-lg-2">
+                <mat-form-field appearance="legacy">
+                  <mat-label>Valor</mat-label>
+                  <input matInput 
+                  type="text" mask="separator.2" thousandSeparator="," 
+                    formControlName="valorString" (blur)="onblurFiltrosCustomizados($event)">
+                </mat-form-field>
+              </div>
+
+ 
+
+<!-- 
+
+              <div *ngIf="tipoDoCampo==='long'" class="ui-g-6 ui-md-2 ui-lg-2">
+                <mat-form-field appearance="legacy">
+                  <mat-label>Valor</mat-label>
+                  <input matInput placeholder="Placeholder" 
+                  type="number"
+                  currencyMask
+                    [options]="{ prefix: '', precision: '2', thousands: '.', decimal: ','  }"
+                    formControlName="valorString" (blur)="onblurFiltrosCustomizados($event)">
+                </mat-form-field>
+              </div>
+
+ -->
+
+
+              <div *ngIf="tipoDoCampo==='date'" class="ui-g-6 ui-md-2 ui-lg-2">
+                <mat-form-field appearance="legacy">
+
+                  <mat-label>Insere a Data</mat-label>
+                  <input matInput formControlName="valorString" 
+                  (blur)="onblurFiltrosCustomizados($event)"
+                  placeholder="Placeholder" type="{{ typeDate }}">
+                </mat-form-field>
+
+              </div>
+
+              <div *ngIf="tipoDoCampo==='datetime'" class="ui-g-6 ui-md-2 ui-lg-2">
+
+                <mat-form-field appearance="legacy">
+
+                  <mat-label>Insere a Data/Hora</mat-label>
+                  <input matInput formControlName="valorString" 
+                  (blur)="onblurFiltrosCustomizados($event)"
+                  placeholder="Placeholder" type="{{ typeDateTime }}">
+
+                </mat-form-field>
+              </div>
+
+
+              <!-- 
+              <div *ngIf="tipoDoCampo==='date'" class="ui-g-6 ui-md-2 ui-lg-2">
+
+                
+                <div class="form-group col-md-2 col-lg-3 col-sl-2">
+                  <intersys-datepicker-overview-example formControlName="valorString" [placeholder2]="'Insere a Data'"
+                    (blur)="onblurFiltrosCustomizados($event)">
+                  </intersys-datepicker-overview-example>
+
+
+                </div>
+              </div>
+
+ -->
+
+              <div *ngIf="tipoDoCampo==='string'" class="ui-g-6 ui-md-2 ui-lg-2">
+                <mat-form-field appearance="legacy">
+                  <mat-label>Valor</mat-label>
+                  <input matInput placeholder="Placeholder" formControlName="valorString"
+                    (blur)="onblurFiltrosCustomizados($event)">
+                </mat-form-field>
+              </div>
+
+            </mat-list-item>
+          </mat-list>
+
+        <!-- </cdk-virtual-scroll-viewport> -->
+      </div>
+
+      <div class="col-sm-6">
+        <!-- <div class="news"> -->
+
+        <!-- <div class="v-cardRigth"> -->
+
+        <!-- <cdk-virtual-scroll-viewport itemSize="1" class="viewport-customizado"> -->
+          <mat-list>
+            <mat-list-item>
+
+              <ng-container *ngFor="let filtrosCustomizados of 
+                    filtrosForm['controls'].filtrosCustomizados['controls']; let i = index; let last = last ">
+
+                <div *ngIf="!last">
+                  <div [formGroup]="filtrosCustomizados">
+
+                    <div class="size">
+
+
+                      <div class="ui-g-8 ui-md-8 ui-lg-10">
+                        <label type="text">
+                          {{ filtrosCustomizados.value.nomeDoCampo.name }}
+                          {{ filtrosCustomizados.value.condicao.name }}
+                          
+                          {{ fValorFiltroCustomizado(filtrosCustomizados.value.valorString) }}
+                          
+
+                        </label>
+                        {{ ' ' }}
+                        <label style="color: red" (click)="removeFormControlFiltrosCustomizados(i)">Excluir</label>
+                      </div>
+
+                    </div>
+
+
+                  </div>
+
+                </div>
+
+              </ng-container>
+            </mat-list-item>
+          </mat-list>
+
+        <!-- </cdk-virtual-scroll-viewport> -->
+      </div>
+      <!-- </div> -->
+    </div>
+  </form>
+</div>
+
+
+<!-- // cridview -->

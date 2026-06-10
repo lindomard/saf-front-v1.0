@@ -1,0 +1,171 @@
+<!-- 
+
+<button mat-raised-button (click)="addColumn()"> Add column </button>
+<button mat-raised-button (click)="removeColumn()"> Remove column </button>
+<button mat-raised-button (click)="shuffle()"> Shuffle </button>
+
+<table mat-table [dataSource]="data" class="mat-elevation-z8">
+  <ng-container  [matColumnDef]="column" *ngFor="let column of displayedColumns">
+    <th mat-header-cell
+       
+     *matHeaderCellDef> {{column}} </th>
+    <td mat-cell  *matCellDef="let element"> {{element[column]}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="columnsToDisplay;"></tr>
+  <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
+</table>
+-->
+
+<!-- Copyright 2024 Google LLC. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at https://angular.io/license -->
+
+
+
+<!-- 
+<div>
+  <ng-container>
+    <input type="file" id="file" multiple (change)="getFileDetails($event)">
+
+    <button (click)="uploadFiles()">Upload</button>
+  </ng-container>
+</div>
+<pre>{{myFiles | json}}</pre>
+<div *ngFor="let file of myFiles">
+  <div>* {{file.name}} - {{file.type}} - {{file.size}}</div>
+</div>
+
+
+
+
+<mat-tab-group>
+  <mat-tab label="First" [aria-labelledby]="eCliente ? 'hidden' : ''"> Content 1 </mat-tab>
+  <mat-tab label="Second"> Content 2 </mat-tab>
+  <mat-tab label="Third" [aria-labelledby]="eCliente ? '' : 'hidden'"> Content 3 </mat-tab>
+  <mat-tab label="Four" [aria-labelledby]="eCliente ? '' : 'hidden'">
+
+    Content 4
+
+
+    <div class="mat-elevation-z8" style="height: 50px;">
+      <table mat-table [dataSource]="dataSource">
+        <ng-container matColumnDef="position">
+          <th mat-header-cell *matHeaderCellDef>No.</th>
+          <td mat-cell *matCellDef="let element">{{element.position}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>Name</th>
+          <td mat-cell *matCellDef="let element">{{element.name}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="weight">
+          <th mat-header-cell *matHeaderCellDef>Weight</th>
+          <td mat-cell *matCellDef="let element">{{element.weight}}</td>
+        </ng-container>
+        <ng-container matColumnDef="symbol">
+          <th mat-header-cell *matHeaderCellDef>Symbol</th>
+          <td mat-cell *matCellDef="let element">{{element.symbol}}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+      <mat-paginator [pageSizeOptions]="[3, 5, 10, 20]" showFirstLastButtons [pageSize]="5" [length]="5" [pageIndex]="0"
+        aria-label="Select page of periodic elements">
+      </mat-paginator>
+    </div>
+
+  </mat-tab>
+</mat-tab-group>
+
+
+<select class='form-control'>
+  <option *ngFor="let option of options" [selected]="option === nrSelect" [value]="option">
+    {{ option }}
+  </option>
+</select>
+
+<select name="num" [(ngModel)]="number">
+  <option *ngFor="let n of numbers" [value]="n">{{n}}</option>
+</select>
+
+
+<button (click)="setarNovoValor()">Setar Outro Valor</button>
+
+
+
+
+
+Content fora
+<div class="example-table-container">
+
+
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+
+      <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef>No.</th>
+        <td mat-cell *matCellDef="let element">{{element.position}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let element">{{element.name}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="weight">
+        <th mat-header-cell *matHeaderCellDef>Weight</th>
+        <td mat-cell *matCellDef="let element">{{element.weight}}</td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="symbol">
+        <th mat-header-cell *matHeaderCellDef>Symbol</th>
+        <td mat-cell *matCellDef="let element">{{element.symbol}}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+
+    <mat-paginator #paginator [pageSizeOptions]="[3, 5, 10, 20]" showFirstLastButtons [pageSize]="3" [length]="20"
+      [pageIndex]="0" aria-label="Select page of periodic elements">
+    </mat-paginator>
+</div> -->
+
+
+
+
+<table mat-table [dataSource]="dataSourceWithPageSize">
+  <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">
+      <th mat-header-cell [style]="getAlingn(column)" [width]="getStyle3(column)" *matHeaderCellDef>
+          {{ getColumnName(column) }} </th>
+
+
+
+       <div *ngIf="column!=='Visualizar'">
+
+
+          <td mat-cell [style]="getAlingn(column)"  *matCellDef="let element">
+              {{ fValorENomeDoCampoParaformatar(element,column) }}
+          </td>
+      </div>
+
+
+
+  </ng-container>
+
+
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<mat-paginator #paginatorPageSize [pageSize]="filterPaginator.size" [length]="filterPaginator.totalElements"
+  [pageIndex]="filterPaginator.page" [pageSizeOptions]="pageLimitOptions" showFirstLastButtons (page)="changeEvent()">
+</mat-paginator>

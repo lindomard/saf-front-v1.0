@@ -1,0 +1,101 @@
+<h1 mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle
+  style="background-color: rgb(28, 119, 161);  text-align:center;"> Eventos com Impedimentos 
+
+  <div class="col text-right">
+    <button class="btn btn-primary mr-2" (click)="fechar()">Fechar</button>
+  </div>
+
+</h1>
+
+
+<section class="table-container mat-elevation-z8">
+
+      
+          <table mat-table [dataSource]="dataSourceWithPageSize">
+      
+      
+          <ng-container matColumnDef="leId">
+            <mat-header-cell [ngStyle]="{'flex':'0 0 5%'}" *matHeaderCellDef>Id</mat-header-cell>
+            <mat-cell [ngStyle]="{'flex':'0 0 5%'}" *matCellDef="let element">
+              <span class="mobile-label">Id:</span>
+              {{element.leId}} </mat-cell>
+          </ng-container>
+      
+
+          <ng-container matColumnDef="leDathor">
+            <mat-header-cell [ngStyle]="{'flex':'0 0 8%'}" *matHeaderCellDef>Data/Hora</mat-header-cell>
+            <mat-cell [ngStyle]="{'flex':'0 0 8%'}" *matCellDef="let element">
+              <span class="mobile-label">Data/Hora:</span>
+
+              {{ fRetornaFormatado(element.leDathor, "datetime") }}
+
+              </mat-cell>
+          </ng-container>
+      
+
+
+          <ng-container matColumnDef="leCodprocvinculado">
+            <mat-header-cell [ngStyle]="{'flex':'0 0 5%'}" *matHeaderCellDef>Id Proc</mat-header-cell>
+            <mat-cell [ngStyle]="{'flex':'0 0 5%'}" class="center-item" *matCellDef="let element">
+              <span class="mobile-label">Id Proc:</span>
+              {{element.leCodprocvinculado}}
+            </mat-cell>
+          </ng-container>
+      
+          <ng-container matColumnDef="cpNome">
+            <mat-header-cell [ngStyle]="{'flex':'0 0 10%'}" *matHeaderCellDef>Nome Processo</mat-header-cell>
+            <mat-cell [ngStyle]="{'flex':'0 0 10%'}" *matCellDef="let element">
+              <span class="mobile-label">Nome Processo:</span>
+              {{element.cpNome}} </mat-cell>
+          </ng-container>
+      
+          <ng-container matColumnDef="leResultado">
+            <mat-header-cell [ngStyle]="{'flex':'0 0 15%'}" *matHeaderCellDef>Resultado</mat-header-cell>
+            <mat-cell [ngStyle]="{'flex':'0 0 15%'}" *matCellDef="let element">
+              <span class="mobile-label">Resultado:</span>
+              {{element.leResultado}} </mat-cell>
+          </ng-container>
+      
+          <ng-container matColumnDef="leObservacoes">
+            <mat-header-cell [ngStyle]="{'flex':'0 0 15%'}" *matHeaderCellDef>Observações</mat-header-cell>
+            <mat-cell [ngStyle]="{'flex':'0 0 15%'}" *matCellDef="let element">
+              <span class="mobile-label">Observações:</span>
+              {{element.rc100ChvNfe}} </mat-cell>
+          </ng-container>
+      
+
+
+          <ng-container matColumnDef="leComando">
+            <mat-header-cell [ngStyle]="{'flex':'0 0 30%'}" *matHeaderCellDef>Comando</mat-header-cell>
+            <mat-cell [ngStyle]="{'flex':'0 0 15%'}" *matCellDef="let element">
+                <span class="mobile-label">Comando:</span>
+                {{element.leComando}} </mat-cell>
+          </ng-container>
+
+
+          
+      
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      
+          <mat-row *matRowDef="let row; columns: displayedColumns;" matRipple class="element-row"> 
+          </mat-row>
+          </table>
+      
+        <mat-paginator
+        #paginatorPageSize
+      
+      
+        
+        [length]="filterPaginator.totalPages" [pageIndex]="filterPaginator.page" [pageSize]="filterPaginator.size"
+      
+      
+        [pageSizeOptions]="pageLimitOptions"
+        showFirstLastButtons
+        (page)="changeEvent()"
+      ></mat-paginator>
+      
+      
+      
+      </section>
+      
+      

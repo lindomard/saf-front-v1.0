@@ -1,0 +1,50 @@
+export interface CadpessoasDocModel {
+    pdIntSerie?: string,
+    pdNome?: string,
+    pdIntModelo?: string,
+    pdInventario?: number,
+    pdIntTipoArquivo?: string,
+    pdDownloadDathoraIni?: Date,
+    pdIntDtDoc?: Date,
+    pdNfceCdataLink?: string,
+    pdObs?: string,
+    pdDathorImpInicio?: Date,
+    pdArquivoNome?: string,
+    pdTamanhoArquivo?: number,
+    pdIntNumdoc?: number,
+    pdPeriodoDtIni?: Date,
+    pdIntPastadestino?: string,
+    pdIdPessoa?: number,
+    pdCodPart?: string,
+    pdIntChvNfe?: string,
+    pdIntCpf?: string,
+    pdIntCnpj?: string,
+    pdCodprocvinculado?: number,
+    pdIntTipoInventario?: string,
+    pdStatus?: number,
+    pdIntVlDoc?: number,
+    pdIntSituacao?: string,
+    pdOrigemArquivo?: string,
+    pdId?: number,
+    pdDownloadDathoraFin?: Date,
+    pdLoteAvaliacao?: number,
+    pdDathorImpTermino?: Date,
+    pdDatahoraArquivo?: Date,
+    pdPeriodoDtFin?: Date,
+    pdDtRefIni?: Date,
+    pdDtRefFin?: Date,
+    pdEvalido?: string,
+    pdExtensaoArq?: string,
+    pdIntDatinv?: Date,
+    pdInventarioNome?: string,
+    pdIntTipoArquivoNome?: string,
+    pdIntTipoInventarioNome?: string,
+    pdStatusNome?: string,
+
+
+
+}
+
+
+
+

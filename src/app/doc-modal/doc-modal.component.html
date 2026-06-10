@@ -1,0 +1,76 @@
+<section>
+  <aside>
+    <span>{{ getDynamicName() }}</span>
+    <button (click)="close()"><i class="fa-solid fa-xmark"></i></button>
+  </aside>
+  <form>
+    <ge-card>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Nome do Documento / Imagem</label>
+          <input type="text" #documentName>
+        </div>
+        <div class="form-group">
+          <label>Arquivo</label>
+          <input type="file" #fileInput required>
+        </div>
+        <div>
+          <button class="button-modal" ge-button (click)="submit()">Salvar</button>
+        </div>
+      </div>
+    </ge-card>
+  </form>
+
+  <div>
+    <ge-card>
+      <div class="table-contents">
+        <table *ngIf="data">
+          <thead>
+            <th>Nome do Documento / Imagem</th>
+            <th>Tipo</th>
+            <th>Ações</th>
+          </thead>
+          <tbody>
+            <br>
+            <tr *ngFor="let item of getDataProperty(doc)">
+              <td>{{ getDynamicProperty(item, 'dObs') ? getDynamicProperty(item, 'dObs') : getDynamicProperty(item,
+                'dNome') }}</td>
+              <td>
+                <img [src]="'../../../../assets/files/'+getDynamicProperty(item, 'dFormato') + '.png'"
+                  [title]="getDynamicProperty(item, 'dFormato') ? getDynamicProperty(item, 'dFormato') : 'Formato não definido'"
+                  style="height: 3rem;" alt="Ícone do arquivo">
+              </td>
+              <td class="actions">
+                <aside>
+                  <button class="view" (click)="handleTableEvent({ type: 'view', origin: 'table', data: item })">
+                    <i class="fa-solid fa-eye" title="visualizar"></i>
+                  </button>
+                  <button class="delete"
+                    (click)="delete(item); onEvent.emit({type: 'delete', origin: 'table', data: item})">
+                    <i class="fa-solid fa-trash-can" title="excluir"></i>
+                  </button>
+                </aside>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </ge-card>
+  </div>
+
+<ng-template #loader>
+  <div class="la-line-scale la-2x">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</ng-template>
+
+<div *ngIf="loading">
+  <ng-container *ngTemplateOutlet="loader"></ng-container>
+</div>
+</section>
+
+

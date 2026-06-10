@@ -1,0 +1,59 @@
+//@import '/node_modules/bootstrap/scss/_functions.scss';
+// @import '/node_modules/bootstrap/scss/_variables.scss';
+//@import '/node_modules/bootstrap/scss/mixins/breakpoints.scss';
+
+
+
+$grid-breakpoints: (
+
+     sm: 385px,
+     md: 570px,
+     lg: 768px,
+     xl: 1024px
+
+);
+
+/*
+$container-min-widths: (
+//  sm: 400px,
+  // md: 500px,
+  // lg: 768px,
+  // xl: 1024px
+
+
+);
+
+*/
+
+
+.vermelho{
+    color: red;
+}
+.example-large-box {
+height: 150px;
+//  width: 310px;
+}
+
+
+
+
+@import "~bootstrap/scss/bootstrap";
+
+@include  media-breakpoint-down (sm) {
+    body{
+        background: green;
+    }
+}
+
+
+@include  media-breakpoint-between (md, lg) {
+    body{
+        background: blue;
+    }
+}
+
+@include  media-breakpoint-up (lg) {
+    body{
+        background: gray;
+    }
+}

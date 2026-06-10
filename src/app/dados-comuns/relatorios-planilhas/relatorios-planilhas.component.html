@@ -1,0 +1,80 @@
+<mat-card class="example-card">
+
+    <h1 mat-dialog-title style="background-color: rgb(21, 100, 19); text-align:center;"> Gerar Arquivos Pdf ou Excel
+  
+</h1>
+
+<form [formGroup]="formfiltro">
+
+
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="row">
+                <div class="col-md-3">
+                    <br>
+                    <button class="btn btn-primary mr-2, form-control" [disabled]="mDisableGerar"
+                     (click)="GerarPdf()">Gerar PDF</button>
+                </div>
+                <div class="col-md-3">
+                    <br>
+                    <button class="btn-login, form-control" [disabled]="mDisableGerar" 
+                    (click)="GerarPlanilha()">Gerar Planilha</button>
+                </div>
+                <div class="col-md-3">
+                    <br>
+                    <button class="btn-login, form-control" [disabled]="mDisableGerar"
+                     (click)="Configurar()"> {{ mConfiguracao }} </button>
+                </div>
+
+                <div class="col-md-3">
+                    <label>Relatorios Salvos</label>
+
+                    <select formControlName="nomeRelatorio" class="form-control"
+                        (change)="clickRelatorioSalvo($event.target.selectedIndex)">
+                        <option *ngFor="let x of relatoriosSalvos" [ngValue]="x.id">
+                            {{ x.name }}
+                        </option>
+                    </select>
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+<div class="col-md-12">
+    <div class="row">
+
+        <div class="col-md-12">
+
+            <div *ngIf="mAcionadoConfiguracao===true">
+
+                <app-config-relatorio
+                    [dataSourceTableFilpadCab]="dataSourceTableFilpadCab" 
+                    [relatorioSelecionado]="relatorioSelecionado"
+                    (resetarConfiguracoesEmit)="resetarConfiguracoes()"
+
+                    >
+                </app-config-relatorio>
+            </div>
+
+            <!-- <div class="col-md-6">
+
+            <app-config-relatorio #instanceFieldsFilter
+                [dataSourceTableFilpadCab]="dataSourceTableFilpadCab"
+                (fAtualizarDadosTabela)="fAtualizarBusca()"></app-config-relatorio>
+
+
+        </div> -->
+        </div>
+    </div>
+</div>
+
+
+
+
+
+</form>
+</mat-card>

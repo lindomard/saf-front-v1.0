@@ -1,0 +1,61 @@
+<div class="main">
+    <div class="container">
+      <mat-card >
+        <mat-card-header>
+            <mat-progress-bar *ngIf="uploadResponse.message > 0" mode="determinate" value="{{ uploadResponse.message }}"></mat-progress-bar>
+            <span *ngIf="uploadResponse.message > 0">Percentual {{ uploadResponse.message }} % {{ this.mObsTempo }} </span>
+        </mat-card-header>
+        <mat-card-content>
+          <form [formGroup]="form">
+            <div class="row"   *ngIf="mEstaProcessando === false" >
+              <div class="fileUpload btn btn-primary">
+                  <span>Anexar <i class="fa fa-paperclip"></i></span>
+                  <input  (change)="selecFiles($event)" type="file" class="upload" multiple
+                        formControlName="files"/>
+              </div>
+            </div>
+            <div class="row">
+                <mat-list>
+                    <mat-list-item *ngFor="let item of files">
+                      <mat-icon matListIcon>folder</mat-icon>
+                      <p matLine>
+                        <span> {{ item.name }} </span>
+                      </p>
+                    </mat-list-item>
+                  </mat-list>
+            </div>
+          </form>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button color="warn" (click)="removerFiles()">Remover</button>
+          <button mat-button [disabled]="mEstaProcessando" (click)="uploadFile()">Enviar</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+    <br>
+    <div class="v-card">
+     <app-message [isError]="mError" [message]="mMeensagem"></app-message>
+  
+  
+    <div class="container-titulo">
+      <h5>Inventarios Validos: sintegra/efd icms/xls/xlsx/cvs/txt delimitado por ; e txt delimitado por |</h5>
+      <h5>Layout do inventario exceto sintegra e efd icms</h5>
+      <h6>CAMPO 01: DATA</h6>
+      <h6>CAMPO 02: CODPRO</h6>
+      <h6>CAMPO 03: QUANTIDADE</h6>
+      <h6>CAMPO 04: VALOR</h6>
+      <h6>CAMPO 05: COD_POSS</h6>
+      <h6>CAMPO 06: CNPJ_POSS</h6>
+      <h6>CAMPO 07: INSCRICAO_ESTADUAL_POSS</h6>
+      <h6>CAMPO 08: UF_POS</h6>
+      <h6>CAMPO 09: DESCRICAO_PRODUTO</h6>
+      <h6>CAMPO 10: UNIDADE</h6>
+      <h6>CAMPO 11: CSOSN_CST</h6>
+      <h6>CAMPO 12: COD_NCM</h6>
+    
+      
+  
+    </div>
+  </div>
+  

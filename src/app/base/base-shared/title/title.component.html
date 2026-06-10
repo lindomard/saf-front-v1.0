@@ -1,0 +1,20 @@
+
+<ng-container [ngSwitch]="typeTitle">
+    <div *ngSwitchCase="'TITLE'">
+        <p [ngClass]="{
+            'margin': margin,
+            'margin-start': marginStart
+        }"
+        >{{ label }}</p> 
+    </div>
+
+    <div *ngSwitchCase="'TITLE_DIVIDER'" [ngClass]="{
+            'margin': margin
+        }">
+        <div class="title">
+            <h5 class="text">{{ label }}</h5>
+        </div>
+        <hr *ngIf="divider" class="divider-solid">
+    </div>
+</ng-container>
+

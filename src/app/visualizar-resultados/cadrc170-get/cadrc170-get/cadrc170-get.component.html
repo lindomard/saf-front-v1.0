@@ -1,0 +1,103 @@
+<loadingV01 *ngIf="isLoading">{{ isLoading }}</loadingV01>
+
+<mat-card>
+    <h1 mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle
+        style="background-color: rgb(28, 119, 161); text-align:center;"> {{ tipoAcaoName }}</h1>
+    <h1 mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle
+        style="background-color: rgb(21, 100, 19); text-align:center;"> {{ tipoEvento }}
+
+
+        <div class="col text-right">
+            <!-- <button class="btn btn-primary mr-2" (click)=" cloneObj()">cloner</button> -->
+            <button class="btn btn-primary mr-2" (click)=" cancelarESair()">Fechar</button>
+        </div>
+
+
+    </h1>
+
+</mat-card>
+
+
+<mat-card class="example-card">
+
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="row">
+
+
+                <!-- <div class="col-md-12">
+                    <app-config-dados-tabela-consulta #instanceConfigDadosTabela 
+                        (fAtualizarDadosTabela)="fAtualizarBusca()"></app-config-dados-tabela-consulta>
+                        [camposDaTabela]="camposDaTabela"
+                </div> -->
+
+                <div class="col-md-12">
+                    <app-consultas-e-relatorios #instanceConsultasERelatorios
+                        (fAtualizaAtualizarPor)="fAtualizarBusca2($event)" [mDisableGerar]="mDisableGerar"
+                        [dataSourcecamposParaFiltrosList]="dataSourcecamposParaFiltrosList"
+                        [dataSourceTableFilpadCab]="dataSourceTableFilpadCab" [camposConsultaPor]="camposConsultaPor"
+                        (fGerarPdf)="baixarRelatorio()" (fGerarPlanilha)="fBuscarPlanilha()"
+                        (fSalvarRelatorioPadrao)="fBuscarPlanilha()" (fAtualizarDadosTabelaFiltros)="fAtualizarBusca()"
+                        (resetarConfiguracoesEmit)="resetarConfiguracoes()"
+                        (fAjustarDisplayColumnsTableEmit)="fAjustarDisplayColumnsTable()"></app-consultas-e-relatorios>
+                </div>
+
+                <!-- [dataSourceFiltros]="dataSourceFiltros" -->
+
+
+
+            </div>
+        </div>
+    </div>
+</mat-card>
+
+
+
+<table mat-table #demomatdatatable [dataSource]="dataSourceWithPageSize"  (keydown)="keydown($event)" class="mat-elevation-z8" >
+    
+
+        <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">
+            <th mat-header-cell [style]="getAlingn(column)" [width]="getStyle3(column)" *matHeaderCellDef
+                 >
+                {{ getColumnName(column) }} </th>
+
+
+
+            <div *ngIf="column!=='Visualizar'">
+
+
+                <td mat-cell [style]="getAlingn(column)" *matCellDef="let element">
+                    {{ fValorENomeDoCampoParaformatar(element,column) }}
+                </td>
+            </div>
+
+
+        </ng-container>
+
+
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr
+        mat-row
+        #demmatrow
+        *matRowDef="let row; columns: displayedColumns;"
+        [matRowKeyboardSelection]="selection"
+        [rowModel]="row"
+        [matTable]="demomatdatatable"
+        [page]="filterPaginator"
+        [row]="demmatrow"
+        (paginaProxima)="paginaProxima()"
+        (paginaAnterior)="paginaAnterior()"
+        (paginaUltima)="paginaUltima()"
+        (paginaPrimeira)="paginaPrimeira()"
+
+
+        [ngClass]="{selected: selection.isSelected(row)}"
+      ></tr>
+
+
+</table>
+
+<mat-paginator #paginatorPageSize [pageSize]="filterPaginator.size" [length]="filterPaginator.totalElements"
+    [pageIndex]="filterPaginator.page" [pageSizeOptions]="pageLimitOptions" showFirstLastButtons (page)="changeEvent()">
+</mat-paginator>

@@ -1,0 +1,123 @@
+<div class="example-container mat-elevation-z8" (keydown)="keydown($event)" *ngIf="dataSource.data.length > 0"
+  tabindex="0">
+
+  <!-- lindomar
+{{ focused | json }}
+ -->
+
+  <mat-table [dataSource]="dataSource" [trackBy]="recTrackBy" #table datResizableColumn [class.isMobile]="isMobile">
+
+    <ng-container matColumnDef="select">
+      <mat-header-cell *matHeaderCellDef>
+        <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()"
+          [indeterminate]="selection.hasValue() && !isAllSelected()" [aria-label]="checkboxLabel()">
+        </mat-checkbox>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row, let i = index" class="center-item" data-label="select">
+        <mat-checkbox #instanceCheckbox (click)="$event.stopPropagation()" (change)="selectRow($event, row)"
+          [checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row)"></mat-checkbox>
+      </mat-cell>
+    </ng-container>
+
+
+    <ng-container matColumnDef="{{ item.columnName }}" *ngFor="let item of itens">
+      <mat-header-cell [hidden]="isMobile" [ngStyle]="changeStyle(item)" class="truncate-cell" *matHeaderCellDef> {{
+        item.headerName }}
+      </mat-header-cell>
+      <mat-cell [ngStyle]="changeStyle(item)" class="truncate-cell" *matCellDef="let element"
+        [attr.data-label]="item.headerMobile" [ngClass]="{'center-item': !item.notCenter}">
+
+        <span>
+          {{ fRetornaFormatado(element[item?.columnName], item.columnMask, item.columnName,element) }}
+        </span>
+
+        <ng-container [ngSwitch]="item?.type">
+          <app-datepicker #instanceRef *ngSwitchCase="'DATEPICKER'"></app-datepicker>
+          <app-genesis-calendar #instanceRef *ngSwitchCase="'GENESIS_CALENDAR'"></app-genesis-calendar>
+        </ng-container>
+
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+      <mat-header-cell [ngStyle]="changeCampo()" *matHeaderCellDef>
+        <span>Edit</span>
+      </mat-header-cell>
+      <mat-cell [ngStyle]="changeCampo()" *matCellDef="let row, let i = index" class="center-item" data-label="edit">
+        <span (click)="actionEdit(row , i)" class="fa fa-edit"></span>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="delete">
+      <mat-header-cell [ngStyle]="changeCampo()" *matHeaderCellDef>
+        <span>Del</span>
+      </mat-header-cell>
+      <mat-cell [ngStyle]="changeCampo()" *matCellDef="let row, let i = index" class="center-item" data-label="del">
+        <span (click)="actionDelete(i)" class="fa fa-trash"></span>
+      </mat-cell>
+    </ng-container>
+
+
+    <ng-container matColumnDef="view">
+      <mat-header-cell [ngStyle]="changeCampo()" *matHeaderCellDef>
+        <span>Ver</span>
+      </mat-header-cell>
+      <mat-cell [ngStyle]="changeCampo()" *matCellDef="let row, let i = index" class="center-item" data-label="ver">
+        <span (click)="actionView(row)" class="fa fa-binoculars"></span>
+      </mat-cell>
+    </ng-container>
+
+
+
+    <div *ngIf="!isMobile">
+      <mat-header-row *matHeaderRowDef="displayColumns; sticky: true"></mat-header-row>
+    </div>
+    <mat-row *matRowDef="let row, let i = index; columns: displayColumns;" 
+      (click)="onRowClicked(row)" (dblclick)="onRowClickedDuplo(row)" [attr.position]="getPosition(row)"
+      [ngClass]="{'mat-table-focussed': row == focused }"
+
+
+      ></mat-row>
+
+
+    <!-- 
+      [ngClass]="{'mat-table-focussed': row == focused }"
+      
+
+    <mat-header-row *matHeaderRowDef="displayColumnsLista;  sticky: true"></mat-header-row>
+    <mat-row *matRowDef="let row; let even = even; columns: displayColumnsLista;"
+    [ngClass]="{gray: even}"
+    ></mat-row>
+
+
+
+      
+      <mat-header-row *matHeaderRowDef="displayColumnsLista;  sticky: true"></mat-header-row>
+    <mat-row *matRowDef="let row; let even = even; columns: displayColumnsLista;"
+    [ngClass]="{gray: even}"
+    ></mat-row>
+
+      
+      (dblclick)="testDuplo()"
+                    [style.background]="highlightedRows.indexOf(row==undefined ? -1 : row) != -1 ? 'lightblue' : ''"
+
+        -->
+
+
+    <!-- [@fadeInd]="" -->
+  </mat-table>
+
+
+  <!--<mat-toolbar>
+        <mat-toolbar-row>-->
+  <!--<button class="btn btn-info" [disabled]="disableButons" (click)="registroAnterior()"> Registro Anterior</button>
+            <button class="btn btn-success" [disabled]="disableButons" (click)="proximoRegistro()"> Proximo Registro</button>-->
+  <mat-paginator *ngIf="isPaginator" [disabled]="disableButons" [length]="length" [pageIndex]="pageIndex"
+    [pageSize]="pageSize" [pageSizeOptions]="paginatorSize" (page)="movimentarPagina($event)" showFirstLastButtons>
+  </mat-paginator>
+
+  <!--</mat-toolbar-row>
+    </mat-toolbar>-->
+
+
+</div>

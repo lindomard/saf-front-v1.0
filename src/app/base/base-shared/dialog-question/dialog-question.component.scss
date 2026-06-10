@@ -1,0 +1,19 @@
+@import '../../../../assets/style/root.scss';
+
+.title {
+    margin-top: 10px;
+}
+
+.wrapper-top {
+    display: flex;
+    justify-content: space-between;
+}
+
+.wrapper-message {
+    padding-bottom: 50px;
+}
+
+.wrapper-button {
+    display: flex;
+    justify-content: space-evenly
+}

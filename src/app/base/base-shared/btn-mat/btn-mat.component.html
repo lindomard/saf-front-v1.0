@@ -1,0 +1,7 @@
+<button 
+    [ngStyle]="getStyle()"
+    mat-button color="{{ color }}"
+    (click)="click()">
+        <span class="fa fa-{{ icon }}"></span>
+        {{ label }}
+</button>

@@ -1,0 +1,45 @@
+<!-- <div class="wrapper-top">
+  <h1 mat-dialog-title class="title">{{ title }}</h1>
+
+  <button (click)="fechar()" class="btn-close"><span class="fa fa-close"></span></button>
+</div> -->
+
+
+<h1 mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle
+  style="background-color: rgb(28, 119, 161);   text-align:center; "> {{ camposRecebidos.title }}</h1>
+
+<button (click)="fechar()" class="btn-close"><span class="fa fa-close"></span>Fechar</button>
+
+
+
+<div class="v-cardp">
+
+  <form [formGroup]="filtrosCamposForm">
+
+    <div class="row">
+
+      <mat-form-field>
+        <mat-label>Selecionar Campos Para Planilha</mat-label>
+
+        <form fxFlex [formGroup]="filtrosCamposForm" fxLayout="column" autocomplete="off" style="margin: 30px">
+          <mat-select placeholder="Selecione os campos para planilha" formControlName="camposParaPlanilhas" multiple>
+            <mat-option *ngFor="let campos of camposRecebidos.camposFilters " [value]="campos.id"
+              (click)="onClickAtualizar()">
+              {{campos.name}}
+            </mat-option>
+            <mat-option #allSelected (click)="toggleAllSelection()" [value]="0">Todos
+            </mat-option>
+          </mat-select>
+        </form>
+      </mat-form-field>
+
+      filtros selecionados:
+      {{filtrosCamposForm.controls.camposParaPlanilhas.value | json}}
+
+
+    </div>
+
+  </form>
+
+
+</div>

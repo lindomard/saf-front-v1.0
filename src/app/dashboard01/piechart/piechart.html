@@ -1,0 +1,27 @@
+
+<h4 style="text-align:center">Pie Chart For Browser usage of &nbsp; Eduforbetterment.com
+</h4>
+
+
+
+
+<div style="display: block">
+<canvas baseChart
+        [data]="pieChartData"
+        [labels]="pieChartLabels"
+        [type]="'bar'"
+        (chartHover)="chartHovered($event)"
+        (chartClick)="chartClicked($event)"></canvas>
+</div>
+
+
+
+<div style="display: block;">
+        <canvas baseChart width="400" height="400"
+          [type]="'line'"
+          [data]="lineChartData"
+          [options]="lineChartOptions"
+          [legend]="lineChartLegend">
+        </canvas>
+      </div>
+      

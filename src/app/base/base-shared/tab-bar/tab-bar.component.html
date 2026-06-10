@@ -1,0 +1,18 @@
+<div class="tab-wrapper">
+    <div class="tabs">
+        <ng-template ngFor let-tab [ngForOf]="tabs" let-index="index">
+            <div *ngIf="tab.show"
+                (click)="selectTabActive(index)"
+                [ngClass]="{
+                    active: index === tabIndex
+                }" 
+                class="tab"
+                > {{ tab.name }}
+            </div>
+        </ng-template>
+        
+    </div>
+    <div class="tab-content">
+        <ng-container *ngTemplateOutlet="templates"></ng-container>
+    </div>
+</div>

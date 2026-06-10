@@ -1,0 +1,71 @@
+<loadingV01 *ngIf="isLoading">{{ isLoading }}</loadingV01>
+
+<mat-card>
+    <h1 mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle
+      style="background-color: rgb(28, 119, 161); text-align:center;"> {{ titulo }}
+  
+  
+
+
+
+      <div>
+        <button class="btn btn-primary mr-2" [disabled]="mDisableGerar" (click)="BaixarPlanilha()">Baixar Planilha</button>
+        <button class="btn btn-primary mr-2" [disabled]="mDisableGerar" (click)="BaixarPdf()">Baixar Pdf</button>
+        <button class="btn btn-danger" [disabled]="mDisableGerar" (click)="fechar()">Fechar</button>
+      </div>
+
+
+  
+    </h1>
+  
+  </mat-card>
+  
+  
+  <section class="table-container mat-elevation-z8">
+  
+
+
+
+    
+            <table mat-table [dataSource]="dataSourceEfdSemXml">
+                <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumnsEfdSemXml">
+                    <th mat-header-cell *matHeaderCellDef [ngStyle]="changeStyleEfdSemXml(column)">{{
+                        getColumnNameEfdSemXml(column) }}</th>
+
+
+                    <!--    
+          <div *ngIf="column==='button'">
+              <mat-cell *matCellDef="let element">
+  
+                  <button color="primary" (click)="BaixarArquivo(element)">
+                      <mat-icon>warning</mat-icon>
+                  </button>
+              </mat-cell>
+  
+          </div>
+  -->
+
+                    <div *ngIf="column!=='button'">
+
+                        <td mat-cell [ngStyle]="changeStyleEfdSemXml(column)" *matCellDef="let emp">{{
+                            fValorENomeDoCampoParaformatarEfdSemXml(emp[column],column) }}</td>
+                    </div>
+
+
+                    <!-- <td mat-cell *matCellDef="let emp">{{ emp[column] }}</td> -->
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumnsEfdSemXml"></tr>
+                <tr mat-row *matRowDef="let emprow; columns: displayedColumnsEfdSemXml"></tr>
+            </table>
+
+
+            <mat-paginator #paginatorPageSizeSit [pageSize]="filterPaginatorEfdSemXml.size"
+                [length]="filterPaginatorEfdSemXml.totalElements" [pageIndex]="filterPaginatorEfdSemXml.page"
+                [pageSizeOptions]="pageLimitOptionsEfdSemXml" (page)="changeEventEfdSemXml($event)"
+                showFirstLastButtons>
+            </mat-paginator>
+
+            <!-- termino -->
+
+            </section>

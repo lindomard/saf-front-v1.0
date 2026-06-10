@@ -1,0 +1,17 @@
+<!-- <app-alvara-sanitario (instanceHandle)="instanceHandleAlvaraComponent.emit($event)"></app-alvara-sanitario>
+<app-registro-arma  (instanceHandle)="instanceHandleRegistroArmaComponent.emit($event)"></app-registro-arma> -->
+
+<mat-card>
+    <app-form-build #instanceForm [fieldsConfig]="fields"></app-form-build>
+</mat-card>
+
+<mat-card [ngStyle]="getStyleShowTable()">
+    <app-table-list #instanceTable 
+        [itens]="itemsTable" 
+        [displayColumns]="displayColumns" 
+        [data]="licenses"
+        [isPaginator]="false"
+        (editHandler)="onEditListener($event)"
+        (deleteHandler)="onDeleteListener($event)">
+    </app-table-list>
+</mat-card>

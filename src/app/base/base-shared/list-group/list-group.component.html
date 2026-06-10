@@ -1,0 +1,8 @@
+<ng-template [ngIf]="items?.length > 0">
+    <h6 style="margin-top: 10px;">{{ title }} - total {{ items?.length }}</h6>
+    <div  class="wrapper">
+        <ul class="list-group" *ngFor="let item of items">
+            <li class="list-group-item">{{ item[id] }} - {{ item[summary] }}</li>
+        </ul>
+    </div>
+</ng-template>

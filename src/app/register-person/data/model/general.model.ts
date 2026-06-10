@@ -1,0 +1,62 @@
+export interface General {
+  fantasyName?: string;
+  startActivity?: string;
+  registerDate?: string;
+  salesman?: number;
+  salemanCode?: number;
+  contact?: string;
+  typePerson?: number;
+  cnpj?: string;
+  stateRegistration?: string;
+  municipalRegistration?: string;
+  cnae?: string;
+  finalConsumer?: number;
+  phone?: string;
+  dateOfBid?: string;
+  cep?: string;
+  cityCode?: number;
+  city?: string;
+  uf?: string;
+  address?: string;
+  number?: string;
+  complement?: string;
+  neighborhood?: string;
+  region?: string;
+  condominium?: string;
+  country?: string;
+  referencePoint?: string;
+  branchCode?: number;
+  categoryCode?: number;
+  workCard?: string;
+  company?: string;
+  workPlaceSpouse?: string;
+  rg?: string;
+  husband?: string;
+  cpfHusband?: string;
+  rgHusband?: string;
+  localTrabalhoHusband?: string;
+  phoneHusband?: string;
+  cellPhoneHusband?: string;
+  email?: string;
+  personPhone?: string;
+  zone?: string;
+}
+
+export interface Referencia {
+  banco1?: string;
+  banco2?: string;
+  agencia1?: string;
+  agencia2?: string;
+  cc1?: string;
+  cc2?: string;
+  gerente1?: string;
+  gerente2?: string;
+  telefoneGerente1?: string;
+  telefoneGerente2?: string;
+  empresa1?: string;
+  empresa2?: string;
+  contatoEmpresa1?: string;
+  contatoEmpresa2?: string;
+  telefoneEmpresa1?: string;
+  telefoneEmpresa2?: string;
+}

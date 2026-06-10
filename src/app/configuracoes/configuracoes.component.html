@@ -1,0 +1,98 @@
+<loadingV01 *ngIf="isLoading">{{ isLoading }}</loadingV01>
+
+<div class="config-container">
+
+    <!-- Toolbar de Ações -->
+    <mat-toolbar color="primary" class="actions-toolbar">
+        <span>{{ mTipoOperacao }}</span>
+        <span class="toolbar-spacer"></span>
+        <button mat-raised-button color="accent" (click)="salvar()">
+            <mat-icon>save</mat-icon> Gravar
+        </button>
+        <button mat-stroked-button (click)="cancelarESair()" style="color:white; border-color:white; margin-left:8px">
+            <mat-icon>close</mat-icon> Cancelar/Sair
+        </button>
+    </mat-toolbar>
+
+    <mat-card class="config-card">
+        <mat-card-header>
+            <mat-icon mat-card-avatar>settings_cell</mat-icon>
+            <mat-card-title>Configurações WhatsApp</mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>
+            <form [formGroup]="formulario">
+
+                <!-- Servidor e Número -->
+                <div class="form-row">
+                    <mat-form-field appearance="outline" class="form-field">
+                        <mat-label>Endereço IP WhatsApp</mat-label>
+                        <mat-icon matPrefix>router</mat-icon>
+                        <input matInput id="servidorWhatsAppValor" formControlName="servidorWhatsAppValor" type="text">
+                        <mat-error *ngIf="formulario.get('servidorWhatsAppValor').errors?.minlength">Endereço inválido</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" class="form-field">
+                        <mat-label>Número WhatsApp</mat-label>
+                        <mat-icon matPrefix>phone</mat-icon>
+                        <input matInput id="numeroWhatsAppValor" formControlName="numeroWhatsAppValor" type="text" appMascaraFone>
+                        <mat-error *ngIf="formulario.get('numeroWhatsAppValor').errors?.minlength">Número inválido</mat-error>
+                    </mat-form-field>
+                </div>
+
+                <!-- Texto da Mensagem -->
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Texto da Mensagem</mat-label>
+                    <mat-icon matPrefix>message</mat-icon>
+                    <textarea matInput [rows]="4" formControlName="textoMensagem" (change)="tratarFoneParaWhatsApp()"></textarea>
+                </mat-form-field>
+
+                <!-- Fones -->
+                <div class="form-row">
+                    <mat-form-field appearance="outline" class="form-field">
+                        <mat-label>Fone Destino</mat-label>
+                        <mat-icon matPrefix>phone_forwarded</mat-icon>
+                        <input matInput id="foneMensagem" formControlName="foneMensagem" type="text" appMascaraFone (change)="tratarFoneParaWhatsApp()">
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" class="form-field">
+                        <mat-label>Fone Destino Tratado</mat-label>
+                        <mat-icon matPrefix>dialpad</mat-icon>
+                        <input matInput id="foneMensagemTratado" formControlName="foneMensagemTratado" type="text" appMascaraFone>
+                    </mat-form-field>
+                </div>
+
+                <!-- Botões WhatsApp -->
+                <div class="whatsapp-actions">
+                    <button mat-stroked-button color="primary" (click)="whatsAppFecharSessao()">
+                        <mat-icon>logout</mat-icon> Fechar Sessão
+                    </button>
+                    <button mat-stroked-button color="primary" (click)="whatsAppStatusSessao()">
+                        <mat-icon>info</mat-icon> Status Sessão
+                    </button>
+                    <button mat-stroked-button color="primary" [disabled]="mBuscandoQrCode" (click)="whatsAppQrCode()">
+                        <mat-icon>qr_code</mat-icon> Gerar QrCode
+                    </button>
+                    <button mat-stroked-button color="primary" (click)="whatsAppStartSessao()">
+                        <mat-icon>login</mat-icon> Iniciar Sessão
+                    </button>
+                    <button mat-raised-button color="primary" (click)="whatsAppEnviarTexto()">
+                        <mat-icon>send</mat-icon> Enviar Texto
+                    </button>
+                    <button mat-raised-button color="primary" (click)="WhatsAppEnviarArquivos()">
+                        <mat-icon>attach_file</mat-icon> Enviar Arquivo
+                    </button>
+                </div>
+
+                <!-- Resultados -->
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Resultados</mat-label>
+                    <mat-icon matPrefix>terminal</mat-icon>
+                    <textarea matInput [rows]="4" formControlName="resultados"></textarea>
+                </mat-form-field>
+
+            </form>
+        </mat-card-content>
+    </mat-card>
+
+</div>

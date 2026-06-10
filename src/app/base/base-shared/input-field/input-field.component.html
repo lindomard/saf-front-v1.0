@@ -1,0 +1,33 @@
+<div class="form-group edit-search">
+  <label [ngClass]="{
+            'erro-label-feedback': showError
+        }"> {{ getOptions()}}</label>
+
+  <input #instanceRef [ngClass]="{
+            'is-invalid': showError,
+            'input-field': marginTop
+        }" class="form-control form-control-sm" [formControl]="control" [attr.id]="name"
+    [textMask]=" mask ? { mask: mask } : { mask: false }" placeholder="{{ placeholder }}" min="0" type="{{ type }}"
+    (ngModelChange)="handlerChangeFunction($event)" (blur)="handlerBlur()" (focus)="onFocusListener()" listOptions
+    (handlerTabEvent)="onListenerTabEvent($event)">
+
+  <div *ngIf="showError" class="invalid-feedback">
+    <span *ngIf="showErrorNameIsExist">
+      {{ messageNameIsExist }}
+    </span>
+
+    <span *ngIf="!showErrorNameIsExist">
+      {{ message }}
+    </span>
+
+  </div>
+  <div class="wrapper-list-component">
+    <div class="wrapper-datalist" *ngIf="showDataList">
+      <ul class="list-group wrapper-list" *ngFor="let item of options; let i = index" (click)="handleSelected(item)">
+        <li class="list-group-item">{{ item[labelValue] }}</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!--min="2001-01-01T00:00:00" max="2025-12-31T00:00:00"-->

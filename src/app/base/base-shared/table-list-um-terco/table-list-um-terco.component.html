@@ -1,0 +1,75 @@
+<mat-table [dataSource]="dataSource" #table>
+
+  <ng-container matColumnDef="select">
+      <mat-header-cell *matHeaderCellDef>
+          <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()"
+              [indeterminate]="selection.hasValue() && !isAllSelected()" [aria-label]="checkboxLabel()">
+          </mat-checkbox>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row, let i = index" class="center-item" data-label="select">
+          <mat-checkbox #instanceCheckbox (click)="$event.stopPropagation()" (change)="selectRow($event, row)"
+              [checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row)"></mat-checkbox>
+      </mat-cell>
+  </ng-container>
+
+
+
+  <ng-container matColumnDef="{{ item.columnName }}" *ngFor="let item of itens">
+      <mat-header-cell [ngStyle]="changeStyle(item)" class="truncate-cell" *matHeaderCellDef> {{ item.headerName }}
+      </mat-header-cell>
+      <mat-cell [ngStyle]="changeStyle(item)" class="truncate-cell" *matCellDef="let element"
+          [attr.data-label]="item.columnName"  [ngClass]="{
+              'center-item': !item.notCenter
+          }">
+
+          <span>
+               {{ fRetornaFormatado(element[item?.columnName], item.columnMask) }}
+          </span>
+          <!-- <span *ngIf="item.columnType==='DateTime'" > {{ element[item?.columnName] | date : 'dd/MM/yyyy HH:mm:ss' }}</span>
+          <span *ngIf="item.columnName!=='mdfeDathorEmis'"  >  {{ element[item?.columnName] }}</span> -->
+      </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef ="edit">
+      <mat-header-cell [ngStyle]="changeCampo()" *matHeaderCellDef>
+          <span>Edit</span>
+      </mat-header-cell>
+      <mat-cell [ngStyle]="changeCampo()" *matCellDef="let row, let i = index" class="center-item" data-label="edit">
+          <span (click)="actionEdit(row , i)" class="fa fa-edit"></span>
+      </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="delete">
+      <mat-header-cell [ngStyle]="changeCampo()" *matHeaderCellDef>
+          <span>Del</span>
+      </mat-header-cell>
+      <mat-cell [ngStyle]="changeCampo()" *matCellDef="let row, let i = index" class="center-item" data-label="del">
+          <span (click)="actionDelete(i)" class="fa fa-trash"></span>
+      </mat-cell>
+  </ng-container>
+
+
+  <ng-container matColumnDef="view">
+      <mat-header-cell [ngStyle]="changeCampo()" *matHeaderCellDef>
+          <span>Ver</span>
+      </mat-header-cell>
+      <mat-cell [ngStyle]="changeCampo()" *matCellDef="let row, let i = index" class="center-item" data-label="ver">
+          <span (click)="actionView(row)" class="fa fa-binoculars"></span>
+      </mat-cell>
+  </ng-container>
+
+  <!-- (click)="onRowClicked(row)" -->
+
+  <mat-header-row *matHeaderRowDef="displayColumns; sticky: true"></mat-header-row>
+  <mat-row *matRowDef="let row, let i = index; columns: displayColumns;"
+  (dblclick)="onRowClicked(row)"
+
+  [attr.position]="getPosition(row,i)"
+  [style.background]="highlightedRows.indexOf(row==undefined ? -1 : row) != -1 ? 'lightblue' : ''"
+  ></mat-row>
+  <!-- [@fadeInd]="" -->
+</mat-table>
+
+<mat-paginator *ngIf="isPaginator" [length]="length" [pageIndex]="pageIndex" [pageSize]="pageSize"
+  [pageSizeOptions]="paginatorSize" (page)="pageHandler.emit($event)" showFirstLastButtons>
+</mat-paginator>

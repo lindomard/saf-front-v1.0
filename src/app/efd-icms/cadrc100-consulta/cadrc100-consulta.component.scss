@@ -1,0 +1,113 @@
+
+
+.table-container {
+  height: 600px;
+  overflow: auto;
+}
+
+
+
+
+
+table {
+  width: 100%;
+}
+
+
+
+
+.center-item {
+  justify-content: center;
+}
+
+.rigth-item {
+  justify-content: end;
+}
+
+// novos 
+
+// .example-container {
+//   display: flex;
+//   flex-direction: column;
+//   max-height: 500px;
+//   min-width: 300px;
+// }
+
+.mat-table {
+  overflow: auto;
+  max-height: 500px;
+}
+
+.mobile-label {
+  display: none;
+}
+
+/*
+
+@media(max-width: 600px) {
+  .mobile-label {
+    width: 80px;
+    display: inline-block;
+        font-weight: bold;
+  }
+
+  .mat-header-row {
+    display: none;
+  }
+
+  .mat-row { 
+    flex-direction: column;
+    align-items: start;
+    padding: 8px 24px;
+  }
+}
+
+*/
+// inicio
+
+.example-container {
+  height: 400px;
+  overflow: auto;
+}
+
+.mat-mdc-table-sticky {
+  background: #59abfd;
+  opacity: 1;
+}
+
+.example-sticky-toggle-group {
+  margin: 8px;
+}
+
+.mat-column-filler {
+  padding: 0 8px;
+  font-size: 10px;
+  text-align: center;
+}
+
+.mat-mdc-header-cell, .mat-mdc-footer-cell, .mat-mdc-cell {
+  min-width: 80px;
+  box-sizing: border-box;
+}
+
+.mat-mdc-header-row, .mat-mdc-footer-row, .mat-mdc-row {
+  min-width: 1920px; /* 24 columns, 80px each */
+}
+
+.mat-mdc-table-sticky-border-elem-top {
+  border-bottom: 2px solid midnightblue;
+}
+
+.mat-mdc-table-sticky-border-elem-right {
+  border-left: 2px solid midnightblue;
+}
+
+.mat-mdc-table-sticky-border-elem-bottom {
+  border-top: 2px solid midnightblue;
+}
+
+.mat-mdc-table-sticky-border-elem-left {
+  border-right: 2px solid midnightblue;
+}
+
+// termino

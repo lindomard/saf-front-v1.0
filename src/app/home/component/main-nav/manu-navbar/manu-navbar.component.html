@@ -1,0 +1,120 @@
+<!-- <div class="wrapper-body">
+    <div class="top-content">
+      <div class="main-button">
+        <button class="button-top" (click)="drawableClick()">
+          <span class="fa fa-bars fa-10x" aria-hidden="true"></span>
+        </button>
+      </div>
+      <div class="logo-company">
+        <img style="height: 60px; width: 180px;" src="assets/image/logo_gerentenet.png" alt="image"/>
+      </div>
+      <div class="menu-content" [ngClass]="{'show': isShow}">
+        <mat-nav-list *ngIf="isShow">
+          <a mat-list-item routerLink="page" routerLinkActive="active-router">Home</a>
+          <a mat-list-item routerLink="cadastro-pessoa" routerLinkActive="active-router">Pessoas</a>
+          <a mat-list-item (click)="logout()">Sair</a>
+        </mat-nav-list>
+      </div>
+    </div>
+
+    body router
+    <div class="wrapper-content" [@routeAnimation]="prepareRoute(outlet)">
+        <router-outlet #outlet="outlet"></router-outlet>
+    </div>
+</div>  -->
+
+<!-- 
+[attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    
+    
+      <mat-sidenav color="primary" #drawer class="sidenav" fixedInViewport
+     [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" 
+     [mode]="(isHandset$ | async) ? 'over' : 'side'" 
+     [opened]="false">
+        <mat-toolbar class="custom-toolbar">
+            <div class="main-button">
+                <button class="button-top" (click)="openMenu()">
+                <i class="fa fa-bars fa-10x" aria-hidden="true"></i>
+              </button>
+            </div>
+            <span><img style="height: 60px; width: 180px;" src="assets/image/logo_gerentenet.png" alt="image" /></span>
+        </mat-toolbar>
+        <div class="wrapper-search">
+            <i style="margin-top: 20px;" class="fa fa-search fa-10x"></i>
+        </div>
+        <mat-nav-list>
+            <a mat-list-item routerLink="page" routerLinkActive="active-router">Home</a>
+            <a mat-list-item routerLink="cadastro-pessoa" routerLinkActive="active-router">Pessoas</a>
+            <a mat-list-item (click)="logout()">Sair</a>
+        </mat-nav-list>
+    </mat-sidenav>
+
+    
+    -->
+
+
+
+
+    <!-- <mat-sidenav-container class="sidenav-container"> -->
+
+
+
+<!-- <mat-sidenav-container>
+  <mat-sidenav color="primary" #drawer class="sidenav" fixedInViewport
+     [opened]="false">
+        <mat-toolbar class="custom-toolbar">
+            <div class="main-button">
+                <button class="button-top" (click)="openMenu()">
+                <i class="fa fa-bars fa-10x" aria-hidden="true"></i>
+              </button>
+            </div>
+            <span><img style="height: 60px; width: 180px;" src="assets/image/logo_gerentenet.png" alt="image" /></span>
+        </mat-toolbar>
+        <div class="wrapper-search">
+            <i style="margin-top: 20px;" class="fa fa-search fa-10x"></i>
+        </div>
+        <mat-nav-list>
+            <a mat-list-item routerLink="page" routerLinkActive="active-router">Home</a>
+            <a mat-list-item routerLink="cadastro-pessoa" routerLinkActive="active-router">Pessoas</a>
+            <a mat-list-item (click)="logout()">Sair</a>
+        </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <mat-toolbar class="custom-toolbar" style="z-index: 99999999999;">
+            <div class="main-button" *ngIf="showLogo">
+                <button class="button-top" (click)="openMenu()">
+                <i class="fa fa-bars fa-10x" aria-hidden="true"></i>
+              </button>
+            </div>
+
+            <span class="logo" style="margin-left: 20px;" *ngIf="showLogo"><img style="height: 60px; width: 180px;"
+                src="assets/image/logo_gerentenet.png" alt="image" /></span>
+
+            <div class="wrapper-toolbar">
+                <div class="wrapper-control">
+                    <div class="name-control">
+                        <span class="text">Name control</span>
+                    </div>
+                    <div class="name-function">
+                        <span class="text">Name Function</span>
+                    </div>
+                </div>
+                <div class="wrapper-config">
+                    <div class="name-company">
+                        <span class="text">Company name</span>
+                    </div>
+                    <div class="name-store">
+                        <span class="text">Name store</span>
+                    </div>
+                </div>
+            </div>
+        </mat-toolbar>
+
+        <div [@routeAnimation]="prepareRoute(outlet)" class="wrapper-router">
+            <router-outlet #outlet="outlet"></router-outlet>
+        </div>
+
+    </mat-sidenav-content>
+</mat-sidenav-container> -->

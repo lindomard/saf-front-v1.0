@@ -1,0 +1,15 @@
+<section>
+  <aside>
+    <button (click)="fechar('cancel')"><i class="fa-solid fa-xmark"></i></button>
+  </aside>
+
+  <aside>
+    <h3>{{ title }}</h3>
+    <p [innerHTML]="message"></p>
+  </aside>
+
+  <aside>
+    <button (click)="fechar('no')">Não</button>
+    <button (click)="fechar('yes')">Sim</button>
+  </aside>
+</section>

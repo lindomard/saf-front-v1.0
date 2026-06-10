@@ -1,0 +1,52 @@
+@import "../../../../assets/style/color/color";
+@import '../../../../assets/style/style-component-form.scss';
+
+.genesis-button {
+    background-color: $white;
+    border: 0px;
+    padding: 0px;
+    box-shadow: none;
+    text-transform: capitalize;
+    border-radius: 4px;
+    line-height: 30px;
+    cursor: pointer;
+    position: relative;
+    margin-top: 1.85rem;
+
+    font-size: 12px;
+    font-weight: bold;
+
+    &.large {
+        line-height: 48px;
+        font-size: 14px;
+    }
+    &.genesis-primary {
+        background-color: $blue-light-darken-4;
+        color: $white;
+    }
+    &.full {
+        width: 100%;
+    }
+    &.border-button {
+        border: 1px solid $blue-light-darken-4;
+    }
+
+    &:disabled {
+        background-color: $grey-light;
+        cursor: not-allowed;
+        color: $grey;
+        border: none;
+    }
+
+    .content {
+        padding: 0px 10px;
+    }
+}
+
+
+
+@media (max-width: 600px) {
+    .genesis-button {
+        margin-top: 10px;
+    }
+}

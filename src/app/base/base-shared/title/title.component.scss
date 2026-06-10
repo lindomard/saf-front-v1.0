@@ -1,0 +1,23 @@
+@import '../../../../assets/style/root.scss';
+
+.margin {
+    margin-top: 10px;
+}
+.margin-start {
+    margin-left: 20px;
+}
+.title {
+    height: 20px;
+    margin-top: 10px;
+    position: absolute;
+    bottom: 4px;
+    background-color: $white;
+
+    .text {
+        font-weight: 900;
+    }
+}
+
+.divider-solid {
+    border-top: 1px solid $grey;
+}

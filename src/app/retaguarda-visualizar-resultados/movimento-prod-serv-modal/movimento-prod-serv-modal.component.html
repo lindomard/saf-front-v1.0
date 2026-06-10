@@ -1,0 +1,257 @@
+
+<loadingV01 *ngIf="isLoading">{{ isLoading }}</loadingV01>
+
+
+<mat-card>
+    <h1 mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle
+        style="background-color: rgb(28, 119, 161); text-align:center;"> {{ titulo }} </h1>
+    <h1 mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle
+        style="background-color: rgb(21, 100, 19); text-align:center;"> {{ tipoEvento }}
+
+
+        <div class="col text-right">
+            <button class="btn btn-primary mr-2" (click)="fBuscarPlanilha()">Planilha</button>
+        </div>
+
+        <div class="col text-right">
+            <button class="btn btn-primary mr-2" (click)="cancelarESair()">Fechar</button>
+        </div>
+
+    </h1>
+
+</mat-card>
+
+<div class="fundo">
+
+
+    <div class="row">
+    
+
+        <div class="col-xl-12">
+            <form [formGroup]="formConclusao">
+
+                <mat-card>
+                    <h1 mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle
+                        style="background-color: rgb(28, 119, 161); text-align:center;"> {{ dadosDaConclusao }} </h1>
+                </mat-card>
+        
+
+                <div class="row">
+
+                    <div class="col-md-2">
+                        <div class="row">
+
+
+                            <div class="col-md-4">
+                                <label>Ano:</label>
+                                <input formControlName="ano"  class="form-control">
+                            </div>
+
+
+                            <div class="col-md-8">
+                                <label>Cód Item</label>
+                                <input formControlName="rc170CodItem" class="form-control" type="text">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-7">
+                        <label>Descrição</label>
+                        <input id="r0200DescrItem" formControlName="r0200DescrItem" class="form-control" type="text">
+
+                    </div>
+
+
+                    <div class="col-md-1">
+                        <label>Und</label>
+                        <input id="r0200UnidInv" formControlName="r0200UnidInv" class="form-control" type="text">
+
+                    </div>
+
+
+
+                    <div class="col-md-2">
+                        <label>Estoque Inicial</label>
+                        <input formControlName="estini"   [mask]="getMaskForm(3)" thousandSeparator="."
+                            decimalMarker="," [dropSpecialCharacters]="true" [showMaskTyped]="false" placeholder="0,00"
+                            [leadZero]="true" [style]="getAlinhar('D')" class="form-control">
+                    </div>
+
+                    <div class="col-md-2">
+                        <label>Entradas:</label>
+                        <input formControlName="ccEntradas"  [mask]="getMaskForm(3)" thousandSeparator="."
+                            decimalMarker="," [dropSpecialCharacters]="true" [showMaskTyped]="false" placeholder="0,00"
+                            [leadZero]="true" [style]="getAlinhar('D')" class="form-control">
+                    </div>
+
+
+
+                    <div class="col-md-2">
+                        <label>Total I</label>
+                        <input formControlName="ccTotali"   [mask]="getMaskForm(3)" thousandSeparator="."
+                            decimalMarker="," [dropSpecialCharacters]="true" [showMaskTyped]="false" placeholder="0,00"
+                            [leadZero]="true" [style]="getAlinhar('D')" class="form-control">
+                    </div>
+
+
+
+
+                    <div class="col-md-2">
+                        <label>Estoque Fim</label>
+                        <input formControlName="estfin"   [mask]="getMaskForm(3)" thousandSeparator="."
+                            decimalMarker="," [dropSpecialCharacters]="true" [showMaskTyped]="false" placeholder="0,00"
+                            [leadZero]="true" [style]="getAlinhar('D')" class="form-control">
+                    </div>
+
+
+                    <div class="col-md-2">
+                        <label>Saidas</label>
+                        <input formControlName="ccSaidas"   [mask]="getMaskForm(3)" thousandSeparator="."
+                            decimalMarker="," [dropSpecialCharacters]="true" [showMaskTyped]="false" placeholder="0,00"
+                            [leadZero]="true" [style]="getAlinhar('D')" class="form-control">
+                    </div>
+
+
+                    <div class="col-md-2">
+                        <label>Total II</label>
+                        <input formControlName="ccTotalii"  type="text" [mask]="getMaskForm(3)" thousandSeparator="."
+                            decimalMarker="," [dropSpecialCharacters]="true" [showMaskTyped]="false" placeholder="0,00"
+                            [leadZero]="true" [style]="getAlinhar('D')" class="form-control">
+                    </div>
+
+
+                    <div class="col-md-2">
+                        <label>Qtd OE</label>
+                        <input formControlName="ccOeQtd"   [mask]="getMaskForm(3)" thousandSeparator="."
+                            decimalMarker="," [dropSpecialCharacters]="true" [showMaskTyped]="false" placeholder="0,00"
+                            [leadZero]="true" [style]="getAlinhar('D')" class="form-control">
+                    </div>
+
+
+                    <div class="col-md-2">
+                        <label>Qtd OS</label>
+                        <input formControlName="ccOsQtd"   [mask]="getMaskForm(3)" thousandSeparator="."
+                            decimalMarker="," [dropSpecialCharacters]="true" [showMaskTyped]="false" placeholder="0,00"
+                            [leadZero]="true" [style]="getAlinhar('D')" class="form-control">
+                    </div>
+
+
+                    <div class="col-md-2">
+                        <label>OE Valor</label>
+                        <input formControlName="ccOeValor"  [mask]="getMaskForm(2)" thousandSeparator="."
+                            decimalMarker="," [dropSpecialCharacters]="true" [showMaskTyped]="false" placeholder="0,00"
+                            [leadZero]="true" [style]="getAlinhar('D')" class="form-control">
+                    </div>
+
+
+                    <div class="col-md-2">
+                        <label>OS Valor</label>
+                        <input formControlName="ccOsValor"  [mask]="getMaskForm(2)" thousandSeparator="."
+                            decimalMarker="," [dropSpecialCharacters]="true" [showMaskTyped]="false" placeholder="0,00"
+                            [leadZero]="true" [style]="getAlinhar('D')" class="form-control">
+                    </div>
+
+
+                    <div class="col-md-2">
+                        <label>I L B</label>
+                        <input formControlName="ccIlb"  [mask]="getMaskForm(2)" thousandSeparator="." decimalMarker=","
+                            [dropSpecialCharacters]="true" [showMaskTyped]="false" placeholder="0,00" [leadZero]="true"
+                            [style]="getAlinhar('D')" class="form-control">
+                    </div>
+
+
+                    <div class="col-md-2">
+                        <label style="text-align: center;">Valor Omitido</label>
+                        <input formControlName="valorTribOmitido" [mask]="getMaskForm(2)" thousandSeparator="."
+                            decimalMarker="," [dropSpecialCharacters]="true" [showMaskTyped]="false" placeholder="0,00"
+                            [leadZero]="true" [style]="getAlinhar('D')" class="form-control">
+                    </div>
+
+                    <div class="col-md-2">
+                        <label>Multa formal</label>
+                        <input formControlName="multaFormal"  [mask]="getMaskForm(2)" thousandSeparator="."
+                            decimalMarker="," [dropSpecialCharacters]="true" [showMaskTyped]="false" placeholder="0,00"
+                            [leadZero]="true" [style]="getAlinhar('D')" class="form-control">
+                    </div>
+
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<table mat-table #demomatdatatable [dataSource]="dataSourceWithPageSize"  class="mat-elevation-z8">
+    <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">
+        <th mat-header-cell [style]="getAlingn(column)"  [width]="getStyle3(column)" *matHeaderCellDef>
+            {{ getColumnName(column) }} </th>
+
+
+            <div *ngIf="column==='visualizar'">
+                <td mat-cell [style]="getAlingn(column)" *matCellDef="let element">
+    
+                    <button color="primary" (click)="VisualizarDanfe(element)">
+                        <mat-icon>warning</mat-icon>
+                    </button>
+                </td>
+    
+            </div>
+    
+
+            <div *ngIf="column==='editar'">
+                <td mat-cell [style]="getAlingn(column)" [width]="getStyle3(column)" *matCellDef="let element">
+    
+                    <button color="primary" (click)="Editar(element)">
+                        <mat-icon>warning</mat-icon>
+                    </button>
+                </td>
+    
+            </div>
+    
+
+        <div *ngIf="column!=='visualizar' && column!=='editar'">
+
+
+            <td mat-cell [style]="getAlingn(column)" [width]="getStyle3(column)"
+                        (dblclick)="onDblClick(element,column )"
+            *matCellDef="let element">
+                {{ fValorENomeDoCampoParaformatar(element,column) }}
+
+
+            </td>
+        </div>
+
+
+
+    </ng-container>
+
+
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr
+    mat-row
+    #demmatrow
+    *matRowDef="let row; columns: displayedColumns;"
+    [matRowKeyboardSelection]="selection"
+    [rowModel]="row"
+    [matTable]="demomatdatatable"
+    [page]="filterPaginator"
+    [row]="demmatrow"
+    (paginaProxima)="paginaProxima()"
+    (paginaAnterior)="paginaAnterior()"
+    (paginaUltima)="paginaUltima()"
+    (paginaPrimeira)="paginaPrimeira()"
+     [ngClass]="{selected: selection.isSelected(row)}"
+      (click)="selection.toggle(row)"
+  ></tr>
+
+
+
+</table>
+
+
+<mat-paginator #paginatorPageSize [pageSize]="filterPaginator.size" [length]="filterPaginator.totalElements"
+    [pageIndex]="filterPaginator.page" [pageSizeOptions]="pageLimitOptions" showFirstLastButtons (page)="changeEvent()">
+</mat-paginator>

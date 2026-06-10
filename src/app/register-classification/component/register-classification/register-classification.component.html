@@ -1,0 +1,28 @@
+<mat-tab-group [disableRipple]="true" [selectedIndex]="selectedTabName.value"
+    (selectedIndexChange)="selectedTabName.setValue($event)">
+
+    <mat-tab label="Categoria">
+        <app-category></app-category>
+    </mat-tab>
+
+    <mat-tab label="Departamento">
+        <app-department></app-department>
+    </mat-tab>
+    
+    <mat-tab label="Grupo">
+        <app-group></app-group>
+    </mat-tab>
+
+    <mat-tab label="Sub-Grupo">
+        <app-sub-group></app-sub-group>
+    </mat-tab>
+
+    <mat-tab label="Tipo">
+        <app-type></app-type>
+    </mat-tab>
+
+    <mat-tab label="Tipo Extra">
+        <app-extra-type></app-extra-type>
+    </mat-tab>
+
+</mat-tab-group>

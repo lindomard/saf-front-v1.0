@@ -1,0 +1,10 @@
+<button
+    [ngStyle]="getStyle()"
+    mat-raised-button color="{{ color }}"
+    matTooltip="{{ toolTip }}"
+    matTooltipPosition="{{ toolTipPosition }}"
+    [disabled]="form?.disabled"
+    (click)="click()">
+        <mat-icon *ngIf="icon">{{ icon }}</mat-icon>
+        {{ label }}
+</button>

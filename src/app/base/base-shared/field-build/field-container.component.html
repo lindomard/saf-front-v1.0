@@ -1,0 +1,23 @@
+<ng-container [ngSwitch]="config?.type">
+    <app-input-field #instanceRef *ngSwitchCase="'TEXT'"></app-input-field>
+    <app-input-field-number #instanceRef *ngSwitchCase="'NUMBER'"></app-input-field-number>
+    <app-text-area #instanceRef *ngSwitchCase="'TEXT_AREA'"></app-text-area>
+    <app-select #instanceRef *ngSwitchCase="'SELECT'"></app-select>
+    <app-btn-raised #instanceRef *ngSwitchCase="'BTN_RAISED'"></app-btn-raised>
+    <app-btn-mat #instanceRef *ngSwitchCase="'BTN_MAT'"></app-btn-mat>
+    <app-genesis-button #instanceRef *ngSwitchCase="'GENESIS_BUTTON'"></app-genesis-button>
+    <app-datepicker #instanceRef *ngSwitchCase="'DATEPICKER'"></app-datepicker>
+    <app-genesis-calendar #instanceRef *ngSwitchCase="'GENESIS_CALENDAR'"></app-genesis-calendar>
+    <app-input-field-button #instanceRef *ngSwitchCase="'INPUT_BUTTON'"></app-input-field-button>
+    <app-input-button-enable #instanceRef *ngSwitchCase="'INPUT_BUTTON_ENABLE'"></app-input-button-enable>
+    <app-title #instanceRef *ngSwitchCase="'TITLE'"></app-title>
+    <app-checkbox #instanceRef *ngSwitchCase="'CHECKBOX'"></app-checkbox>
+    <app-radio-button #instanceRef *ngSwitchCase="'RADIO_BUTTON'"></app-radio-button>
+    <span #instanceRef *ngSwitchCase="'SPACE'"></span>
+    <app-divider #instanceRef *ngSwitchCase="'DIVIDER'"></app-divider>
+    <app-list-group #instanceRef *ngSwitchCase="'LIST_GROUP'"></app-list-group>
+    <app-input-currency-mask #instanceRef *ngSwitchCase="'INPUT_MONEY'"></app-input-currency-mask>
+    <app-input-field-alphanumeric #instanceRef *ngSwitchCase="'INPUT_ALPHANUMERIC'"></app-input-field-alphanumeric>
+    <app-input-field-button-alphanumeric #instanceRef *ngSwitchCase="'INPUT_BUTTON_ALPHANUMERIC'"></app-input-field-button-alphanumeric>
+    <app-input-field-name-file #instanceRef *ngSwitchCase="'INPUT_NAME_FILE'"></app-input-field-name-file>
+</ng-container>

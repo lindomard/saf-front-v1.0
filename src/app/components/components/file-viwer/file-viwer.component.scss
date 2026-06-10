@@ -1,0 +1,106 @@
+:host {
+    display: block;
+}
+
+section {
+    background-color: #fff;
+    width: 90rem;
+    height: 90vh;
+    border-radius: .5rem;
+    max-width: 100%;
+    max-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+aside {
+    &:first-child {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1rem;
+        border-bottom: .1rem solid #C4C4C4;
+
+        span {
+            display: flex;
+            color: #2A2A2A;
+            text-align: justify;
+            font-family: 'Inter', sans-serif;
+            font-size: 1.6rem;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+
+            button {
+                margin-left: 1.5rem;
+
+                i {
+                    font-size: 2rem;
+                }
+            }
+        }
+
+        button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: transparent;
+            outline: none;
+            border: none;
+            cursor: pointer;
+
+            i {
+                font-size: 2.5rem;
+                color: #2A2A2A;
+            }
+        }
+    }
+
+    &:nth-child(2) {
+        display: flex;
+        flex-grow: 1;
+        height: auto;
+        overflow-y: auto;
+    }
+}
+
+img {
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 100%;
+}
+
+@media (max-width: 431px) {
+    section {
+        width: 100%;
+        height: 30rem;
+        border-radius: 0;
+
+    }
+
+    aside:first-child {
+        padding: 0.5rem;
+
+        span {
+            font-size: 1.2rem;
+            button {
+                margin-left: 1rem;
+                i {
+                    font-size: 1.6rem;
+                }
+            }
+        }
+
+        button {
+            i {
+                font-size: 2rem;
+            }
+        }
+    }
+
+    aside:nth-child(2) {
+        flex-direction: column;
+        height: auto;
+        overflow-y: auto;
+    }
+}

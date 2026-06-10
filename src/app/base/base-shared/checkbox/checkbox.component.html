@@ -1,0 +1,21 @@
+<div class="form-check form-check-inline checkBox ">
+
+  <!-- <div class="form-check form-check-inline"> -->
+      <!-- <label class="container">{{ label  }}
+          <input type="checkbox" checked="checked" 
+              [formControl]="control" 
+              value="{{ valueKey }}" 
+              id="{{ name }}">
+          <span class="checkmark"></span>
+      </label> -->
+      <input class="form-check-input" type="checkbox" value="{{ valueKey }}" id="{{ name }}"
+          [formControl]="control">
+  
+      <!-- <ng-container [ngSwitch]="typeLabel">
+          <label *ngSwitchCase="'normal'" for="{{ name }}" class="form-check-label label">{{ label  }}</label>
+          <label *ngSwitchCase="'uppercase'" for="{{ name }}"
+              class="form-check-label label-checkbox">{{ label | uppercase }}</label>
+      </ng-container> -->
+  
+      {{ label  }} 
+  </div>

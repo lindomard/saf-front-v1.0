@@ -1,0 +1,43 @@
+<div class="container">
+
+    <section class="main-align">
+        <mat-card fxFlex.lg="30" fxFlex.md="40" fxFlex.xs="98">
+            <mat-card-header>Salvar Relatorio Padrao</mat-card-header>
+            <mat-card-content>
+
+
+                <form [formGroup]="form_salvar">
+
+                    <mat-form-field appearance="outline" style="margin-right:2rem; width:50%">
+                        <mat-label>Salvar Relatorio Como</mat-label>
+                        <input matInput formControlName="nomeRelatorio">
+                        <mat-hint align="start">Max 100 characters</mat-hint>
+
+                        <mat-hint align="end"> {{ form_salvar.get("nomeRelatorio").value?.length }} / 100 </mat-hint>
+
+                    </mat-form-field>
+
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <button class="btn btn-primary mr-2" [disabled]="mDisableGerar"
+                                        (click)="salvar()">Salvar
+                                        Agora</button>
+                                </div>
+                                <div class="col-md-6">
+                                    <button class="btn btn-dark" [disabled]="mDisableGerar"
+                                        (click)="Sair()">Sair/Fechar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </form>
+
+            </mat-card-content>
+        </mat-card>
+    </section>
+</div>

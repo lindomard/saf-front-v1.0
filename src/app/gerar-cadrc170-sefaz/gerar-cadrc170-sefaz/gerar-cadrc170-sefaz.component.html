@@ -1,0 +1,22 @@
+
+<loadingV01 *ngIf="isLoading">{{ isLoading }}</loadingV01>
+
+
+
+<mat-card>
+    <h1 mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle
+        style="background-color: rgb(28, 119, 161); text-align:center;">Gerar CadRegC170 </h1>
+    <h1 mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle
+        style="background-color: rgb(21, 100, 19); text-align:center;"> {{ tipoEvento }}
+
+
+        <div class="col text-right">
+            <button class="btn btn-primary mr-2" [disabled]="mDisableGerar" (click)="gerarArquivo()">Gerar Arquivo</button> 
+            <button class="btn btn-primary mr-2" [disabled]="mDisableGerar" (click)="cancelarESair()">Fechar</button>
+        </div>
+
+
+    </h1>
+
+</mat-card>
+

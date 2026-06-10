@@ -1,0 +1,60 @@
+@import "../../../../assets/style/style-component-form.scss";
+@import "../../../../assets/style/root.scss";
+
+.input-field {
+    margin-top: 0.3rem !important;
+}
+
+.form-group.edit-search {
+    
+    .wrapper-list-component {
+        max-height: 400px;
+        position: relative;
+    
+        .wrapper-datalist {
+            max-height: 400px;
+            width: 100%;
+            background-color: $white;
+            position: absolute;
+            overflow-y: auto !important;
+            z-index: 99999999999999999999999999999;
+            border: 1px $ice solid;
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+    
+            .list-group-item {
+                padding: 0.5rem 1.25rem !important;
+                font-size: 15px;
+            }
+            .list-group-item:hover {
+                background-color: $blue-primary;
+                color: $white;
+            }
+            .list-group-item:last-child {
+                border-bottom-right-radius: 0 !important;
+                border-bottom-left-radius: 0 !important;
+            }
+            .list-group-item:first-child {
+                border-top-left-radius: 0 !important;
+                border-top-right-radius: 0 !important;
+            }
+        }
+    
+        input[list] {
+            background: $white;
+            color: $blackPrimary;
+            max-height: 300px;
+            height: 200px;
+            overflow: auto;
+        }
+    }
+
+}
+
+input[type="text"]:disabled {
+    background: $ice-disabled;
+}
+
+input[type="number"]:disabled {
+    background: $ice-disabled;
+}

@@ -1,0 +1,66 @@
+<div class="page-wrapper">
+
+  <!-- ── SEÇÃO HERO ── -->
+  <section class="hero-section">
+
+    <!-- Lado esquerdo: branding e features -->
+    <div class="hero-left">
+      <div class="hero-brand">
+        <mat-icon class="hero-brand-icon">account_balance</mat-icon>
+        <span class="hero-brand-name">SAF <small>v1.01</small></span>
+      </div>
+
+      <h1 class="hero-title">Sistema de<br>Auditoria Fiscal</h1>
+      <p class="hero-desc">
+        Gerencie, processe e audite suas obrigações fiscais com eficiência e segurança.
+      </p>
+
+      <div class="hero-features">
+        <div class="feature-item">
+          <mat-icon>receipt_long</mat-icon>
+          <span>Processamento EFD-ICMS e Sintegra</span>
+        </div>
+        <div class="feature-item">
+          <mat-icon>analytics</mat-icon>
+          <span>Relatórios e comparativos de registros</span>
+        </div>
+        <div class="feature-item">
+          <mat-icon>folder_open</mat-icon>
+          <span>Gestão de arquivos e planilhas fiscais</span>
+        </div>
+        <div class="feature-item">
+          <mat-icon>security</mat-icon>
+          <span>Acesso seguro com autenticação JWT</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lado direito: card de login/cadastro -->
+    <div class="hero-right">
+      <div class="auth-card-wrapper">
+        <div *ngIf="isLogin; else cadastroTpl">
+          <app-login (ativarCadastro)="fAtivarCadastro()"></app-login>
+        </div>
+        <ng-template #cadastroTpl>
+          <app-cadastrar-pessoa (ativarLogin)="fAtivarLogin()"></app-cadastrar-pessoa>
+        </ng-template>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ── SEÇÃO CARROSSEL / ANÚNCIOS ── -->
+  <section class="carousel-section">
+    <div class="carousel-label">
+      <mat-icon>collections</mat-icon>
+      <span>Conheça o sistema</span>
+    </div>
+    <app-image-animate></app-image-animate>
+  </section>
+
+  <!-- ── RODAPÉ ── -->
+  <footer class="page-footer">
+    <span>© {{ currentYear }} SAF · Sistema de Auditoria Fiscal</span>
+  </footer>
+
+</div>

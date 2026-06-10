@@ -1,0 +1,97 @@
+<mat-sidenav-container class="sidenav-container">
+
+  <!-- ── SIDEBAR ── -->
+  <mat-sidenav #appDrawer class="sidenav" fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="false">
+
+    <!-- Cabeçalho da sidebar -->
+    <div class="sidenav-brand">
+      <div class="brand-logo">
+        <mat-icon class="brand-icon">account_balance</mat-icon>
+        <span class="brand-name">SAF <small>v1.01</small></span>
+      </div>
+      <button mat-icon-button class="close-drawer-btn" (click)="openMenu()" aria-label="Fechar menu">
+        <mat-icon>chevron_left</mat-icon>
+      </button>
+    </div>
+
+    <!-- Busca rápida de funcionalidades -->
+    <div class="sidenav-search">
+      <app-form-build #instanceForm [fieldsConfig]="fields"></app-form-build>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <!-- Lista de navegação -->
+    <mat-nav-list class="nav-list">
+      <app-menu *ngFor="let item of navItems" [item]="item"></app-menu>
+    </mat-nav-list>
+
+    <!-- Rodapé: toggle de tema -->
+    <div class="sidenav-footer">
+      <mat-divider></mat-divider>
+      <div class="theme-toggle">
+        <mat-icon>wb_sunny</mat-icon>
+        <mat-slide-toggle [formControl]="toggleControl"></mat-slide-toggle>
+        <mat-icon>bedtime</mat-icon>
+        <span class="theme-label">Tema escuro</span>
+      </div>
+    </div>
+
+  </mat-sidenav>
+
+  <!-- ── CONTEÚDO PRINCIPAL ── -->
+  <mat-sidenav-content class="main-content">
+
+    <!-- Toolbar topo -->
+    <mat-toolbar color="primary" class="main-toolbar">
+
+      <button mat-icon-button (click)="openMenu()" aria-label="Abrir menu">
+        <mat-icon>menu</mat-icon>
+      </button>
+
+      <span class="toolbar-app-name">SAF</span>
+
+      <div class="toolbar-info">
+        <div class="info-item">
+          <mat-icon>business</mat-icon>
+          <span class="info-text">
+            <span class="info-label">Empresa</span>
+            <span class="info-value">{{ companyName }}</span>
+          </span>
+        </div>
+        <div class="info-item">
+          <mat-icon>badge</mat-icon>
+          <span class="info-text">
+            <span class="info-label">ID</span>
+            <span class="info-value">{{ companyNameId }}</span>
+          </span>
+        </div>
+        <div class="info-item">
+          <mat-icon>person</mat-icon>
+          <span class="info-text">
+            <span class="info-label">Usuário</span>
+            <span class="info-value">{{ userName }}</span>
+          </span>
+        </div>
+      </div>
+
+      <span class="toolbar-spacer"></span>
+
+      <button mat-button class="logout-btn" (click)="logout()">
+        <mat-icon>logout</mat-icon>
+        <span class="logout-text">Sair</span>
+      </button>
+
+    </mat-toolbar>
+
+    <!-- Conteúdo das rotas -->
+    <div [@routeAnimation]="prepareRoute(outlet)" class="router-wrapper">
+      <router-outlet #outlet="outlet"></router-outlet>
+    </div>
+
+  </mat-sidenav-content>
+
+</mat-sidenav-container>

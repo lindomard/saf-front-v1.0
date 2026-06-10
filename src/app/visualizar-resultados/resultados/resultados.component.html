@@ -1,0 +1,160 @@
+
+<!-- <table mat-table [dataSource]="dataSourceWithPageSize" class="mat-elevation-z8">
+
+
+
+    <ng-container matColumnDef="cpId">
+        <mat-header-cell [ngStyle]="{'flex':'0 0 9%'}" *matHeaderCellDef> código Original</mat-header-cell>
+        <mat-cell [ngStyle]="{'flex':'0 0 9%'}" *matCellDef="let element"> {{element.cpId}}
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="cpNome">
+        <mat-header-cell [ngStyle]="{'flex':'0 0 9%'}" *matHeaderCellDef> código Original</mat-header-cell>
+        <mat-cell [ngStyle]="{'flex':'0 0 9%'}" *matCellDef="let element"> {{element.cadprocessos.cpNome}}
+        </mat-cell>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
+
+</table> -->
+<!-- segunda parte a parte normal -->
+
+
+
+
+<loadingV01 *ngIf="isLoading">{{ isLoading }}</loadingV01>
+
+<mat-card>
+    <h1 mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle
+        style="background-color: rgb(28, 119, 161); text-align:center;"> {{ tipoAcaoName }}</h1>
+    <h1 mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle
+        style="background-color: rgb(21, 100, 19); text-align:center;"> {{ tipoEvento }}
+
+
+        <div class="col text-right">
+            <button class="btn btn-primary mr-2" (click)="cancelarESair()">Fechar</button>
+        </div>
+
+
+    </h1>
+
+</mat-card>
+
+
+<mat-card class="example-card">
+
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="row">
+
+
+                <!-- <div class="col-md-12">
+                    <app-config-dados-tabela-consulta #instanceConfigDadosTabela 
+                        (fAtualizarDadosTabela)="fAtualizarBusca()"></app-config-dados-tabela-consulta>
+                        [camposDaTabela]="camposDaTabela"
+                </div> -->
+
+                <div class="col-md-12">
+                    <app-consultas-e-relatorios #instanceConsultasERelatorios  
+                       
+                        (fAtualizaAtualizarPor)="fAtualizarBusca2($event)"
+
+                        [mDisableGerar]="mDisableGerar" 
+                        [dataSourceFiltros]="dataSourceFiltros"
+                        
+
+                        (fGerarPdf)="baixarRelatorio()" (fGerarPlanilha)="fBuscarPlanilha()"
+                        (fSalvarRelatorioPadrao)="fSalvarRelatorioPadraoDialog()"
+                        (fBuscarCadlRelPad)="fBuscarRelatorioPadrao($event)"
+                        (fAtualizarDadosTabelaFiltros)="fAtualizarBusca()"
+
+                        
+                        ></app-consultas-e-relatorios>
+                </div>
+
+
+                <!-- <div class="col-md-6">
+                    <app-relatorios-planilhas 
+                    [mDisableGerar]="mDisableGerar" [relatoriosSalvos]="mRelatoriosSalvos"
+                        (fGerarPdf)="baixarRelatorio()" (fGerarPlanilha)="fBuscarPlanilha()"
+                        (fSalvarRelatorioPadrao)="fSalvarRelatorioPadraoDialog()"
+                        (fBuscarCadlRelPad)="fBuscarCadlRelPad($event)"
+                        
+                        [dataSourceFiltros]="dataSourceFiltros"
+                        (fAtualizarDadosTabelaFiltros)="fAtualizarBusca()"
+
+                        
+                        ></app-relatorios-planilhas>
+                </div>
+
+
+
+
+                 <div class="col-md-12">
+                    <app-filtros-campos #instanceFiltrosCampos [camposDaTabela]="camposDaTabela"
+                        [dataSourceFiltros]="dataSourceFiltros"
+                        (fAtualizarDadosTabelaFiltros)="fAtualizarBusca()"></app-filtros-campos>
+                </div>
+ -->
+<!--
+                <div class="col-md-2">
+                    <app-ordem-campos #instanceOrdemCampos [tableCamposFiltros]="camposDaTabela"
+                        [dataSourceOrdem]="dataSourceOrdem"
+                        (fAtualizarDadosTabela)="fAtualizarBusca()"></app-ordem-campos>
+                </div>
+
+                <div class="col-md-2">
+                    <app-fields-filter #instanceFieldsFilter [tableCamposFiltros]="camposParaFieldsFilter"
+                        [dataSourceFieldsfilter]="dataSourceFieldsFilter"
+                        (fAtualizarDadosTabela)="fAtualizarBusca()"></app-fields-filter>
+                </div>
+-->
+
+
+ 
+
+            </div>
+        </div>
+    </div>
+</mat-card>
+
+
+<table mat-table [dataSource]="dataSourceWithPageSize" class="mat-elevation-z8">
+    <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">
+        <th mat-header-cell [style]="getAlingn(column)" *matHeaderCellDef>
+            {{ getColumnName(column) }} </th>
+
+
+        <div *ngIf="column==='Visualizar'">
+            <mat-cell *matCellDef="let element"  >
+
+                <button color="primary" (click)="BaixarArquivo(element)">
+                    <mat-icon>warning</mat-icon>
+                </button>
+            </mat-cell>
+
+        </div>
+
+        <div *ngIf="column!=='Visualizar'">
+
+
+            <td mat-cell [style]="getAlingn(column)" [width]="getStyle3(column)" *matCellDef="let element">
+                {{ fValorENomeDoCampoParaformatar(element,column) }}
+            </td>
+        </div>
+
+
+    </ng-container>
+
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<mat-paginator #paginatorPageSize [pageSize]="filterPaginator.size" [length]="filterPaginator.totalElements"
+    [pageIndex]="filterPaginator.page" [pageSizeOptions]="pageLimitOptions" showFirstLastButtons (page)="changeEvent()">
+</mat-paginator>

@@ -1,0 +1,29 @@
+<form [formGroup]="filtrosForm">
+
+  <div class="row">
+
+    <div class="ui-g-12 ui-md-4 ui-lg-2">
+      <mat-form-field>
+        <mat-label>Separado Por</mat-label>
+        <mat-select formControlName="separadoPor">
+          <mat-option *ngFor="let item of camposSeparadoPor" [value]="item.id">
+            {{item.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+
+    <div class="ui-g-12 ui-md-4 ui-lg-2">
+      <mat-form-field>
+        <mat-label>Tipo do Relatorio</mat-label>
+        <mat-select formControlName="tipoRelatorio">
+          <mat-option *ngFor="let item of tiposDeRelatorios" [value]="item.id">
+            {{item.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+
+</form>

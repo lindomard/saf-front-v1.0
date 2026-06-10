@@ -1,0 +1,151 @@
+<loadingV01 *ngIf="isLoading"></loadingV01>
+
+<div class="cadastro-wrapper">
+  <mat-card class="cadastro-card">
+
+    <!-- Cabeçalho -->
+    <div class="cadastro-header">
+      <div class="cadastro-logo-circle">
+        <mat-icon>person_add</mat-icon>
+      </div>
+      <h2 class="cadastro-title">Primeiro Acesso</h2>
+      <p class="cadastro-subtitle">Preencha seus dados para criar sua conta</p>
+    </div>
+
+    <mat-card-content>
+      <form [formGroup]="form_login" autocomplete="off">
+
+        <!-- Seção: Empresa -->
+        <div class="form-section-label">
+          <mat-icon>business</mat-icon>
+          <span>Dados da Empresa</span>
+        </div>
+
+        <div class="form-row">
+          <mat-form-field appearance="outline" class="half-width">
+            <mat-label>CNPJ</mat-label>
+            <mat-icon matPrefix class="prefix-icon">domain</mat-icon>
+            <input matInput formControlName="cnpj" appCpfCnpj placeholder="00.000.000/0001-00">
+            <mat-error *ngIf="form_login.get('cnpj').hasError('required')">Campo obrigatório</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="half-width">
+            <mat-label>CPF do Responsável</mat-label>
+            <mat-icon matPrefix class="prefix-icon">badge</mat-icon>
+            <input matInput formControlName="cpf" appCpfCnpj placeholder="000.000.000-00">
+            <mat-error *ngIf="form_login.get('cpf').hasError('required')">Campo obrigatório</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="form-row">
+          <mat-form-field appearance="outline" class="half-width">
+            <mat-label>Data Início</mat-label>
+            <mat-icon matPrefix class="prefix-icon">event</mat-icon>
+            <input matInput formControlName="dtRefIni" type="date">
+            <mat-error *ngIf="form_login.get('dtRefIni').hasError('required')">Campo obrigatório</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="half-width">
+            <mat-label>Data Término</mat-label>
+            <mat-icon matPrefix class="prefix-icon">event_busy</mat-icon>
+            <input matInput formControlName="dtRefFin" type="date">
+            <mat-error *ngIf="form_login.get('dtRefFin').hasError('required')">Campo obrigatório</mat-error>
+          </mat-form-field>
+        </div>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Tipo do Código do Item Padrão</mat-label>
+          <mat-icon matPrefix class="prefix-icon">label</mat-icon>
+          <mat-select formControlName="cpCodItemPadrao">
+            <mat-option *ngFor="let tipoCodItem of optionCpTipoCodItem" [value]="tipoCodItem.id">
+              {{ tipoCodItem.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <!-- Seção: Contato -->
+        <mat-divider class="section-divider"></mat-divider>
+        <div class="form-section-label">
+          <mat-icon>contact_phone</mat-icon>
+          <span>Contato</span>
+        </div>
+
+        <div class="form-row">
+          <mat-form-field appearance="outline" class="half-width">
+            <mat-label>Fone</mat-label>
+            <mat-icon matPrefix class="prefix-icon">phone</mat-icon>
+            <input matInput formControlName="fone" appMascaraFone placeholder="(00) 0000-0000">
+            <mat-error *ngIf="form_login.get('fone').hasError('required')">Campo obrigatório</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="half-width">
+            <mat-label>WhatsApp</mat-label>
+            <mat-icon matPrefix class="prefix-icon">smartphone</mat-icon>
+            <input matInput formControlName="whatsApp" appMascaraFone placeholder="(00) 00000-0000">
+            <mat-error *ngIf="form_login.get('whatsApp').hasError('required')">Campo obrigatório</mat-error>
+          </mat-form-field>
+        </div>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>E-mail</mat-label>
+          <mat-icon matPrefix class="prefix-icon">email</mat-icon>
+          <input matInput formControlName="email" type="email" placeholder="exemplo@email.com">
+          <mat-error *ngIf="form_login.get('email').hasError('required')">Campo obrigatório</mat-error>
+        </mat-form-field>
+
+        <!-- Seção: Acesso -->
+        <mat-divider class="section-divider"></mat-divider>
+        <div class="form-section-label">
+          <mat-icon>lock</mat-icon>
+          <span>Dados de Acesso</span>
+        </div>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Nome do Usuário</mat-label>
+          <mat-icon matPrefix class="prefix-icon">person</mat-icon>
+          <input matInput formControlName="nome" type="text">
+          <mat-error *ngIf="form_login.get('nome').hasError('required')">Campo obrigatório</mat-error>
+        </mat-form-field>
+
+        <div class="form-row">
+          <mat-form-field appearance="outline" class="half-width">
+            <mat-label>Senha</mat-label>
+            <mat-icon matPrefix class="prefix-icon">lock_outline</mat-icon>
+            <input matInput formControlName="senha" [type]="showSenha ? 'text' : 'password'">
+            <button mat-icon-button matSuffix type="button" (click)="showSenha = !showSenha">
+              <mat-icon>{{ showSenha ? 'visibility_off' : 'visibility' }}</mat-icon>
+            </button>
+            <mat-error *ngIf="form_login.get('senha').hasError('required')">Campo obrigatório</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="half-width">
+            <mat-label>Confirmação de Senha</mat-label>
+            <mat-icon matPrefix class="prefix-icon">lock_outline</mat-icon>
+            <input matInput formControlName="senhaConfirma" [type]="showConfirma ? 'text' : 'password'">
+            <button mat-icon-button matSuffix type="button" (click)="showConfirma = !showConfirma">
+              <mat-icon>{{ showConfirma ? 'visibility_off' : 'visibility' }}</mat-icon>
+            </button>
+            <mat-error *ngIf="form_login.get('senhaConfirma').hasError('required')">Campo obrigatório</mat-error>
+          </mat-form-field>
+        </div>
+
+        <!-- Ações -->
+        <div class="form-actions">
+          <button mat-raised-button color="primary" class="btn-cadastrar"
+                  type="button" (click)="validar()" [disabled]="isLoading">
+            <mat-spinner *ngIf="isLoading" diameter="18" class="btn-spinner"></mat-spinner>
+            <mat-icon *ngIf="!isLoading">check_circle</mat-icon>
+            <span>{{ isLoading ? 'Cadastrando...' : 'Cadastrar' }}</span>
+          </button>
+
+          <button mat-stroked-button color="primary" type="button" (click)="fAtivarLogin()">
+            <mat-icon>arrow_back</mat-icon>
+            Voltar para Login
+          </button>
+        </div>
+
+      </form>
+    </mat-card-content>
+
+  </mat-card>
+</div>

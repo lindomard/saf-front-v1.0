@@ -1,0 +1,160 @@
+<loadingV01 *ngIf="isLoading">{{ isLoading }}</loadingV01>
+
+<mat-card>
+    <h1 mat-dialog-title style="background-color: rgb(21, 100, 19); text-align:center;"> Filtrar Registros
+      </h1>
+    
+    
+
+    <mat-card-content>
+
+        <div class="row">
+            <div class="col-xl-12">
+
+                <form [formGroup]="formfiltro">
+                    <div class="row">
+
+
+                        <div class="col-md-4">
+                            <label>Pesquisar Por</label>
+
+                            <select formControlName="nomeDoCampo" class="form-control"
+                                (change)="clickcamposConsultaPor($event.target.selectedIndex)">
+                                <option *ngFor="let x of camposConsultaPor" [ngValue]="x.tfpcNomeCampo">
+                                    {{ x.tfpcDescricaoCustom }}
+                                </option>
+                            </select>
+                        </div>
+
+
+
+
+                        <div class="col-md-2">
+                            <label>Condição</label>
+
+                            <select formControlName="condicao" class="form-control">
+                                <option *ngFor="let x of condicoesDosCampos" [ngValue]="x.id">
+                                    {{ x.name }}
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label>Valor a Ser Filtrado </label>
+                            <input formControlName="valor" type="{{ type }}" class="form-control"
+                                placeholder="Valor a Ser Filtrado" #valor>
+                        </div>
+
+
+
+                        <div class="col-md-2">
+                            <br>
+                            <button (click)="atualizar()" mat-raised-button class="btn btn-primary mr-2, form-control">
+                                <mat-icon>check</mat-icon>
+                                Atualizar
+                            </button>
+                        </div>
+
+
+                        <div class="col-md-3">
+                            <br>
+                            <button (click)="fMaisFiltros()" mat-raised-button class="btn-login, form-control">
+                                <mat-icon>check</mat-icon>
+                                {{ maisFiltros }}
+                            </button>
+                        </div>
+
+                        <div class="col-md-3">
+                            <br>
+                            <button (click)="fConfigTable()" mat-raised-button class="btn-login, form-control">
+                                <mat-icon>check</mat-icon>
+                                {{ configurarTabela }}
+                            </button>
+                        </div>
+
+
+                        <div class="col-md-3">
+                            <br>
+                            <button (click)="fVisualizarRelatorio()" mat-raised-button class="btn-login, form-control">
+                                <mat-icon>check</mat-icon>
+                                {{ mRelatorio }}
+                            </button>
+                        </div>
+
+
+                        <div class="col-md-3">
+                            <br>
+                            <button (click)="fSalvarConfiguracoes()"
+                             [disabled]="mAlterouRelatorio==false
+                              && mAlterouTable==false" 
+                            mat-raised-button class="btn-login, form-control">
+                                <mat-icon>check</mat-icon>
+                                Salvar Configurações
+                            </button>
+                        </div>
+                        <!-- this.mAlterouRelatorio = event=="rel";
+                        this.mAlterouTable = event=="table"; -->
+                    
+
+
+
+                    </div>
+
+
+
+                </form>
+
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>
+<mat-card>
+    <mat-card-content>
+        <textarea style="background-color:black;color:white;" [(ngModel)]='resumoFiltros' rows="4" cols="auto">
+        </textarea>
+
+    </mat-card-content>
+</mat-card>
+
+<div *ngIf="maisFiltrosVisivel">
+    <mat-card>
+        <mat-card-content>
+
+            <div class="row">
+                <div class="col-xl-12">
+
+                    <app-filtros-pesquisa-modal
+                        [dataSourceTableFilpadCab_par] = "dataSourceTableFilpadCab"
+                        [dataSourcecamposParaFiltrosList]="dataSourcecamposParaFiltrosList"
+                        (fAtualizaAtualizarHistorico)="fAtualizarResumoFiltros()"></app-filtros-pesquisa-modal>
+
+
+
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>
+
+
+<div *ngIf="configurarTabelaVisivel">
+    <mat-card>
+        <mat-card-content>
+
+            <div class="row">
+                <div class="col-xl-12">
+
+                    <app-config-table #instanceConfigRelatorio
+                        [dataSourceTableFilpadCab_par]="dataSourceTableFilpadCab"
+                        
+
+                        (fAjustarDisplayColumnsTable)="fAjustarDisplayColumnsTable($event)"></app-config-table>
+                        
+
+
+
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>

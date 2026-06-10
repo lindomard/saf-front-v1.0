@@ -1,0 +1,191 @@
+// inicio
+
+// termino
+
+@import "../../../../assets/style/root.scss";
+
+:host label {
+    display: inline-block !important;
+    margin-bottom: 0rem !important;
+}
+
+.truncate-cell {
+    // max-width: 310px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.mat-table-focussed 
+  { 
+    background-color: rgb(0, 132, 255);
+  }
+  
+
+.mat-header-row {
+    min-height: 36px !important;
+    font-style: bold;
+}
+
+.mat-cell {
+    display: flex;
+    vertical-align: middle;
+    border-left: 1px solid #dedede;
+    border-right: 1px solid #dedede;
+
+    &.center-item {
+        justify-content: center;
+    }
+}
+
+/*
+//colorir linhas da tabela
+.mat-row:nth-child(even) {
+    background-color: #fff;
+}
+.mat-row:nth-child(odd) {
+    background-color: #f1f1f1;
+}
+*/
+
+tr.mat-row {
+    border-bottom: 1px solid #dedede;
+}
+
+.mat-row:hover {
+    background-color: $white-ice;
+    .mat-cell {
+        color: $black !important;
+        cursor: pointer;
+    }
+    .fa-edit {
+        color: $black;
+    }
+}
+/*
+.selected-row {
+    .mat-cell {
+        background-color: #0d47a1;
+        color: $white !important;
+        cursor: pointer;
+    }
+    .fa-edit {
+        color: $white;
+    }
+}
+*/
+
+.mat-container {
+    display: flex;
+    flex-direction: column;
+    //max-height: 450px;
+    //min-width: 300px;
+}
+
+.mat-table {
+    overflow: auto;
+    font-size: 11px;
+    width: 100%;
+}
+
+.mat-header-cell {
+    display: flex;
+    justify-content: center;
+    border: 1px solid $ice-tree;    
+    font-size: 13px !important;
+}
+
+.mobile-label {
+  display: none;
+}
+
+.mat-column-select {
+    flex: 0 0 10%;
+}
+
+.mat-column-edit {
+    flex: 0 0 5%;
+}
+
+.mat-column-delete {
+    flex: 0 0 5%;
+}
+
+.fa-trash {
+    color: $red-primary;
+}
+
+.fa-edit {
+    color: $blue-light-dark03;
+}
+
+
+@media screen and (max-width: 960px) {
+  .mat-table {
+    border: 0;
+    vertical-align: middle
+  }
+
+  .mat-table caption {
+    font-size: 1em;
+  }
+
+  /*  Enable this to hide header
+  .mat-table .mat-header-cell {
+
+    border: 10px solid;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  */
+  .mat-table .mat-row {
+    border-bottom: 5px solid #ddd;
+    display: block;
+  }
+  /*
+  .mat-table .mat-row:nth-child(even) {background: #CCC}
+  .mat-table .mat-row:nth-child(odd) {background: #FFF}
+  */
+  .mat-table .mat-cell {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: 1em;
+    text-align: right;
+    font-weight: bold;
+    height:30px;
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+  .mat-table .mat-cell:before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    float: left;
+//    text-transform: uppercase;
+    font-weight: normal;
+
+    font-size: .85em;
+  }
+  .mat-table .mat-cell:last-child {
+    border-bottom: 0;
+  }
+
+
+  .mat-row:nth-child(even){
+    background-color: rgba(0, 128, 255, 0.129);
+  }
+        
+  .mat-row:nth-child(odd){
+    background-color: rgba(0, 0, 0, 0);
+  }
+  
+  
+
+
+}

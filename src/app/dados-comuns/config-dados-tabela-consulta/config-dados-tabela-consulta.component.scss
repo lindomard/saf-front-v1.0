@@ -1,0 +1,27 @@
+.container2 {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .cabecalho {
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+  
+  .cabecalho h2 {
+    margin: 0;
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+  }
+  
+  .conteudo {
+    padding: 20px;
+  }
+  

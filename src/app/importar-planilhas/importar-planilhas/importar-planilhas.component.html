@@ -1,0 +1,180 @@
+<loadingV01 *ngIf="isLoading">{{ isLoading }}</loadingV01>
+
+<div class="fundo">
+
+    <!-- termino     -->
+
+    <!-- inicio     -->
+
+    <div class="row">
+
+
+        <div class="col-sm-6">
+
+
+
+
+            <mat-card>
+                <div class="centralizado">
+                    <h3>Importar Dados da Planilha do AUDITSYS</h3>
+                </div>
+
+                <mat-card-header>
+
+                    <div class="progress" *ngIf="uploadResponse.message > 0">
+                        <div class="progress-bar" [style.width]="uploadResponse.message + '%'">{{ uploadResponse.message
+                            }}% {{
+                            this.mObsTempo
+                            }}</div>
+                    </div>
+
+                    <mat-progress-bar *ngIf="uploadResponse.message > 0" mode="determinate"
+                        value="{{ uploadResponse.message }}"></mat-progress-bar>
+                    <span *ngIf="uploadResponse.message > 0">Percentual {{ uploadResponse.message }} % {{ this.mObsTempo
+                        }} </span>
+                </mat-card-header>
+                <mat-card-content>
+                    <form [formGroup]="form">
+                        <div class="row" *ngIf="mEstaProcessando === false">
+                            <div class="fileUpload btn btn-primary">
+                                <!-- <span>Anexar <i class="fa fa-paperclip"></i></span> -->
+                                <input (change)="selecFiles($event)" type="file" class="upload" multiple
+                                    formControlName="files" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <mat-list>
+                                <mat-list-item *ngFor="let item of files">
+                                    <mat-icon matListIcon>folder</mat-icon>
+                                    <p matLine>
+                                        <span> {{ item.name }} </span>
+                                    </p>
+                                </mat-list-item>
+                            </mat-list>
+                        </div>
+                    </form>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-button color="warn" *ngIf="mEstaProcessando === false"
+                        (click)="removerFiles()">Remover</button>
+                    <button mat-button [disabled]="mEstaProcessando || files.length === 0"
+                        (click)="uploadFile()">Enviar</button>
+                    <!-- <button mat-button (click)="visible()">Visivel/Invisivel</button> -->
+                    <!-- <button mat-button (click)="pararIntevalo()">Parar Intervalo</button> -->
+                </mat-card-actions>
+            </mat-card>
+
+        </div>
+
+        <!-- inicio -->
+        <div class="col-sm-6">
+
+
+
+
+            <mat-card>
+                <div class="centralizado">
+                    <h3>Importar Dados da Planilha do SEFAZ</h3>
+                </div>
+
+                <mat-card-header>
+
+                    <div class="progress" *ngIf="uploadResponseSefaz.message > 0">
+                        <div class="progress-bar" [style.width]="uploadResponseSefaz.message + '%'">{{
+                            uploadResponseSefaz.message
+                            }}% {{
+                            this.mObsTempo
+                            }}</div>
+                    </div>
+
+                    <mat-progress-bar *ngIf="uploadResponseSefaz.message > 0" mode="determinate"
+                        value="{{ uploadResponseSefaz.message }}"></mat-progress-bar>
+                    <span *ngIf="uploadResponseSefaz.message > 0">Percentual {{ uploadResponseSefaz.message }} % {{
+                        this.mObsTempo
+                        }} </span>
+                </mat-card-header>
+                <mat-card-content>
+                    <form [formGroup]="formSefaz">
+                        <div class="row" *ngIf="mEstaProcessando === false">
+                            <div class="fileUpload btn btn-primary">
+                                <!-- <span>Anexar <i class="fa fa-paperclip"></i></span> -->
+                                <input (change)="selecFilesSefaz($event)" type="file" class="upload" multiple
+                                    formControlName="files" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <mat-list>
+                                <mat-list-item *ngFor="let item of filesSefaz">
+                                    <mat-icon matListIcon>folder</mat-icon>
+                                    <p matLine>
+                                        <span> {{ item.name }} </span>
+                                    </p>
+                                </mat-list-item>
+                            </mat-list>
+                        </div>
+                    </form>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-button color="warn" *ngIf="mEstaProcessando === false"
+                        (click)="removerFilesSefaz()">Remover</button>
+                    <button mat-button [disabled]="mEstaProcessando || filesSefaz.length === 0"
+                        (click)="uploadFileSefaz()">Enviar</button>
+                    <!-- <button mat-button (click)="visible()">Visivel/Invisivel</button> -->
+                    <!-- <button mat-button (click)="pararIntevalo()">Parar Intervalo</button> -->
+                </mat-card-actions>
+            </mat-card>
+
+        </div>
+
+        <!-- termino -->
+
+        <!-- inicio -->
+
+        <!-- inicio -->
+    </div>
+
+    <mat-card>
+        <div class="col-sm-12">
+
+            <div class="centralizado">
+                <h3>Ver Resultados</h3>
+            </div>
+
+            <label>Tipo de Planilha a Ser Comparado</label>
+
+            <select [(ngModel)]="itemSelecionado" name="valueCheck" (change)="onChange($event)">
+                <option [ngValue]="undefined" disabled>Selecione o Tipo de Planilha </option>
+                <option *ngFor="let obj of items" [ngValue]="obj.id" [selected]="obj.id == itemSelecionado">
+                    {{obj.name}} </option>
+            </select>
+
+
+
+
+
+            <p>{{message}}</p>
+
+        </div>
+
+        <div class="col-sm-6">
+            <button class="btn btn-primary mr-2" [disabled]="mDisableGerar"
+                (click)="fBuscarPlanilha('gerarPlanilhaDivergentes')">Divergencias</button>
+        </div>
+
+        <div class="col-sm-6">
+            <button class="btn btn-primary mr-2" [disabled]="mDisableGerar"
+                (click)="fBuscarPlanilha('gerarPlanilhaDivergentesAnalitico')">Divergencias Analitica</button>
+        </div>
+
+
+
+
+    </mat-card>
+
+</div>
+
+<!-- termino -->
+
+
+
+<!-- termino -->

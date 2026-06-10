@@ -1,0 +1,14 @@
+@import '../../assets/style/color/color';
+.progress-bar {
+    position: absolute;
+    z-index: 999999999;
+    width: 100%;
+    height: 4px;
+}
+
+.spinner-progress {
+    position: absolute;
+    z-index: 99999999;
+    right: 10px;
+    top: 10px;
+}

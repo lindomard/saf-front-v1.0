@@ -1,0 +1,143 @@
+<mat-card class="example-card">
+
+  <h1 mat-dialog-title style="background-color: rgb(21, 100, 19); text-align:center;"> Fields Para Tabela
+  </h1>
+  <div class="col">
+
+    <div class="row">
+
+
+      <div class="col-md-3">
+        <div>
+          <button class="form-control btn btn-primary mr-2 "
+            (click)="organizarCamposLista(true)">Ordenar/Refresh</button>
+        </div>
+      </div>
+      <div class="col-md-3">
+
+        <div class="imagens">
+          <img src="assets/image/seta_direita.png"
+            style="width: 175px;height: 40px; border: 5px solid transparent;border-color:#ccc8c5"
+            alt="AuditSys com Computador Nome Errado" />
+
+
+        </div>
+      </div>
+
+
+      <div class="col-md-3">
+        <div>
+          <button class="form-control btn btn-primary mr-2 " (click)="ConfigPesquisarPor()">Config Pesquisar
+            Por</button>
+        </div>
+      </div>
+
+
+      <div class="col-md-3">
+
+        <div class="col text-right">
+          <button class="form-control btn btn-update mr-2 " (click)="ConfigOrdemResult()">Config Ordem
+            Resultados</button>
+        </div>
+      </div>
+      <div class="col-md-12">
+        {{ obsPerc }}
+      </div>
+    </div>
+  </div>
+
+
+  <div style="height: 210px; overflow: auto;">
+    <table mat-table #tableCamposFiltros [dataSource]="dataSourceTableFilpadCab.cadTableFilpadCampos"
+      class="mat-elevation-z8">
+
+
+
+
+      <ng-container matColumnDef="selecionado">
+        <th style="min-width: 80px" mat-header-cell *matHeaderCellDef>
+          <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()"
+            [indeterminate]="selection.hasValue() && !isAllSelected()">
+          </mat-checkbox>
+        </th>
+        <td mat-cell *matCellDef="let row">
+          <mat-checkbox (click)="$event.stopPropagation()" (change)="selecionado($event,row)"
+            [checked]="selection.isSelected(row)" [(ngModel)]="row.selecionado">
+          </mat-checkbox>
+        </td>
+      </ng-container>
+
+      <!-- (change)="$event ? selection.toggle(row) : null" -->
+
+
+
+
+      <ng-container matColumnDef="OrdemLista">
+        <th style="min-width: 20px" mat-header-cell *matHeaderCellDef> Ordem Lista </th>
+        <td mat-cell *matCellDef="let element ">
+
+          <input type="number" name="tfpcOrdemLista" [(ngModel)]="element.tfpcOrdemLista">
+
+        </td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="descricao">
+        <th [width]="20" mat-header-cell *matHeaderCellDef> Campo </th>
+        <td mat-cell *matCellDef="let element">
+
+          <input type="text" [width]="20" name="tfpcDescricaoCustom" [(ngModel)]="element.tfpcDescricaoCustom">
+
+        </td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="Tamanho">
+        <th style="min-width: 20px" mat-header-cell *matHeaderCellDef> % Tam </th>
+        <td mat-cell *matCellDef="let element ">
+
+          <input type="number" name="tfpcTamanhoPerc" [(ngModel)]="element.tfpcTamanhoPerc">
+
+        </td>
+      </ng-container>
+
+
+
+
+
+
+
+      <ng-container matColumnDef="Alinhar">
+        <th style="min-width: 20px" mat-header-cell *matHeaderCellDef> Alinhamento </th>
+
+
+        <td mat-cell *matCellDef="let element ">
+
+          <select [(ngModel)]="element.tfpcAlign" (change)="valueChange($event)">
+            <option *ngFor="let x of aliqgn" [ngValue]="x.id">
+              {{ x.name }}
+            </option>
+          </select>
+
+
+
+
+        </td>
+
+
+      </ng-container>
+
+
+
+
+
+      <tr mat-header-row *matHeaderRowDef="displayColumnsCamposIndices; sticky: true"></tr>
+
+      <tr mat-row *matRowDef="let row; columns: displayColumnsCamposIndices; " (click)="clickando(row)">
+
+        <!-- <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="clickando(row)" ></mat-row> -->
+
+      </tr>
+    </table>
+  </div>
+</mat-card>

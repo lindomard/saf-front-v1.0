@@ -1,0 +1,49 @@
+<loadingV01 *ngIf="isLoading">{{ isLoading }}</loadingV01>
+<h1 mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle
+    style="background-color: rgb(28, 119, 161); text-align:center;"> {{ mTipoOperacao }}</h1>
+
+
+<div class="container">
+
+
+
+
+    <div>
+
+        <mat-toolbar color="warn" class="child">
+
+            <div class="col">
+                <div class="row">
+
+
+
+                    <span> {{ mTipoOperacao }} </span>
+                    <!-- <span class="spacer"></span> -->
+
+
+                    <div class="col text-right">
+                        <button class="btn btn-dark" (click)="cancelarESair()">Cancelar/Sair</button>
+                    </div>
+
+                </div>
+
+            </div>
+        </mat-toolbar>
+
+
+        <br>
+        <br>
+
+
+        <br>
+        <br>
+        <div class="col text-center">
+
+        <qrcode [qrdata]="stringQrCode" [width]="250" [errorCorrectionLevel]="'M'"></qrcode>
+        </div>
+
+
+
+    </div>
+
+</div>

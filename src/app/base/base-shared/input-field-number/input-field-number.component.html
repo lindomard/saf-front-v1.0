@@ -1,0 +1,21 @@
+<div class="form-group">
+    <label [ngClass]="{
+            'erro-label-feedback': showError
+        }">{{ label }}</label>
+
+        
+    <input #field [ngClass]="{
+            'is-invalid': showError,
+            'input-field': marginTop
+        }" class="form-control form-control-sm" [formControl]="control"
+        placeholder="{{ placeholder }}" min="0" type="text"
+        numbersOnly
+        (ngModelChange)="handlerChangeFunction($event)">
+
+    <div *ngIf="showError" class="invalid-feedback">
+        {{ message }}
+        <span *ngIf="showCount">
+            {{ messageDigits }} {{ control.value.length }}
+        </span>
+    </div>
+</div>

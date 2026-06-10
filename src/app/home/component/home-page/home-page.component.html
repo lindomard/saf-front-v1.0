@@ -1,0 +1,383 @@
+<loadingV01 *ngIf="isLoading">{{ isLoading }}</loadingV01>
+
+<div class="page-container">
+
+    <!-- termino     -->
+
+    <!-- inicio     -->
+
+
+    <!-- Upload Card -->
+    <mat-card class="upload-card">
+        <mat-card-header>
+            <mat-icon mat-card-avatar>cloud_upload</mat-icon>
+            <mat-card-title>Envio de Arquivos</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div *ngIf="uploadResponse.message > 0" class="progress-section">
+                <mat-progress-bar mode="determinate" [value]="uploadResponse.message"></mat-progress-bar>
+                <span class="progress-label">{{ uploadResponse.message }}% {{ mObsTempo }}</span>
+            </div>
+            <form [formGroup]="form">
+                <div class="upload-area" *ngIf="mEstaProcessando === false">
+                    <label class="upload-btn">
+                        <mat-icon>attach_file</mat-icon>
+                        Selecionar Arquivos
+                        <input (change)="selecFiles($event)" type="file" class="file-input" multiple formControlName="files" />
+                    </label>
+                </div>
+                <mat-list *ngIf="files.length > 0" dense>
+                    <mat-list-item *ngFor="let item of files">
+                        <mat-icon matListItemIcon>insert_drive_file</mat-icon>
+                        <span matListItemTitle>{{ item.name }}</span>
+                    </mat-list-item>
+                </mat-list>
+            </form>
+        </mat-card-content>
+        <mat-card-actions align="end">
+            <button mat-stroked-button color="warn" (click)="removerFiles()">
+                <mat-icon>delete</mat-icon> Remover
+            </button>
+            <button mat-raised-button color="primary" [disabled]="mEstaProcessando || files.length === 0" (click)="uploadFile()">
+                <mat-icon>upload</mat-icon> Enviar
+            </button>
+            <button mat-stroked-button (click)="pararIntevalo()">
+                <mat-icon>stop_circle</mat-icon> Parar Intervalo
+            </button>
+        </mat-card-actions>
+    </mat-card>
+
+
+    <!-- Processing Card -->
+    <mat-card *ngIf="mProcessando == true" class="processing-card">
+        <mat-card-content>
+            <div class="processing-status">
+                <mat-icon class="spin-icon">autorenew</mat-icon>
+                <h3>Processando os Arquivos, aguarde...</h3>
+            </div>
+            <mat-progress-bar mode="determinate" [value]="progresso"></mat-progress-bar>
+            <div class="progress-subtitle">{{ progresso }}% concluído</div>
+        </mat-card-content>
+    </mat-card>
+
+    <!-- Status Title -->
+    <h2 class="section-title" *ngIf="titulo">{{ titulo }}</h2>
+
+    <!-- Status Table -->
+    <div class="table-wrapper mat-elevation-z2">
+    <table mat-table [dataSource]="dataSourceWithPageSizeSit">
+        <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumnsSit">
+            <th mat-header-cell *matHeaderCellDef [ngStyle]="changeStyleSit(column)">{{ getColumnNameSit(column) }}</th>
+
+
+            <div *ngIf="column==='button' ">
+                <mat-cell *matCellDef="let element">
+
+                    <div *ngIf="fExisteErros(element)">
+                        <button color="primary" (click)="BaixarArquivo(element)">
+                            <mat-icon>warning</mat-icon>
+                        </button>
+                    </div>
+                </mat-cell>
+
+            </div>
+
+
+            <div *ngIf="column!=='button'">
+
+                <td mat-cell [ngStyle]="changeStyleSit(column)" *matCellDef="let emp">{{
+                    fSubstituirTagOkErro(fValorENomeDoCampoParaformatarSit(emp[column],column)) }}</td>
+            </div>
+
+
+            <!-- <td mat-cell *matCellDef="let emp">{{ emp[column] }}</td> -->
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumnsSit"></tr>
+        <tr mat-row *matRowDef="let emprow; columns: displayedColumnsSit"></tr>
+    </table>
+    </div>
+
+    <div class="paginator-row">
+        <mat-paginator #paginatorPageSizeSit
+            [pageSize]="filterPaginatorSit.size"
+            [length]="filterPaginatorSit.totalElements"
+            [pageIndex]="filterPaginatorSit.page"
+            [pageSizeOptions]="pageLimitOptionsSit"
+            (page)="changeEventSit($event)"
+            showFirstLastButtons>
+        </mat-paginator>
+        <button mat-stroked-button (click)="BaixarArquivoTodos()">
+            <mat-icon>visibility</mat-icon> Visualizar Todos
+        </button>
+    </div>
+
+    <!-- <h1 class="titulo">{{ titulo }}</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th *ngFor="let column of displayedColumns " [style]="getAlingn(column)">{{
+                    getColumnName(column) }}
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let element of dataSourceWithPageSize.data">
+                <td *ngFor="let campo of displayedColumns" [style]="getAlingn(campo)" [width]="getStyle3(campo)"> {{
+                    fValorENomeDoCampoParaformatar(element[campo],campo) }} </td>
+
+
+            </tr>
+
+
+
+
+        </tbody>
+    </table>
+    <div class="row">
+        <div class="col-sm-6">
+            <mat-paginator #paginatorPageSize [pageSize]="filterPaginator.size" [length]="filterPaginator.totalElements"
+                [pageIndex]="filterPaginator.page" [pageSizeOptions]="pageLimitOptions" (page)="changeEvent($event)"
+                showFirstLastButtons>
+            </mat-paginator>
+        </div>
+        <div class="col-sm-6">
+            <div class="botoes">
+                <button (click)="imprimir()">Imprimir</button>
+                <button (click)="atualizar()">Atualizar</button>
+            </div>
+
+        </div>
+
+    </div>
+ -->
+    <!-- Error / Warning Buttons -->
+    <div class="alert-actions">
+        <button mat-raised-button color="warn" (click)="fChamarFormCadlogExcessoes()">{{ buttonErros }}</button>
+        <button mat-raised-button color="accent" (click)="MostrarErros()">{{ buttonAdvertencia }}</button>
+    </div>
+
+    <!-- Missing Documents Warning -->
+    <mat-card *ngIf="mArquivosOk == false && mArquivosOkSemInvFinal == false && mProcessando == false" class="warning-card">
+        <mat-card-content>
+            <div class="warning-message">
+                <mat-icon>warning_amber</mat-icon>
+                <span>Documentos pendentes — envie os arquivos para liberar os resultados.</span>
+            </div>
+        </mat-card-content>
+    </mat-card>
+
+
+    <!-- Full Reports Section (mArquivosOk == true) -->
+    <div *ngIf="mArquivosOk == true && mProcessando == false" class="reports-section">
+        <h2 class="section-title">Relatórios — Degustação</h2>
+        <div class="report-toggle">
+            <mat-slide-toggle [checked]="mGerarPlanilha" (change)="validarPlanilha()">
+                {{ mGerarPlanilha ? 'Gerar Planilha' : 'Gerar Relatório' }}
+            </mat-slide-toggle>
+        </div>
+
+        <mat-card class="report-group-card">
+            <mat-card-header><mat-card-title>Análise Geral</mat-card-title></mat-card-header>
+            <mat-card-content>
+                <div class="btn-grid">
+                <button mat-raised-button color="primary" [disabled]="mDisableButons"
+                    (click)="baixarDocumento('analiseEstrutural','analiseEstrutural')">
+                    <mat-icon>analytics</mat-icon> Análise Estrutural
+                </button>
+
+                <button mat-raised-button color="primary" [disabled]="mDisableButons"
+                    (click)="baixarDocumento('maioresClientes','maioresClientes')">
+                    <mat-icon>people</mat-icon> Principais Clientes
+                </button>
+                <button mat-raised-button color="primary" [disabled]="mDisableButons"
+                    (click)="baixarDocumento('maioresFornecedores','maioresFornecedores')">
+                    <mat-icon>local_shipping</mat-icon> Principais Fornecedores
+                </button>
+                </div>
+            </mat-card-content>
+        </mat-card>
+
+        <mat-card class="report-group-card">
+            <mat-card-header><mat-card-title>Consistências</mat-card-title></mat-card-header>
+            <mat-card-content>
+                <div class="btn-grid">
+                <button mat-stroked-button (click)="emProducao()">
+                    <mat-icon>compare_arrows</mat-icon> Mesmo Código — Desc. e/ou Unidade Diferente
+                </button>
+                <button mat-stroked-button (click)="emProducao()">
+                    <mat-icon>swap_horiz</mat-icon> Mesma Desc. e Unidade — Código Diferente
+                </button>
+                </div>
+            </mat-card-content>
+        </mat-card>
+
+        <mat-card class="report-group-card">
+            <mat-card-header><mat-card-title>Auditoria Quantitativa</mat-card-title></mat-card-header>
+            <mat-card-content>
+                <div class="btn-grid">
+                <button mat-raised-button color="primary" [disabled]="mDisableButons"
+                    (click)="baixarDocumento('Conclusão','cadConclusao')">
+                    <mat-icon>fact_check</mat-icon> Conclusão
+                </button>
+                <button mat-stroked-button (click)="emProducao()"><mat-icon>inventory</mat-icon> Estoque Final Ideal</button>
+                <button mat-stroked-button (click)="emProducao()"><mat-icon>warehouse</mat-icon> Estoque Final Declarado</button>
+                <button mat-stroked-button (click)="emProducao()"><mat-icon>inventory_2</mat-icon> Estoque Inicial Declarado</button>
+                <button mat-stroked-button (click)="emProducao()"><mat-icon>input</mat-icon> Relação das Entradas</button>
+                <button mat-stroked-button (click)="emProducao()"><mat-icon>output</mat-icon> Relação das Saídas</button>
+                </div>
+            </mat-card-content>
+        </mat-card>
+
+        <!-- Bloco K -->
+        <h2 class="section-title">Relatórios do Bloco K (Exclusivo para Indústria)</h2>
+
+        <mat-card class="report-group-card">
+            <mat-card-header><mat-card-title>Auditoria da Produção</mat-card-title></mat-card-header>
+            <mat-card-content>
+                <div class="btn-grid">
+                <button mat-stroked-button (click)="emProducao()"><mat-icon>functions</mat-icon> Equação Básica Conclusão</button>
+                <button mat-stroked-button (click)="emProducao()"><mat-icon>visibility_off</mat-icon> Produção Oculta</button>
+
+                </div>
+            </mat-card-content>
+        </mat-card>
+
+        <mat-card class="report-group-card">
+            <mat-card-header><mat-card-title>Bloco K — Estudo</mat-card-title></mat-card-header>
+            <mat-card-content>
+                <div class="btn-grid">
+                <button mat-raised-button color="primary" [disabled]="mDisableButons"
+                    (click)="baixarDocumento('Estoque Registro K','cadrkEstoque')">
+                    <mat-icon>inventory</mat-icon> Estoque
+                </button>
+                <button mat-raised-button color="primary" [disabled]="mDisableButons"
+                    (click)="baixarDocumento('Desmontagem Registro K','cadrkDesmontagem')">
+                    <mat-icon>build</mat-icon> Desmontagem
+                </button>
+                <button mat-raised-button color="primary" [disabled]="mDisableButons"
+                    (click)="baixarDocumento('Reclassificacao Registro K','cadrkReclassificacao')">
+                    <mat-icon>category</mat-icon> Reclassificação
+                </button>
+                <button mat-raised-button color="primary" [disabled]="mDisableButons"
+                    (click)="baixarDocumento('Reprocessamento Vai','cadrkReprocVai')">
+                    <mat-icon>autorenew</mat-icon> Reprocessamento/Reparo Produto-Insumo
+                </button>
+                <button mat-raised-button color="primary" [disabled]="mDisableButons"
+                    (click)="baixarDocumento('Reprocessamento Ret','cadrkReprocRet')">
+                    <mat-icon>undo</mat-icon> Reprocessamento/Reparo Mercadoria Retornada
+                </button>
+                </div>
+            </mat-card-content>
+        </mat-card>
+
+        <mat-card class="report-group-card">
+            <mat-card-header><mat-card-title>Produção Individualizada</mat-card-title></mat-card-header>
+            <mat-card-content>
+                <div class="btn-grid">
+                <button mat-raised-button color="primary" [disabled]="mDisableButons"
+                    (click)="baixarDocumento('Itens Produçao Individualizada','cadrkItensProdIndv')">
+                    <mat-icon>list_alt</mat-icon> Itens a Produzir
+                </button>
+                <button mat-raised-button color="primary" [disabled]="mDisableButons"
+                    (click)="baixarDocumento('Insumos Consumido Indualizada','cadrkInsumosConsIndv')">
+                    <mat-icon>shopping_cart</mat-icon> Insumos Consumidos
+                </button>
+                <button mat-raised-button color="primary" [disabled]="mDisableButons"
+                    (click)="baixarDocumento('Indl Por Terceiros Individualizada','cadrkIndlPorTercIndv')">
+                    <mat-icon>group_work</mat-icon> Indl Por Terceiros
+                </button>
+                <button mat-raised-button color="primary" [disabled]="mDisableButons"
+                    (click)="baixarDocumento('Insumos Cons Individualizada por 3o. individualizada','cadrkInsConsIndl3oIndv')">
+                    <mat-icon>grain</mat-icon> Insumos Cons. por 3o. Individualizada
+                </button>
+                </div>
+            </mat-card-content>
+        </mat-card>
+
+        <mat-card class="report-group-card">
+            <mat-card-header><mat-card-title>Produção Conjunta</mat-card-title></mat-card-header>
+            <mat-card-content>
+                <div class="btn-grid">
+                <button mat-raised-button color="primary" [disabled]="mDisableButons"
+                    (click)="baixarDocumento('Itens Produçao Conjunta','cadrkItensProdCj')">
+                    <mat-icon>list_alt</mat-icon> Itens a Produzir
+                </button>
+                <button mat-raised-button color="primary" [disabled]="mDisableButons"
+                    (click)="baixarDocumento('Insumos Consumido Prod Conjunta','cadrkInsumosConsCj')">
+                    <mat-icon>shopping_cart</mat-icon> Insumos Consumidos
+                </button>
+                <button mat-raised-button color="primary" [disabled]="mDisableButons"
+                    (click)="baixarDocumento('Indl Por Terceiros','cadrkIndlPorTercCj')">
+                    <mat-icon>group_work</mat-icon> Indl Por Terceiros
+                </button>
+                <button mat-raised-button color="primary" [disabled]="mDisableButons"
+                    (click)="baixarDocumento('Insumos Cons Individualizada por 3o. Prod Conjunta','cadrkInsConsIndl3oCj')">
+                    <mat-icon>grain</mat-icon> Insumos Cons. Indl por Terceiros
+                </button>
+                </div>
+            </mat-card-content>
+        </mat-card>
+
+        <mat-card class="report-group-card">
+            <mat-card-header><mat-card-title>Produção Individualizada + Conjunta</mat-card-title></mat-card-header>
+            <mat-card-content>
+                <div class="btn-grid">
+                <button mat-raised-button color="primary" [disabled]="mDisableButons"
+                    (click)="baixarDocumento('Produção conjunta','cadrkResumoProdConj')">
+                    <mat-icon>merge_type</mat-icon> Produção Conjunta
+                </button>
+                <button mat-raised-button color="primary" [disabled]="mDisableButons"
+                    (click)="baixarDocumento('Produção individualizada','cadrkResumoProdIndv')">
+                    <mat-icon>call_split</mat-icon> Produção Individualizada
+                </button>
+                </div>
+            </mat-card-content>
+        </mat-card>
+
+        <mat-card class="report-group-card">
+            <mat-card-header><mat-card-title>Custo Primário Matéria Prima</mat-card-title></mat-card-header>
+            <mat-card-content>
+                <div class="btn-grid">
+                <button mat-stroked-button (click)="emProducao()">
+                    <mat-icon>price_check</mat-icon> Custo Primário de Materiais
+                </button>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <!-- Partial Reports (sem Inventário Final) -->
+    <div *ngIf="mArquivosOk == false && mArquivosOkSemInvFinal == true && mProcessando == false" class="reports-section">
+        <h2 class="section-title">Degustação — Faltando Inventário Final</h2>
+        <div class="report-toggle">
+            <mat-slide-toggle [checked]="mGerarPlanilha" (change)="validarPlanilha()">
+                {{ mGerarPlanilha ? 'Gerar Planilha' : 'Gerar Relatório' }}
+            </mat-slide-toggle>
+        </div>
+
+        <mat-card class="report-group-card">
+            <mat-card-header><mat-card-title>Relatórios Disponíveis</mat-card-title></mat-card-header>
+            <mat-card-content>
+                <div class="btn-grid">
+                <button mat-raised-button color="primary" [disabled]="mDisableButons"
+                    (click)="baixarDocumento('maioresClientes','maioresClientes')">
+                    <mat-icon>people</mat-icon> Principais Clientes
+                </button>
+                <button mat-raised-button color="primary" [disabled]="mDisableButons"
+                    (click)="baixarDocumento('maioresFornecedores','maioresFornecedores')">
+                    <mat-icon>local_shipping</mat-icon> Principais Fornecedores
+                </button>
+                <button mat-raised-button color="primary" [disabled]="mDisableButons"
+                    (click)="baixarDocumento('estoqueFinalIdeal','estoqueFinalIdeal')">
+                    <mat-icon>inventory</mat-icon> Estoque Final Ideal
+                </button>
+                <button mat-stroked-button (click)="emProducao()"><mat-icon>inventory_2</mat-icon> Estoque Inicial Declarado</button>
+                <button mat-stroked-button (click)="emProducao()"><mat-icon>input</mat-icon> Relação das Entradas</button>
+                <button mat-stroked-button (click)="emProducao()"><mat-icon>output</mat-icon> Relação das Saídas</button>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+</div>

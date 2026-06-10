@@ -1,0 +1,13 @@
+<app-dialog-body (handlerClick)="onClick()" [title]="title">
+    <div class="form-build">
+        <app-form-build #instanceForm [fieldsConfig]="fields"></app-form-build>
+      </div>
+    
+      <app-table-list #instanceTable
+        [itens]="itemsTable"
+        [displayColumns]="displayColumns"
+        [data]="data?.categorias"
+        [isPaginator]="false"
+        (clickRowHandler)="rowSelected($event)"
+      ></app-table-list>
+</app-dialog-body>

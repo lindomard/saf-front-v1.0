@@ -1,0 +1,56 @@
+<section>
+
+    <aside>
+        <span>Baixar Arquivo<button (click)="download(url)"><i
+                    class="fa-solid fa-download"></i></button></span>
+                    
+        <button (click)="close()"><i class="fa-solid fa-xmark"></i>Fechar Janela</button>
+    
+    </aside>
+
+    <aside>
+        <ng-container [ngSwitch]="type">
+            <ng-container *ngSwitchCase="'text'">
+                <ngx-doc-viewer [url]="url" viewer="google" style="width:100%; height:100%;"></ngx-doc-viewer>
+            </ng-container>
+            <ng-container *ngSwitchCase="'image'">
+                <!-- <div class="image-viewer" [ngStyle]="{'background-image': 'url(' + 'http://191.252.2.65:8080/file/' + url + ')'}"></div> -->
+                <img [src]="url">
+            </ng-container>
+            <ng-container *ngSwitchCase="'audio'">
+                <!-- <audio controls
+                    style="width:100%; height:100%; background-image: url('assets/storage/file/ico/mp3.png'); background-position: center; background-repeat: no-repeat; background-size: 40%;">
+                    <source [src]="url" [type]="fileType.type + '/' + data.extensao">
+                    Audio não suportado.
+                </audio> -->
+            </ng-container>
+            <ng-container *ngSwitchCase="'video'">
+                <!-- <video controls style="width:100%; height:100%;">
+                    <source [src]="url" [type]="fileType.type + '/' + data.extensao">
+                    Video não suportado.
+                </video> -->
+            </ng-container>
+            <ng-container *ngSwitchCase="'url'">
+                <ngx-doc-viewer [url]="url" viewer="url" style="width:100%; height:100%;"></ngx-doc-viewer>
+            </ng-container>
+            <ng-container *ngSwitchCase="'pdf'">
+                <ngx-doc-viewer [url]="url" viewer="url" style="width:100%; height:100%;"></ngx-doc-viewer>
+            </ng-container>
+            <ng-container *ngSwitchCase="'google'">
+                <ngx-doc-viewer [url]="url" [viewer]="fromUrl ? 'url' : 'google'"
+                    style="width:100%; height:100%;"></ngx-doc-viewer>
+            </ng-container>
+            <ng-container *ngSwitchCase="'office'">
+                <ngx-doc-viewer [url]="url" [viewer]="fromUrl ? 'url' :  'google'"
+                    style="width:100%; height:100%;"></ngx-doc-viewer>
+            </ng-container>
+            <ng-container *ngSwitchDefault>
+                <div class="w-100 text-center">
+                    <br>
+                    <h4>Tipo de arquivo não registrado.</h4>
+                </div>
+            </ng-container>
+        </ng-container>
+    </aside>
+
+</section>

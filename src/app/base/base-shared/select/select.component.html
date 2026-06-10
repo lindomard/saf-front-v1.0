@@ -1,0 +1,9 @@
+<div class="form-group" *ngIf="visible" [attr.id]="idComponent" #divSelect>
+    <label>{{  getOptions() }}</label>
+    <select class="form-control form-control-sm" (change)="handlerChangeFunction(select.value)" 
+    (blur)="handlerBlur(select)"
+        [formControl]="control" [required]="required" 
+        (keydown)="keyDown($event)" #instanceRef #select >
+        <option *ngFor="let item of options" value="{{ item[valueKey] }}">{{ item[labelKey] }}</option>
+    </select>
+</div>

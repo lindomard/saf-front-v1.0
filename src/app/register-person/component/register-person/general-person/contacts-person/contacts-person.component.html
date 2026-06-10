@@ -1,0 +1,14 @@
+<mat-card>
+    <app-form-build #instanceForm [fieldsConfig]="fields"></app-form-build>
+</mat-card>
+
+<div [ngStyle]="getStyleShowTable()">
+    <app-table-list #instanceTable
+        [itens]="itemsTable"
+        [displayColumns]="displayColumns"
+        [data]="contacts"
+        [isPaginator]="false"
+        (editHandler)="onEditListener($event)"
+        (deleteHandler)="onDeleteListener($event)">
+    </app-table-list>
+</div>

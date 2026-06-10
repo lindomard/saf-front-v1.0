@@ -1,0 +1,26 @@
+<button
+(click)="click()"
+id="{{ id }}"
+[disabled]="form?.disabled"
+[ngClass]="{
+    'large': large,
+    'genesis-primary': primary,
+    'full': full,
+    'border-button': !primary
+}"
+[ngStyle]="style"
+class="genesis-button">
+<div class="content">
+    <span 
+        *ngIf="icon"
+        [ngStyle]="iconStyle"
+        class="fa fa-{{ icon }}">
+    </span>
+    {{ label }}
+</div>
+<span *ngIf="showLoading" 
+    class="spinner-border spinner-border-sm"
+    role="status" 
+    aria-hidden="true">
+</span>
+</button>

@@ -1,0 +1,91 @@
+<loadingV01 *ngIf="isLoading">{{ isLoading }}</loadingV01>
+
+
+
+<mat-card>
+    <h1 mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle
+        style="background-color: rgb(28, 119, 161); text-align:center;">Produto x CFOP </h1>
+    <h1 mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle
+        style="background-color: rgb(21, 100, 19); text-align:center;"> {{ tipoEvento }}
+
+
+        <div class="col text-right">
+            <!-- <button class="btn btn-primary mr-2" (click)=" cloneObj()">cloner</button> -->
+            <button class="btn btn-primary mr-2" (click)=" cancelarESair()">Fechar</button>
+        </div>
+
+
+    </h1>
+
+</mat-card>
+
+
+
+
+<mat-card class="example-card">
+
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="row">
+
+
+                <!-- <div class="col-md-12">
+                    <app-config-dados-tabela-consulta #instanceConfigDadosTabela 
+                        (fAtualizarDadosTabela)="fAtualizarBusca()"></app-config-dados-tabela-consulta>
+                        [camposDaTabela]="camposDaTabela"
+                </div> -->
+
+                <div class="col-md-12">
+                    <app-consultas-e-relatorios #instanceConsultasERelatorios
+                        (fAtualizaAtualizarPor)="fAtualizarBusca2($event)" [mDisableGerar]="mDisableGerar"
+                        [dataSourcecamposParaFiltrosList]="dataSourcecamposParaFiltrosList"
+                        [dataSourceTableFilpadCab]="dataSourceTableFilpadCab" [camposConsultaPor]="camposConsultaPor"
+                        (fGerarPdf)="baixarRelatorio()" (fGerarPlanilha)="fBuscarPlanilha()"
+                        (fSalvarRelatorioPadrao)="fBuscarPlanilha()" (fAtualizarDadosTabelaFiltros)="fAtualizarBusca()"
+                        (resetarConfiguracoesEmit)="resetarConfiguracoes()"
+                        (fAjustarDisplayColumnsTableEmit)="fAjustarDisplayColumnsTable()"></app-consultas-e-relatorios>
+                </div>
+
+                <!-- [dataSourceFiltros]="dataSourceFiltros" -->
+
+
+
+            </div>
+        </div>
+    </div>
+</mat-card>
+
+
+
+
+<table mat-table [dataSource]="dataSourceWithPageSize" class="mat-elevation-z8">
+    <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">
+        <th mat-header-cell [style]="getAlingn(column)" *matHeaderCellDef>
+            {{ getColumnName(column) }} </th>
+
+
+
+
+
+            <td mat-cell [style]="getAlingn(column)" [width]="getStyle3(column)" 
+                    (dblclick)="onDblClick(element,column )"
+
+            *matCellDef="let element">
+                {{ fValorENomeDoCampoParaformatar(element,column) }}
+                
+            </td>
+
+
+
+    </ng-container>
+
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<mat-paginator #paginatorPageSize [pageSize]="filterPaginator.size" [length]="filterPaginator.totalElements"
+    [pageIndex]="filterPaginator.page" [pageSizeOptions]="pageLimitOptions" showFirstLastButtons (page)="changeEvent()">
+</mat-paginator>

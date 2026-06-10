@@ -1,0 +1,78 @@
+:host {
+    // filter: drop-shadow(0 1rem 1rem rgba(0, 0, 0, 0.1));
+    // box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.1);
+    // z-index: 1;
+    position: relative;
+    // box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+$content-padding: 1.6rem;
+
+section {
+    min-height: 5rem;
+    background-color: #fff;
+
+    box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.1);
+
+    z-index: 1;
+
+    border-radius: 1rem;
+
+    color: #000;
+    font-weight: normal;
+    font-size: 1.4rem;
+
+    font-family: 'Open Sans', sans-serif;
+
+    margin-bottom: 5rem;
+
+    .card-header,
+    .route-list {
+        padding: $content-padding;
+
+        font-family: 'Montserrat', sans-serif;
+
+        color: #333333;
+
+        border-bottom: .1rem solid #E4E9F2;
+        margin-bottom: 1.5rem;
+    }
+
+    .card-header {
+        font-size: 1.8rem;
+        font-weight: 600;
+    }
+
+    .route-list {
+        span {
+            font-family: 'Open Sans', sans-serif;
+
+            &.current {
+                font-weight: bold;
+                cursor: pointer;
+            }
+
+            span {
+                padding: .4rem;
+            }
+        }
+    }
+
+    .card-body {
+        padding: $content-padding;
+
+        @media (max-width: 768px) {
+            justify-content: center !important;
+        }
+    }
+
+    .row {
+        align-items: flex-end;
+    }
+}
+.editar {
+    text-align: right; /* Alinha todo o texto para a direita */
+    color: #52805b; /* Cor original */
+    font-weight: bold; /* Aplica negrito */
+    font-size: 1.2em; /* Aumenta o tamanho da fonte (ajuste conforme necessário) */
+}

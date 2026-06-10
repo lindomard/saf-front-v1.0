@@ -1,0 +1,94 @@
+
+// table >>>>>>>>>>>
+
+.mat-column-codigo {
+    flex: 0 0 8%;
+}
+.mat-column-situacao {
+    flex: 0 0 10%;
+}
+.mat-column-fantasia {
+    flex: 0 0 18%;
+}
+.mat-column-rzSocial {
+    flex: 0 0 18%;
+}
+.mat-column-cnpj {
+    flex: 0 0 13%;
+}
+.mat-column-celular {
+    flex: 0 0 10%;
+}
+.mat-column-telefone {
+    flex: 0 0 10%;
+}
+.mat-column-classificacao {
+    flex: 0 0 10%;
+}
+
+.mobile-label {
+    display: none;
+}
+
+.mat-row:nth-child(even){
+background-color:#fff;
+}
+
+.mat-row:nth-child(odd){
+background-color:#f1f1f1;
+}
+
+tr.mat-row {
+    border-bottom: 1px solid #dedede;
+}
+
+.mat-row:hover {
+    background-color: #dbd2d2;
+}
+
+.mat-container {
+    display: flex;
+    flex-direction: column;
+    max-height: 450px;
+    min-width: 300px;
+}
+
+.mat-table {
+    overflow: auto;
+    max-height: 400px;
+    font-size: 11px;
+}
+
+
+@media(max-width: 600px) {
+    .mat-table {
+        overflow: auto;
+        max-height: 700px;
+        font-size: 11px;
+    }
+
+    .mobile-label {
+        width: 80px;
+        display: inline-block;
+        font-weight: bold;
+    }
+    
+    .mat-header-row {
+        display: none;
+    }
+
+    .mat-row { 
+        flex-direction: column;
+        align-items: start;
+        padding: 4px 12px;
+    }
+
+    .mobile-label {
+        width: 80px;
+        display: inline-block;
+        font-weight: bold;
+    }
+    .btn-consultar {
+        width: 100%;
+    }
+}

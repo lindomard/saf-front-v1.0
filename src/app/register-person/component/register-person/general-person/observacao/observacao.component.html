@@ -1,0 +1,16 @@
+<mat-tab-group style="margin-top: 20px;" [disableRipple]="true"
+    [selectedIndex]="selectedTab.value" 
+    (selectedIndexChange)="selectedTab.setValue($event)">
+
+    <mat-tab label="Obs. Geral">
+        <app-geral></app-geral>
+    </mat-tab>
+    
+    <mat-tab label="Obs. Pedido">
+        <app-pedido></app-pedido>
+    </mat-tab>
+
+    <mat-tab label="Obs. NFE">
+        <app-nfe></app-nfe>
+    </mat-tab>
+</mat-tab-group>

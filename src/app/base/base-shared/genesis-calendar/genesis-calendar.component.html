@@ -1,0 +1,44 @@
+
+<div class="form-group edit-datepicker"
+[ngClass]="{
+    'has-danger': showError
+}">
+    <label class="control-label" 
+        [ngClass]="{
+            'erro-label-feedback': showError
+        }"
+        *ngIf="label"> {{ label }}</label>
+    <div class="wrapper">
+        <input type="text"
+            (focus)="focusHandler($event)"
+            class="form-control form-control-sm"
+            [ngClass]="{
+                'is-invalid': showError
+            }"
+            [attr.disabled]="control.disabled ? true : null"
+            [textMask]="maskConfig"
+            [formControl]="control"
+            placeholder="__/__/____">
+        <span class="toggle-icon  fa fa-calendar"
+            [ngClass]="{
+                'error': showError
+            }"
+            *ngIf="showIcon"
+            id="{{ id }}"
+            (click)="toggleDatepicker()"
+            [ngClass]="{ disabled: control.disabled }">
+        </span>
+
+        <mat-calendar
+            *ngIf="datepickerOpen"
+            [ngClass]="{ 'hide-calendar': !datepickerOpen }"
+            [selected]="calendarDay"
+            (selectedChange)="calendarSelectHandler($event)">
+        </mat-calendar>
+
+    </div>
+
+    <div *ngIf="showError"  style="color: #dc3545; margin-top: 0.25rem">
+        {{ message }}
+    </div>
+</div>

@@ -1,0 +1,107 @@
+
+.fade-in {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.fade-in.active {
+  opacity: 1;
+}
+
+.child {
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.config-container {
+  padding: 0;
+}
+
+.actions-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  gap: 8px;
+}
+
+.toolbar-spacer {
+  flex: 1 1 auto;
+}
+
+.config-card {
+  margin: 16px;
+  border-radius: 8px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 4px;
+
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form-field {
+  width: 100%;
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 4px;
+}
+
+.whatsapp-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 8px 0 16px;
+}
+
+.message {
+  color: red;
+  width: 100%;
+  text-align: end;
+}
+
+@import "~bootstrap/scss/bootstrap.scss";
+
+input.ng-dirty.ng-valid {
+  @extend .is-valid;
+}
+
+input.ng-dirty.ng-invalid {
+  @extend .is-invalid;
+}
+  /*
+  .container {
+    margin-top: 56px;
+  }
+  */
+  /*
+  .mat-tab-group {
+    margin-top: 20px;
+  }
+  */
+  
+  
+  
+  // inicio 
+  
+  
+  
+  
+  
+  
+  .background {
+    height: 100%;
+    max-width: 100%;
+    padding: 0;
+    background: blue;
+    background-size: auto auto;
+  }
+  

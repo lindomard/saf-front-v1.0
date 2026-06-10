@@ -1,0 +1,211 @@
+<div class="fundo">
+
+
+
+
+    <!-- COMECOU AQUI  -->
+
+    <br>
+    <h1 class="titulo">Resultados Apurado</h1>
+
+
+    <div>
+        <!-- <input [checked]="mGerarPlanilha" type="checkbox" name="gerarPlanilha" (click)="validarPlanilha()">
+        {{ mGerarPlanilha ? "Gerar Planilha" : "Gerar Relatorio" }} <br> -->
+
+        <div class="col text-right">
+            <button class="btn btn-primary mr-2" (click)="cancelarESair()">Fechar</button>
+        </div>
+
+    </div>
+
+    <div class="fundoSemFundo" *ngIf="mArquivosOk==false && mArquivosOkSemInvFinal==false && mProcessando==false">
+        <h3 class="cabecalho">Esta Faltando Documentos, favor Envia-los para Liberação dos Resultados</h3>
+        <br>
+
+    </div>
+
+
+    <div class="fundo" *ngIf="mArquivosOk==true  && mProcessando==false ">
+        <br>
+
+        <mat-card>
+
+
+
+            <div class="flex-botoes">
+                <button mat-button [disabled]="mDisableButons" (click)="analiseEstrutural()">Analise Estrutural</button>
+
+                <button mat-button [disabled]="mDisableButons"
+                    (click)="baixarDocumento('maioresClientes','maioresClientes')">principais Clientes</button>
+                <button mat-button [disabled]="mDisableButons"
+                    (click)="baixarDocumento('maioresFornecedores','maioresFornecedores')">principais
+                    Fornecedores</button>
+
+                <h1 class="cabecalho">Consistências</h1>
+                <button mat-button (click)="emProducao()">Mesmo Codigo - Descrição e/ou Unidade Diferente</button>
+                <button mat-button (click)="emProducao()">Mesma Descrição e Unidade - Código Diferente</button>
+                <h1 class="cabecalho">Auditoria Quantitativa</h1>
+
+                <button mat-button [disabled]="mDisableButons" (click)="cadConclusao()">Conclusão</button>
+
+
+                <button mat-button (click)="emProducao()">Estoque Final Ideal</button>
+                <button mat-button (click)="emProducao()">Estoque Final Declarado</button>
+                <button mat-button (click)="emProducao()">Estoque Inicial Declarado</button>
+                <button mat-button (click)="emProducao()">Relação das Entradas</button>
+                <button mat-button (click)="emProducao()">Relação das Saidas</button>
+
+
+
+
+
+            </div>
+
+            <!-- <button mat-button (click)="visible()">Visivel/Invisivel</button> -->
+        </mat-card>
+        <!-- TERMINOU AQUI -->
+
+        <!-- bloco k-->
+
+        <br>
+        <h1 class="titulo">Relatorios do Bloco K (Exclusivo Para Industria)</h1>
+        <mat-card>
+
+
+
+            <div class="flex-botoes">
+
+                <h1 class="cabecalho">Auditoria da Produção</h1>
+                <button mat-button (click)="emProducao()">Equação Basica Conclusão</button>
+                <button mat-button (click)="emProducao()">Produção Oculta</button>
+
+
+
+
+
+                <h1 class="cabecalho">Bloco K Estudo</h1>
+                <button mat-button [disabled]="mDisableButons"
+                    (click)="baixarDocumento('Estoque Registro K','cadrkEstoque')">Estoque</button>
+                <button mat-button [disabled]="mDisableButons"
+                    (click)="baixarDocumento('Desmontagem Registro K','cadrkDesmontagem')">Desmontagem</button>
+                <button mat-button [disabled]="mDisableButons"
+                    (click)="baixarDocumento('Reclassificacao Registro K','cadrkReclassificacao')">Reclassificação</button>
+                <button mat-button [disabled]="mDisableButons" (click)="baixarDocumento('Reprocessamento Vai'
+        ,'cadrkReprocVai')">Reprocessamento/Reparo Produto-insumo</button>
+                <button mat-button [disabled]="mDisableButons" (click)="baixarDocumento('Reprocessamento Ret'
+        ,'cadrkReprocRet')">Reprocessamento/Reparo Mercadoria Retornada</button>
+
+
+
+                <h1 class="cabecalho">Produção Individualizada </h1>
+                <button mat-button [disabled]="mDisableButons" (click)="baixarDocumento('Itens Produçao Individualizada'
+        ,'cadrkItensProdIndv')">Itens a Produzir</button>
+
+                <button mat-button [disabled]="mDisableButons" (click)="baixarDocumento('Insumos Consumido Indualizada'
+,'cadrkInsumosConsIndv')">Insumos Consumido</button>
+
+
+                <button mat-button [disabled]="mDisableButons" (click)="baixarDocumento('Indl Por Terceiros Individualizada'
+,'cadrkIndlPorTercIndv')">Indl Por Terceiros Individualizada</button>
+
+
+                <button mat-button [disabled]="mDisableButons" (click)="baixarDocumento('Insumos Cons Individualizada por 3o. individualizada'
+,'cadrkInsConsIndl3oIndv')">Insumos Cons Individualizada por 3o. individualizada</button>
+
+
+                <h1 class="cabecalho">Produção conjunta</h1>
+
+
+                <button mat-button [disabled]="mDisableButons" (click)="baixarDocumento('Itens Produçao Conjunta'
+        ,'cadrkItensProdCj')">Itens a Produzir</button>
+
+                <button mat-button [disabled]="mDisableButons" (click)="baixarDocumento('Insumos Consumido Prod Conjunta'
+,'cadrkInsumosConsCj')">Insumos Consumido</button>
+
+
+
+
+                <button mat-button [disabled]="mDisableButons" (click)="baixarDocumento('Indl Por Terceiros'
+,'cadrkIndlPorTercCj')">Indl Por Terceiros</button>
+
+
+
+                <button mat-button [disabled]="mDisableButons" (click)="baixarDocumento('Insumos Cons Individualizada por 3o. Prod Conjunta'
+,'cadrkInsConsIndl3oCj')">Insumos consumidos Indl por Terceiros</button>
+
+
+                <h1 class="cabecalho">Produção Individualizada + conjunta</h1>
+
+
+                <button mat-button [disabled]="mDisableButons" (click)="baixarDocumento('Produção conjunta'
+,'cadrkResumoProdConj')">Produção conjunta</button>
+
+
+                <button mat-button [disabled]="mDisableButons" (click)="baixarDocumento('Produção individualizada'
+,'cadrkResumoProdIndv')">Produção individualizada</button>
+
+
+
+
+                <h1 class="cabecalho">Custo Primário Matéria Prima</h1>
+
+                <button mat-button (click)="emProducao()">Custo Primário de Materiais</button>
+
+
+
+            </div>
+
+            <!-- <button mat-button (click)="visible()">Visivel/Invisivel</button> -->
+        </mat-card>
+
+    </div>
+
+
+    <div class="fundo" *ngIf="mArquivosOk==false && mArquivosOkSemInvFinal==true && mProcessando==false ">
+        <br>
+        <h2 class="titulo">Relatorios com poucos itens apenas para Degustação. Faltando o Inventário Final</h2>
+
+
+        <div>
+            <input [checked]="mGerarPlanilha" type="checkbox" name="gerarPlanilha" (click)="validarPlanilha()">
+            {{ mGerarPlanilha ? "Gerar Planilha" : "Gerar Relatorio" }} <br>
+
+        </div>
+        <mat-card>
+
+
+
+            <div class="flex-botoes">
+
+                <button mat-button [disabled]="mDisableButons"
+                    (click)="baixarDocumento('maioresClientes','maioresClientes')">principais Clientes</button>
+                <button mat-button [disabled]="mDisableButons"
+                    (click)="baixarDocumento('maioresFornecedores','maioresFornecedores')">principais
+                    Forncedores</button>
+
+                <h1 class="cabecalho">Auditoria Quantitativa</h1>
+
+
+                <button mat-button [disabled]="mDisableButons"
+                    (click)="baixarDocumento('estoqueFinalIdeal','estoqueFinalIdeal')">Estoque Final Ideal</button>
+                <button mat-button (click)="emProducao()">Estoque Inicial Declarado</button>
+                <button mat-button (click)="emProducao()">Relação das Entradas</button>
+                <button mat-button (click)="emProducao()">Relação das Saidas</button>
+
+
+
+
+
+            </div>
+
+            <!-- <button mat-button (click)="visible()">Visivel/Invisivel</button> -->
+        </mat-card>
+
+        <br>
+        <!-- final -->
+
+    </div>
+
+
+</div>

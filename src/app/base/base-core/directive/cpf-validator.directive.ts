@@ -1,0 +1,53 @@
+import { Validator, ValidatorFn, NG_VALIDATORS, AbstractControl } from '@angular/forms';
+import { Directive } from '@angular/core';
+
+import { Input } from '@angular/core';
+import { CpfFunction } from '@base-core/function/cpf.anotation';
+
+@Directive({
+  selector: '[valCpf][ngModel]',
+  providers: [
+    {
+      provide: NG_VALIDATORS,
+      useExisting: CpfValidatorDirective,
+      multi: true
+    }
+  ]
+})
+export class CpfValidatorDirective implements Validator {
+  private validator: ValidatorFn;
+  private _onChange: () => void;
+
+  @Input()
+  get validation(): ValidatorFn | null { return this.validator; }
+
+  set validation(value: ValidatorFn | null) {
+    this.validator =  value;
+    if (this._onChange) { this._onChange(); }
+  }
+
+  constructor() {
+    this.validator = this.cpfValidator();
+  }
+
+  validate (c: AbstractControl) {
+    return this.validator(c);
+  }
+
+  private cpfValidator (): ValidatorFn {
+    return (c: AbstractControl) => {
+      const isValid = new CpfFunction(c.value).validate();
+      if (isValid) {
+        return null;
+      } else {
+        return {
+          cpfvalidator: {
+            valid: false
+          }
+        };
+      }
+    };
+  }
+
+  registerOnValidatorChange(fn: () => void): void { this._onChange = fn; }
+}

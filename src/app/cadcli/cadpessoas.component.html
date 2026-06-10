@@ -1,0 +1,564 @@
+<div class="container">
+
+
+
+
+    <div>
+
+        <mat-toolbar color="warn" class="child">
+
+            <div class="col">
+                <div class="row">
+
+
+
+                    <span> {{ mTipoOperacao }} </span>
+                    <!-- <span class="spacer"></span> -->
+
+
+                    <div class="col text-right">
+                        <button class="btn btn-primary mr-2" (click)="salvar()">Gravar</button>
+                        <button class="btn btn-dark" (click)="cancelarESair()">Cancelar/Sair</button>
+                    </div>
+
+                </div>
+
+            </div>
+        </mat-toolbar>
+
+    </div>
+
+
+    <br>
+    <br>
+
+
+    <br>
+    <br>
+
+
+
+
+    <nb-card class="preview-card">
+
+        <nb-card-body>
+
+
+
+            <nb-tabset fullWidth>
+                <nb-tab badgeStatus="danger" tabTitle="Geral" (click)="selectTab(1)">
+
+                    <mat-card class="main">
+
+                        <div class="row mt-3">
+                            <div class="col-10">
+                                <div class="d-flex justify-content-start">
+                                    <h1>Cadastro de Clientes</h1>
+                                </div>
+
+
+                            </div>
+                            <div class="col-2">
+                                <div class="d-flex justify-content-end">
+                                    <label>Chave Id:</label>
+                                    {{ formulario.get('cpId').value }}
+
+                                    <!-- <button routerLink="" type="button" class="btn btn-dark">Home</button> -->
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <hr>
+                        <div class="feed">
+                            <div class="row">
+                                <div class="col-xl-12">
+                                    <form [formGroup]="formulario" (ngSubmit)="validar()">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Razão Social:</label>
+                                                <input id="cpRazaoSocial" formControlName="cpRazaoSocial"
+                                                    class="form-control" type="text">
+                                                <div *ngIf="formulario.get('cpRazaoSocial').errors?.minlength">
+                                                    Raão Social invalida </div>
+
+
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>Fantasia</label>
+                                                <input formControlName="cpDenom" class="form-control" type="text">
+                                            </div>
+                                        </div>
+                                        <br>
+
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label>Cnpj:</label>
+                                                <input formControlName="cpCnpj" class="form-control" type="text"
+                                                    appCpfCnpj #cpCnpj>
+
+
+
+
+                                                <small *ngIf="formulario.controls.cpCnpj.hasError('erro')"
+                                                    class="message">
+                                                    {{ this.formulario.get("cpCnpj").errors | json }}
+                                                </small>
+
+                                                <div *ngIf="buscandoPorCnpj" class="message">
+                                                    <p>
+
+                                                        <blink [active]="true">Aguarde Buscando Cnpj</blink>
+
+                                                    </p>
+                                                </div>
+
+                                                <!-- <h3 *ngIf="buscandoPorCnpj" class="message">Aguarde Buscando Cnpj
+                                                </h3> -->
+
+
+                                            </div>
+
+
+
+                                            <div class="col-md-2">
+                                                <br>
+                                                <button c-button class="form-control"
+                                                    (click)="fBuscarDadosPeloCnpj()">Buscar
+                                                    Cadastro</button>
+
+                                            </div>
+
+
+
+
+                                            <div class="col-md-6">
+                                                <label>Inscrição Estadual </label>
+                                                <input formControlName="cpIe" class="form-control" type="text">
+                                            </div>
+                                        </div>
+                                        <br>
+
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Logradouro:</label>
+                                                <input formControlName="cpEnderLog" class="form-control" type="text">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>Complemento </label>
+                                                <input formControlName="cpEnderComplemento" class="form-control"
+                                                    type="text">
+                                            </div>
+                                        </div>
+                                        <br>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Número:</label>
+                                                <input formControlName="cpEnderNum" class="form-control" type="text">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>Bairro </label>
+                                                <input formControlName="cpEnderBairro" class="form-control" type="text">
+                                            </div>
+                                        </div>
+                                        <br>
+
+
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label>Cep:</label>
+                                                <input formControlName="cpEnderCep" class="form-control" type="text">
+                                            </div>
+
+                                            <div class="col-md-2">
+                                                <br>
+                                                <button c-button class="form-control"
+                                                    (click)="fBuscarDadosPeloCep()">Buscar
+                                                    Dados</button>
+
+                                            </div>
+
+
+
+
+                                            <div class="col-md-6">
+                                                <label>Cidade</label>
+                                                <input formControlName="cpEnderCidade" class="form-control" type="text">
+                                            </div>
+                                        </div>
+                                        <br>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Estado:</label>
+
+                                                <select class="form-control" formControlName="cpEnderuf">
+                                                    <option *ngFor="let estado of estados" [value]="estado.id">
+                                                        {{estado.name}}
+                                                    </option>
+                                                </select>
+
+                                            </div>
+
+
+
+
+                                            <div class="col-md-6">
+                                                <label>Cod Loc Ibge</label>
+                                                <input formControlName="cpEnderCodlocIbge" class="form-control"
+                                                    type="text">
+                                            </div>
+                                        </div>
+                                        <br>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Data Inicio:</label>
+                                                <input formControlName="cpDtRefIni" type="date" class="form-control">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>Data Término:</label>
+                                                <input formControlName="cpDtRefFin" type="date" class="form-control">
+                                            </div>
+                                        </div>
+                                        <br>
+
+
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <label>Observacoes:</label>
+                                                <textarea cols="64" rows="5" class="form-control"
+                                                    formControlName="cpObs"></textarea>
+                                            </div>
+                                        </div>
+                                        <br>
+
+
+                                        <!-- inicio filhos -->
+
+
+
+                                        <!-- termino filhos *** -->
+
+
+
+
+                                    </form>
+                                    <ngb-alert *ngIf="mensagemAlert != null" class="mt-3" [type]="mensagemAlert.type"
+                                        (close)="close()">{{
+                                        mensagemAlert.message }}</ngb-alert>
+                                </div>
+
+                                <!-- <pre>{{formulario.value | json}}</pre>                                 -->
+                            </div>
+                        </div>
+                    </mat-card>
+
+
+
+
+
+
+                </nb-tab>
+                <nb-tab badgeStatus="danger" tabTitle="Usuários" (click)="selectTab(2)">
+
+                    <!-- inicio -->
+
+                    <mat-card>
+
+                        <form [formGroup]="cadpessoasUsuarioForm" (ngSubmit)="validar()">
+
+                            <h3>Usuários</h3>
+
+                            <div class="row">
+
+                                <div class="col-md-3">
+                                    <label for="puNome">Nome:</label>
+                                    <input type="text" id="puNome" formControlName="puNome" class="form-control">
+                                </div>
+
+                                <div class="col-md-3">
+                                    <label for="puCpf">Cpf:</label>
+                                    <input type="text" id="puCpf" formControlName="puCpf" class="form-control"
+                                        appCpfCnpj>
+                                    <small *ngIf="cadpessoasUsuarioForm.controls.puCpf.hasError('erro')"
+                                        class="message">
+                                        {{ this.cadpessoasUsuarioForm.get("puCpf").errors | json }}
+                                    </small>
+
+
+                                </div>
+
+
+
+                                <div class="col-md-3">
+
+                                    <label for="puFone">Telefone:</label>
+                                    <input type="text" id="puFone" formControlName="puFone" class="form-control"
+                                        appMascaraFone>
+                                </div>
+
+                                <div class="col-md-3">
+
+                                    <label for="puWhatsapp">Whatsapp:</label>
+                                    <input type="text" id="puWhatsapp" formControlName="puWhatsapp" class="form-control"
+                                        appMascaraFone>
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="row">
+
+
+
+                                <div class="col-md-6">
+                                    <label for="puEmail">E-Mail:</label>
+                                    <input type="email" id="puEmail" formControlName="puEmail" class="form-control">
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="puObs">Observações:</label>
+                                    <input type="text" id="puObs" formControlName="puObs" class="form-control">
+                                </div>
+
+                            </div>
+
+
+
+
+
+
+                            <div class="row">
+
+
+
+                                <div class="col-md-3">
+
+                                    <label for="puNivel">Nivel:</label>
+                                    <select class="form-control" formControlName="puNivel" class="form-control">
+                                        <option *ngFor="let nivel of niveis" [value]="nivel.id">
+                                            {{nivel.name}}
+                                        </option>
+
+                                    </select>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <label for="puSenha">Senha:</label>
+                                    <input type="password" id="puSenha" formControlName="puSenha" class="form-control">
+                                </div>
+
+                                <div class="col-md-3">
+                                    <label for="puSenhaConfirmacao">Confirmacao:</label>
+                                    <input type="password" id="puSenhaConfirmacao" formControlName="puSenhaConfirmacao"
+                                        class="form-control">
+
+
+                                    <small *ngIf="cadpessoasUsuarioForm.controls.puSenhaConfirmacao.hasError('erro')"
+                                        class="message">
+                                        {{ this.cadpessoasUsuarioForm.get("puSenhaConfirmacao").errors | json }}
+                                    </small>
+
+                                </div>
+
+                                <div class="col-md-2">
+                                    <br>
+                                    <button type="button" (click)="adicionarUsuarios()"
+                                        class="form-control">Gravar</button>
+                                </div>
+
+
+
+                                <div class="col-md-1">
+                                    <br>
+                                    <button type="button" (click)="cancelar()" class="form-control">Cancelar</button>
+                                </div>
+
+
+                            </div>
+
+
+                            <!-- fim  -->
+
+                            <!-- filho sozinho termino -->
+                        </form>
+                    </mat-card>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+
+
+
+
+                    <mat-card>
+                        <!-- <form [formGroup]="formulario" (ngSubmit)="validar()"> -->
+                        <form [formGroup]="formulario" (ngSubmit)="validar()">
+
+
+                            <div formArrayName="cadpessoasUsuarios">
+
+
+
+
+                                <div
+                                    *ngFor="let filho of formulario.get('cadpessoasUsuarios')['controls'] ; let i = index">
+                                    <br>
+                                    <br>
+
+                                    <div [formGroupName]="i">
+
+                                        <div class="background">
+
+                                            <div class="row">
+
+                                                <div class="col-md-3">
+                                                    <label for="puNome">Nome:</label>
+                                                    <input type="text" id="puNome" formControlName="puNome" disabled
+                                                        class="form-control">
+                                                </div>
+
+                                                <div class="col-md-3">
+                                                    <label for="puCpf">Cpf:</label>
+                                                    <input type="text" id="puCpf" formControlName="puCpf"
+                                                        class="form-control" disabled>
+                                                </div>
+
+
+
+                                                <div class="col-md-3">
+
+                                                    <label for="puFone">Telefone:</label>
+                                                    <input type="text" id="puFone" formControlName="puFone"
+                                                        class="form-control" disabled>
+                                                </div>
+
+                                                <div class="col-md-3">
+
+                                                    <label for="puWhatsapp">Whatsapp:</label>
+                                                    <input type="text" id="puWhatsapp" formControlName="puWhatsapp"
+                                                        class="form-control" disabled>
+                                                </div>
+
+                                            </div>
+
+
+                                            <div class="row">
+
+
+
+                                                <div class="col-md-6">
+                                                    <label for="puEmail">E-Mail:</label>
+                                                    <input type="email" id="puEmail" formControlName="puEmail"
+                                                        class="form-control" disabled>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <label for="puObs">Observações:</label>
+                                                    <input type="text" id="puObs" formControlName="puObs"
+                                                        class="form-control" disabled>
+                                                </div>
+
+                                            </div>
+
+
+
+
+
+                                            <div class="row">
+
+
+
+                                                <div class="col-md-3">
+
+                                                    <label for="puNivel">Nivel:</label>
+                                                    <select class="form-control" formControlName="puNivel"
+                                                        class="form-control" disabled>
+                                                        <option *ngFor="let nivel of niveis" [value]="nivel.id">
+                                                            {{nivel.name}}
+                                                        </option>
+
+                                                    </select>
+                                                </div>
+
+                                                <div class="col-md-3">
+
+
+                                                    <label for="puSenha">Senha:</label>
+                                                    <input type="password" id="puSenha" formControlName="puSenha"
+                                                        class="form-control" disabled>
+
+                                                </div>
+
+                                                <div class="col-md-3">
+                                                    <label for="puSenhaConfirmacao">Confirmacao:</label>
+                                                    <input type="password" id="puSenhaConfirmacao"
+                                                        formControlName="puSenhaConfirmacao" class="form-control"
+                                                        disabled>
+                                                </div>
+
+                                                <div class="col-md-1">
+                                                    <br>
+                                                    <button type="button" (click)="removerFilho(i)"
+                                                        class="form-control">Remover</button>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <br>
+                                                    <button type="button" (click)="editarFilho(i)"
+                                                        class="form-control">Editar</button>
+                                                </div>
+
+
+
+                                            </div>
+
+                                        </div>
+
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </form>
+                    </mat-card>
+
+                </nb-tab>
+
+                <!-- inicio servicos -->
+
+
+                <nb-tab badgeStatus="danger" tabTitle="Serviços Disponiveis" (click)="selectTab(3)">
+                    <mat-card>
+
+                        <div class="ui-g-12 ui-md-12 ui-md-12"
+                            style="margin: 0; padding:0; background-color: #3F51B5; color:white; text-align: center;">
+                            <span>SERVIÇOS A SEREM COTADOS</span>
+                        </div>
+                        <!-- <div class="ui-g-12 ui-md-12 ui-lg-12 "> -->
+                        <ng-template ngFor let-cotados [ngForOf]="listaServicos" let-i="index">
+
+                            <input [checked]="cotados.check" type="checkbox" name="servico" (click)="validarServicos(i)"
+                                value="i">
+                            {{ cotados.csNomeservico }} <br>
+                        </ng-template>
+                        <!-- <app-message [isError]="!isServicos" [message]="mgServicos"></app-message> -->
+                        <!-- </div> -->
+
+                    </mat-card>
+                </nb-tab>
+
+                <!-- termino servicos -->
+
+
+
+            </nb-tabset>
+        </nb-card-body>
+
+    </nb-card>
+</div>

@@ -1,0 +1,16 @@
+<h1 mat-dialog-title>Consulta Classificação</h1> 
+<button (click)="onClick()" class="btn-close"><span class="fa fa-close"></span></button>
+<div mat-dialog-content>
+
+  <div class="form-build">
+    <app-form-build #instanceForm [fieldsConfig]="fields"></app-form-build>
+  </div>
+
+  <app-table-list #instanceTable
+    [itens]="itemsTable"
+    [displayColumns]="displayColumns"
+    [data]="data.page.content"
+    (clickRowHandler)="actionRow($event)"
+  ></app-table-list>
+
+</div>

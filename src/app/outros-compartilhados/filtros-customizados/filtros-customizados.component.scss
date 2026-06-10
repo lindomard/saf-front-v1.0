@@ -1,0 +1,148 @@
+
+.example-viewport {
+  height: 100%;
+  width: 100%;
+  border: 1px solid black;
+  box-sizing: border-box;
+}
+
+
+.vermelho{
+  color: red;
+}
+
+.v-cardLeft{
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  border: #EEEEEE 1px solid;
+  width: 95%;
+  margin-right: auto;
+  background-color: beige;
+
+}
+
+
+.v-cardRigth{
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  border: #EEEEEE 1px solid;
+  width: 95%;
+  margin-right: auto;
+  background-color: azure;
+
+
+}
+
+
+.example-viewport {
+  height: 100px;
+  width: 250px;
+  border: 1px solid black;
+}
+
+
+.viewport-customizado {
+  height: 100px;
+  border: 1px solid black;
+}
+
+.viewport-customizadoBaixo {
+  height: 100px;
+  border: 1px solid black;
+}
+
+.wrapper-top {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-close {
+    margin-top: 0px;
+    background-color: white;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+}
+
+.fa-close{
+    color: red;
+}
+
+.example-container {
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+
+.example-container {
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+  }
+
+
+
+
+
+  .container-titulo{
+    text-align: center;
+  }
+
+
+
+  .v-cardp{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    border: #eeeeee 1px solid;
+    font-size: 15px;
+    margin: auto;
+    background-color: rgb(0, 140, 255);
+    padding: 15px 15px;
+  }
+
+  .main {
+    margin-top: 0px;
+    text-align: center;
+  }
+
+  .main-button {
+  margin-top: 10px;
+  position: absolute;
+  }
+
+
+  .mat-row:hover {
+  background-color: #dedede;
+  }
+
+  tr.mat-row {
+  border-bottom: 1px solid #dedede;
+  }
+
+  .mat-container {
+  display: flex;
+  flex-direction: column;
+  max-height: 500px;
+  min-width: 300px;
+  }
+
+  .mat-table {
+  overflow: auto;
+  max-height: 350px;
+  font-size: 11px;
+  }
+
+  .mobile-label {
+  display: none;
+  }
+
+
+

@@ -1,0 +1,147 @@
+<loadingV01 *ngIf="isLoading">{{ isLoading }}</loadingV01>
+
+<div class="container">
+
+
+
+
+    <div>
+
+        <mat-toolbar color="warn" class="child">
+
+            <div class="col">
+                <div class="row">
+
+
+
+                    <span> {{ mTipoOperacao }} </span>
+                    <!-- <span class="spacer"></span> -->
+
+
+                    <div class="col text-right">
+                        <button class="btn btn-dark" (click)="cancelarESair()">Cancelar/Sair</button>
+                    </div>
+
+                </div>
+
+            </div>
+        </mat-toolbar>
+
+
+        <br>
+        <br>
+
+
+        <br>
+        <br>
+
+
+
+        <form [formGroup]="formulario">
+            <div class="row">
+                <div class="col-md-4">
+                    <label>Nome do Livro:</label>
+                    <input id="secNome" formControlName="secNome" class="form-control"
+                        type="text">
+                    <div *ngIf="formulario.get('secNome').errors?.minlength">
+                        Nome Invalido! </div>
+                </div>
+
+                <div class="col-md-2">
+                    <label>Periodo de:</label>
+                    <input id="secDtInicio" formControlName="secDtInicio" class="form-control"
+                        type="date">
+                </div>
+
+                <div class="col-md-2">
+                    <label>Até:</label>
+                    <input id="secDtFinal" formControlName="secDtFinal" class="form-control"
+                        type="date">
+                </div>
+           
+
+                <div class="col-md-2">
+                    <label>Pagina Inicial:</label>
+                    <input id="secPgInicio" formControlName="secPgInicio" class="form-control"
+                        type="number">
+                </div>
+           
+                <div class="col-md-2">
+                    <label>Pagina Inicial:</label>
+                    <input id="secPgFinal" formControlName="secPgFinal" class="form-control"
+                        type="number">
+                </div>
+                                
+
+            </div>
+
+
+            <br>
+            <div class="row">
+                <div class="col-md-12">
+                 
+                    <input (change)="onFileSelected($event)" type="file" id="secNomeArq" formControlName="secNomeArq">
+                </div>
+            </div>
+
+
+
+            <br>
+
+
+            <div class="row">
+
+
+                <div class="col-md-2">
+                    <button class="btn btn-primary mr-2" (click)="enviar()">Enviar Arquivo</button>
+                </div>
+            </div>
+
+
+
+        </form> 
+
+
+        <!-- <pre>{{formulario.value | json}}</pre>                                 -->
+    </div>
+
+</div>
+
+
+
+
+<section class="example-container mat-elevation-z8">
+
+    
+<table mat-table [dataSource]="dataSourceWithPageSize" class="mat-elevation-z8">
+    <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">
+        <th mat-header-cell [style]="getAlingn(column)" *matHeaderCellDef>
+            {{ getColumnName(column) }} </th>
+
+
+
+         <div *ngIf="column!=='Visualizar'">
+
+
+            <td mat-cell [style]="getAlingn(column)" [width]="getStyle3(column)" *matCellDef="let element">
+                {{ fValorENomeDoCampoParaformatar(element,column) }}
+            </td>
+        </div>
+
+
+
+    </ng-container>
+
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+    
+    
+    ></tr>
+</table>
+</section>
+<mat-paginator #paginatorPageSize [pageSize]="filterPaginator.size" [length]="filterPaginator.totalElements"
+    [pageIndex]="filterPaginator.page" [pageSizeOptions]="pageLimitOptions" showFirstLastButtons (page)="changeEvent()">
+</mat-paginator>

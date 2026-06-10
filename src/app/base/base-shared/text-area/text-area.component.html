@@ -1,0 +1,16 @@
+<div class="form-group">
+    <label [ngClass]="{
+        'erro-label-feedback': showError
+    }" for="{{name}}">{{ label }}</label>
+    <textarea [ngClass]="{
+        'is-invalid': showError,
+        'input-field': marginTop
+    }" class="form-control" [formControl]="control" id="{{ name }}" rows="{{ rows }}"></textarea>
+
+    <div *ngIf="showError" class="invalid-feedback">
+        {{ message }} 
+        <span *ngIf="showCount">
+           {{ messageDigits }} {{ control.value.length }}
+        </span>
+    </div>
+</div>

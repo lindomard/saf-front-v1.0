@@ -1,0 +1,11 @@
+<div class="wrapper-top">
+    <h1 mat-dialog-title class="title">{{ data?.title }}</h1>
+</div>
+<div mat-dialog-content>
+    <div class="wrapper-message">
+        <span [innerHTML]="data?.message"></span>
+    </div>
+    <div class="wrapper-button">
+        <button (click)="onClickOk()" mat-button color="primary">Ok</button>
+    </div>
+</div>
