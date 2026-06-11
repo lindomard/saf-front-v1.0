@@ -53,7 +53,7 @@ export class WebSocketConnector {
       });
     }
 
-    private onError(error) {
+    private onError(error :any ) {
 //        console.log("Error while connect: " + error);
         setTimeout(() => {
 //            console.log("Trying to connect again...");

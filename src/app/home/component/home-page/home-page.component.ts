@@ -38,6 +38,7 @@ import { BaixarArquivosService } from '@base-core/service/baixar-arquivos-servic
 import { VisualizarResultadosService } from 'src/app/visualizar-resultados/visualizar-resultados.service';
 import { NomeDoArquivoGeradoModel } from '@base-core/model/nome-do-arquivo-gerado-model';
 import { Response } from '@base-core/model/response.model';
+import { WebsocketService } from 'src/app/websocket/websocket.service';
 
 @Component({
   selector: 'app-home-page',
@@ -77,7 +78,10 @@ export class HomePageComponent implements OnInit {
 
   ) { }
   // da importacao dos registros inicio
+//  private webSocketConnector: WebSocketConnector;
   private webSocketConnector: WebSocketConnector;
+
+
   data: any[] = [];
   mGerarPlanilha: boolean = false;
   mProcessando: boolean = false;
@@ -102,7 +106,7 @@ export class HomePageComponent implements OnInit {
   ListaCadpessoasDocModel: CadpessoasDocModel[] = [];
   files: File[] = [];
 
-  mDatHorInicio: Date;
+  mDatHorInicio: Date = new Date();
   mDatHorEstimada: Date;
   mDatHorProcessada: Date;
   mDatHorRestante: Date;
@@ -798,6 +802,9 @@ export class HomePageComponent implements OnInit {
 
     //   `${environment.url}socketImportarDados`,
 
+
+
+
     if (this.webSocketConnector == undefined) {
       this.webSocketConnector = new WebSocketConnector(
         accessToken,
@@ -807,7 +814,6 @@ export class HomePageComponent implements OnInit {
       );
 
     }
-
 
 
 

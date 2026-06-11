@@ -15,6 +15,7 @@ import { MenuComponent } from './component/main-nav/menu/menu.component';
 import { HomeRoutingModule } from './home-routing.module';
 import { NgbProgressbarModule } from '@ng-bootstrap/ng-bootstrap';
 import { ResultadosModule } from '../resultados/resultados.module';
+import { WebsocketService } from '../websocket/websocket.service';
 
 
 @NgModule({
@@ -39,7 +40,7 @@ import { ResultadosModule } from '../resultados/resultados.module';
   exports: [],
 
   providers: [
-    OpenConnectorUseCase,
+    OpenConnectorUseCase, WebsocketService,
     { provide: OpenconnectorRepository, useClass: OpenConnectorRepositoryService }
   ]
 })
